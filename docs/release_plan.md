@@ -42,6 +42,23 @@ Last updated: 2026-07-09
 - Career-paths browser (MD/DO/PA/NP/nursing/…).
 - **Done when:** a real person can compare schools and paths and *get* the tradeoffs.
 
+**Status (2026-07-09): mostly done.**
+- Done: all 27 schools in `data/schools_undergrad.json` refreshed with live
+  College Scorecard values (cost/net price, grad rate, acceptance rate, 10yr/6yr
+  earnings, median debt, and a new `scorecard_sat_average` field) via the
+  re-runnable `app/scripts/fetch-scorecard.mjs`. `source_confidence: "high"` +
+  `data_status: "verified_scorecard_api_2026_07"` set on every updated record.
+  Existing faceted filtering (bucket/status/cost-flag/direct-med) carried over
+  from R0. `data/paths.json` now has 15 baseline career-path records (Epic F)
+  rendered in a new "Career Paths" tab in the app, alongside existing "Schools"
+  and "Programs" tabs. `SchoolCard` now also surfaces SAT average and 10yr
+  earnings.
+- Not done / deferred: `data/sources.json` still has stub URLs (see `TODO.md`);
+  career-path salary numbers are deliberately left qualitative pending Epic K
+  salary triangulation; the private pre-health/STEM school batch gap noted in
+  `TODO.md` is unrelated to R1 and still open; distance/size facets beyond
+  bucket/status/cost/direct-med are not yet built.
+
 ## R2 — Map & Wishlist · Epics G, H, P(client)
 **Goal:** Spatial browsing + Lucy's own persistent list.
 - Map of all schools; pins reflect current filters; click → profile.

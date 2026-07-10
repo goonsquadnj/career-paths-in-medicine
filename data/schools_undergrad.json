@@ -14,11 +14,11 @@
     "official_cost_out_of_state": 61635,
     "scorecard_unit_id": "186380",
     "scorecard_avg_annual_cost": 24406,
-    "scorecard_graduation_rate": 0.84,
-    "scorecard_acceptance_rate": 0.58,
+    "scorecard_graduation_rate": 0.8363,
+    "scorecard_acceptance_rate": 0.5815,
     "scorecard_median_earnings_display": 77933,
-    "scorecard_median_earnings_10yr": null,
-    "scorecard_median_earnings_6yr": null,
+    "scorecard_median_earnings_10yr": 74479,
+    "scorecard_median_earnings_6yr": 61263,
     "scorecard_median_debt": 21500,
     "scorecard_notes": "Scorecard earnings are broad school-level outcomes and should not be interpreted as premed-specific outcomes. Median debt should be verified directly against the Scorecard API or data download.",
     "family_cost_flag": "NJ_in_state_value",
@@ -41,14 +41,15 @@
     "fit_score": null,
     "cost_risk_score": null,
     "overall_school_score": null,
-    "source_confidence": "medium_high",
-    "data_status": "starter_record_verify_scorecard_api",
+    "source_confidence": "high",
+    "data_status": "verified_scorecard_api_2026_07",
     "sources": [
       "rutgers_nb_cost_2025_26",
       "rutgers_admissions_tuition_fees",
       "rutgers_hpo",
       "college_scorecard_main"
-    ]
+    ],
+    "scorecard_sat_average": 1410
   },
   {
     "id": "tcnj",
@@ -65,11 +66,11 @@
     "official_cost_out_of_state": 45422,
     "scorecard_unit_id": "187134",
     "scorecard_avg_annual_cost": 27646,
-    "scorecard_graduation_rate": 0.86,
-    "scorecard_acceptance_rate": 0.62,
+    "scorecard_graduation_rate": 0.8585,
+    "scorecard_acceptance_rate": 0.6229,
     "scorecard_median_earnings_display": 72068,
-    "scorecard_median_earnings_10yr": null,
-    "scorecard_median_earnings_6yr": null,
+    "scorecard_median_earnings_10yr": 73323,
+    "scorecard_median_earnings_6yr": 62649,
     "scorecard_median_debt": 23250,
     "scorecard_notes": "Scorecard and secondary Scorecard-derived values should be verified directly before final release.",
     "family_cost_flag": "NJ_in_state_value",
@@ -94,15 +95,16 @@
     "fit_score": null,
     "cost_risk_score": null,
     "overall_school_score": null,
-    "source_confidence": "medium_high",
-    "data_status": "starter_record_verify_scorecard_api",
+    "source_confidence": "high",
+    "data_status": "verified_scorecard_api_2026_07",
     "sources": [
       "tcnj_cost_2026_27",
       "tcnj_mcac",
       "tcnj_njms_7_year",
       "rutgers_njms_7_8_year",
       "college_scorecard_main"
-    ]
+    ],
+    "scorecard_sat_average": 1246
   },
   {
     "id": "rowan",
@@ -119,11 +121,11 @@
     "official_cost_out_of_state": 53192,
     "scorecard_unit_id": "184782",
     "scorecard_avg_annual_cost": 22408,
-    "scorecard_graduation_rate": 0.72,
-    "scorecard_acceptance_rate": 0.78,
+    "scorecard_graduation_rate": 0.6736,
+    "scorecard_acceptance_rate": 0.7766,
     "scorecard_median_earnings_display": 62686,
-    "scorecard_median_earnings_10yr": null,
-    "scorecard_median_earnings_6yr": null,
+    "scorecard_median_earnings_10yr": 59988,
+    "scorecard_median_earnings_6yr": 50705,
     "scorecard_median_debt": 20500,
     "scorecard_notes": "School-level earnings and graduation metrics are lower than some other NJ anchors, but Rowan has distinct healthcare-pathway relevance.",
     "family_cost_flag": "NJ_in_state_value",
@@ -148,14 +150,15 @@
     "fit_score": null,
     "cost_risk_score": null,
     "overall_school_score": null,
-    "source_confidence": "medium_high",
-    "data_status": "starter_record_verify_scorecard_api",
+    "source_confidence": "high",
+    "data_status": "verified_scorecard_api_2026_07",
     "sources": [
       "rowan_cost_2025_26",
       "rowan_prehealth",
       "rowan_3plus4_medical",
       "college_scorecard_main"
-    ]
+    ],
+    "scorecard_sat_average": 1212
   },
   {
     "id": "njit",
@@ -172,12 +175,12 @@
     "official_cost_out_of_state": null,
     "scorecard_unit_id": "185828",
     "scorecard_avg_annual_cost": 16504,
-    "scorecard_graduation_rate": 0.80,
-    "scorecard_acceptance_rate": 0.65,
+    "scorecard_graduation_rate": 0.7276,
+    "scorecard_acceptance_rate": 0.6507,
     "scorecard_median_earnings_display": 91874,
-    "scorecard_median_earnings_10yr": null,
-    "scorecard_median_earnings_6yr": null,
-    "scorecard_median_debt": 21250,
+    "scorecard_median_earnings_10yr": 84276,
+    "scorecard_median_earnings_6yr": 69591,
+    "scorecard_median_debt": 21000,
     "scorecard_notes": "Strong earnings likely reflect STEM, engineering, computing, and technology outcomes. Do not interpret as premed-specific.",
     "family_cost_flag": "NJ_in_state_value",
     "cost_notes": "Official tuition and fee data were researched, but total COA should be verified before final app release.",
@@ -201,14 +204,15 @@
     "fit_score": null,
     "cost_risk_score": null,
     "overall_school_score": null,
-    "source_confidence": "medium",
-    "data_status": "starter_record_needs_official_coa_total",
+    "source_confidence": "high",
+    "data_status": "verified_scorecard_api_2026_07",
     "sources": [
       "njit_cost_2025_26",
       "njit_premed",
       "njit_njms_bsmd_faq",
       "college_scorecard_main"
-    ]
+    ],
+    "scorecard_sat_average": 1337
   },
   {
     "id": "rutgers_newark",
@@ -225,11 +229,11 @@
     "official_cost_out_of_state": 54269,
     "scorecard_unit_id": "186399",
     "scorecard_avg_annual_cost": 19703,
-    "scorecard_graduation_rate": 0.71,
-    "scorecard_acceptance_rate": null,
+    "scorecard_graduation_rate": 0.6375,
+    "scorecard_acceptance_rate": 0.7136,
     "scorecard_median_earnings_display": 77933,
-    "scorecard_median_earnings_10yr": null,
-    "scorecard_median_earnings_6yr": null,
+    "scorecard_median_earnings_10yr": 74479,
+    "scorecard_median_earnings_6yr": 61263,
     "scorecard_median_debt": 21500,
     "scorecard_notes": "Graduation rate is meaningfully lower than Rutgers New Brunswick and TCNJ in the researched data. Median earnings and debt need direct Scorecard verification.",
     "family_cost_flag": "NJ_in_state_value",
@@ -254,14 +258,15 @@
     "fit_score": null,
     "cost_risk_score": null,
     "overall_school_score": null,
-    "source_confidence": "medium",
-    "data_status": "starter_record_verify_scorecard_api",
+    "source_confidence": "high",
+    "data_status": "verified_scorecard_api_2026_07",
     "sources": [
       "rutgers_admissions_tuition_fees",
       "rutgers_newark_bamd",
       "rutgers_njms_7_8_year",
       "college_scorecard_main"
-    ]
+    ],
+    "scorecard_sat_average": null
   },
   {
     "id": "stevens",
@@ -278,11 +283,11 @@
     "official_cost_out_of_state": null,
     "scorecard_unit_id": "186867",
     "scorecard_avg_annual_cost": 41346,
-    "scorecard_graduation_rate": 0.87,
-    "scorecard_acceptance_rate": 0.48,
+    "scorecard_graduation_rate": 0.8688,
+    "scorecard_acceptance_rate": 0.4758,
     "scorecard_median_earnings_display": 112538,
     "scorecard_median_earnings_10yr": 108772,
-    "scorecard_median_earnings_6yr": null,
+    "scorecard_median_earnings_6yr": 90326,
     "scorecard_median_debt": 27000,
     "scorecard_notes": "Strong earnings likely reflect engineering, computing, finance, tech, and STEM outcomes. This is useful fallback value but not premed-specific.",
     "family_cost_flag": "private_aid_dependent",
@@ -307,14 +312,15 @@
     "fit_score": null,
     "cost_risk_score": null,
     "overall_school_score": null,
-    "source_confidence": "medium",
-    "data_status": "starter_record_verify_scorecard_api",
+    "source_confidence": "high",
+    "data_status": "verified_scorecard_api_2026_07",
     "sources": [
       "stevens_cost_2026_27",
       "stevens_prehealth",
       "stevens_accelerated_premed",
       "college_scorecard_main"
-    ]
+    ],
+    "scorecard_sat_average": 1446
   },
   {
     "id": "seton_hall",
@@ -331,11 +337,11 @@
     "official_cost_out_of_state": null,
     "scorecard_unit_id": "186584",
     "scorecard_avg_annual_cost": 31446,
-    "scorecard_graduation_rate": 0.70,
-    "scorecard_acceptance_rate": 0.73,
+    "scorecard_graduation_rate": 0.6949,
+    "scorecard_acceptance_rate": 0.7326,
     "scorecard_median_earnings_display": 70196,
     "scorecard_median_earnings_10yr": 70196,
-    "scorecard_median_earnings_6yr": null,
+    "scorecard_median_earnings_6yr": 60291,
     "scorecard_median_debt": 22750,
     "scorecard_notes": "Some earnings values came from secondary Scorecard-derived sources and should be verified directly. Major mix matters.",
     "family_cost_flag": "private_aid_dependent",
@@ -360,14 +366,15 @@
     "fit_score": null,
     "cost_risk_score": null,
     "overall_school_score": null,
-    "source_confidence": "medium",
-    "data_status": "starter_record_verify_scorecard_api",
+    "source_confidence": "high",
+    "data_status": "verified_scorecard_api_2026_07",
     "sources": [
       "seton_hall_tuition_fees",
       "seton_hall_ppac",
       "seton_hall_hmh_bamd",
       "college_scorecard_main"
-    ]
+    ],
+    "scorecard_sat_average": 1322
   },
   {
     "id": "pitt",
@@ -384,11 +391,11 @@
     "official_cost_out_of_state": 62608,
     "scorecard_unit_id": "215293",
     "scorecard_avg_annual_cost": 30434,
-    "scorecard_graduation_rate": 0.82,
+    "scorecard_graduation_rate": 0.855,
     "scorecard_acceptance_rate": 0.5808,
     "scorecard_median_earnings_display": 73701,
     "scorecard_median_earnings_10yr": 66125,
-    "scorecard_median_earnings_6yr": 44300,
+    "scorecard_median_earnings_6yr": 54240,
     "scorecard_median_debt": 24250,
     "scorecard_notes": "Strong health-sciences ecosystem. Scorecard net price may not reflect Jeff's actual family cost as a NJ resident.",
     "family_cost_flag": "OOS_public_cost_sensitive",
@@ -399,15 +406,20 @@
     "clinical_ecosystem_notes": "Major health-sciences ecosystem with UPMC and Pitt School of Medicine context.",
     "research_access_notes": "Strong research ecosystem; verify undergraduate access and fit.",
     "has_direct_med_program": true,
-    "direct_med_program_ids": ["pitt_medicine_gap"],
+    "direct_med_program_ids": [
+      "pitt_medicine_gap"
+    ],
     "early_assurance_notes": "Pitt Medicine GAP is strategically important but still requires a high MCAT minimum.",
     "gpa_risk": "medium",
     "gpa_risk_notes": "Strong science/premed ecosystem may be competitive.",
     "student_fit_notes": "Urban Pittsburgh campus with major health-system adjacency.",
     "parent_roi_note": "Pitt is an ecosystem play, not a cheap OOS public. It needs to justify extra cost over NJ options.",
-    "source_confidence": "medium",
-    "data_status": "starter_record_verify_scorecard_api",
-    "sources": ["college_scorecard_main"]
+    "source_confidence": "high",
+    "data_status": "verified_scorecard_api_2026_07",
+    "sources": [
+      "college_scorecard_main"
+    ],
+    "scorecard_sat_average": 1370
   },
   {
     "id": "penn_state_university_park",
@@ -424,11 +436,11 @@
     "official_cost_out_of_state": 66566,
     "scorecard_unit_id": "214777",
     "scorecard_avg_annual_cost": 32875,
-    "scorecard_graduation_rate": 0.861,
-    "scorecard_acceptance_rate": 0.5761,
+    "scorecard_graduation_rate": 0.8609,
+    "scorecard_acceptance_rate": 0.6056,
     "scorecard_median_earnings_display": 76659,
     "scorecard_median_earnings_10yr": 63435,
-    "scorecard_median_earnings_6yr": 43600,
+    "scorecard_median_earnings_6yr": 55620,
     "scorecard_median_debt": 25000,
     "scorecard_notes": "Broad flagship outcome data should not be interpreted as premed-specific.",
     "family_cost_flag": "OOS_public_cost_sensitive",
@@ -445,9 +457,12 @@
     "gpa_risk_notes": "Large flagship environment; strong students need to self-navigate.",
     "student_fit_notes": "Best if Lucy wants a big college-town flagship experience.",
     "parent_roi_note": "Penn State is a broad brand/fallback option, but not clearly better premed ROI than Rutgers for a NJ family.",
-    "source_confidence": "medium",
-    "data_status": "starter_record_verify_scorecard_api",
-    "sources": ["college_scorecard_main"]
+    "source_confidence": "high",
+    "data_status": "verified_scorecard_api_2026_07",
+    "sources": [
+      "college_scorecard_main"
+    ],
+    "scorecard_sat_average": 1337
   },
   {
     "id": "umd_college_park",
@@ -464,11 +479,11 @@
     "official_cost_out_of_state": 65520,
     "scorecard_unit_id": "163286",
     "scorecard_avg_annual_cost": 15678,
-    "scorecard_graduation_rate": 0.85,
+    "scorecard_graduation_rate": 0.8859,
     "scorecard_acceptance_rate": 0.4479,
     "scorecard_median_earnings_display": 84365,
     "scorecard_median_earnings_10yr": 82860,
-    "scorecard_median_earnings_6yr": 50100,
+    "scorecard_median_earnings_6yr": 67785,
     "scorecard_median_debt": 19000,
     "scorecard_notes": "Strong broad ROI signal, but Scorecard net price may not reflect NJ-family out-of-state cost.",
     "family_cost_flag": "OOS_public_cost_sensitive",
@@ -485,9 +500,12 @@
     "gpa_risk_notes": "Strong public research environment; STEM/premed courses may be competitive.",
     "student_fit_notes": "Large research university near DC; campus and size fit matter.",
     "parent_roi_note": "UMD has excellent outcome signals, but the actual OOS price must beat the NJ public baseline.",
-    "source_confidence": "medium",
-    "data_status": "starter_record_verify_scorecard_api",
-    "sources": ["college_scorecard_main"]
+    "source_confidence": "high",
+    "data_status": "verified_scorecard_api_2026_07",
+    "sources": [
+      "college_scorecard_main"
+    ],
+    "scorecard_sat_average": 1473
   },
   {
     "id": "university_of_delaware",
@@ -504,12 +522,12 @@
     "official_cost_out_of_state": 65884,
     "scorecard_unit_id": "130943",
     "scorecard_avg_annual_cost": 17799,
-    "scorecard_graduation_rate": 0.84,
-    "scorecard_acceptance_rate": 0.6511,
+    "scorecard_graduation_rate": 0.8055,
+    "scorecard_acceptance_rate": 0.706,
     "scorecard_median_earnings_display": 77675,
     "scorecard_median_earnings_10yr": 72950,
-    "scorecard_median_earnings_6yr": null,
-    "scorecard_median_debt": 21000,
+    "scorecard_median_earnings_6yr": 58846,
+    "scorecard_median_debt": 24572,
     "scorecard_notes": "Solid broad outcome signal, but OOS public sticker cost matters.",
     "family_cost_flag": "OOS_public_cost_sensitive",
     "cost_notes": "For a NJ family, Delaware may price closer to private-school territory unless merit or aid changes the math.",
@@ -525,9 +543,12 @@
     "gpa_risk_notes": "Standard pre-health GPA risk; program-specific differential charges may matter.",
     "student_fit_notes": "Classic campus feel may appeal if Rutgers feels too large or urban options feel too intense.",
     "parent_roi_note": "Delaware needs a fit or aid reason to beat NJ publics.",
-    "source_confidence": "medium",
-    "data_status": "starter_record_verify_scorecard_api",
-    "sources": ["college_scorecard_main"]
+    "source_confidence": "high",
+    "data_status": "verified_scorecard_api_2026_07",
+    "sources": [
+      "college_scorecard_main"
+    ],
+    "scorecard_sat_average": 1292
   },
   {
     "id": "stony_brook",
@@ -544,11 +565,11 @@
     "official_cost_out_of_state": 58799,
     "scorecard_unit_id": "196097",
     "scorecard_avg_annual_cost": 18784,
-    "scorecard_graduation_rate": 0.78,
-    "scorecard_acceptance_rate": 0.4271,
+    "scorecard_graduation_rate": 0.7556,
+    "scorecard_acceptance_rate": 0.4904,
     "scorecard_median_earnings_display": 81850,
-    "scorecard_median_earnings_10yr": null,
-    "scorecard_median_earnings_6yr": null,
+    "scorecard_median_earnings_10yr": 74502,
+    "scorecard_median_earnings_6yr": 59492,
     "scorecard_median_debt": 18228,
     "scorecard_notes": "Strong science/ROI signal; direct Scorecard API should verify exact graduation and earnings fields.",
     "family_cost_flag": "OOS_public_cost_sensitive",
@@ -565,9 +586,12 @@
     "gpa_risk_notes": "Science-heavy environment may be competitive and GPA-sensitive.",
     "student_fit_notes": "Best if Lucy likes a science-heavy research university environment.",
     "parent_roi_note": "Stony Brook may offer a stronger medical/science ecosystem than some OOS publics, but it still needs to justify cost over NJ options.",
-    "source_confidence": "medium",
-    "data_status": "starter_record_verify_scorecard_api",
-    "sources": ["college_scorecard_main"]
+    "source_confidence": "high",
+    "data_status": "verified_scorecard_api_2026_07",
+    "sources": [
+      "college_scorecard_main"
+    ],
+    "scorecard_sat_average": 1419
   },
   {
     "id": "binghamton",
@@ -584,12 +608,12 @@
     "official_cost_out_of_state": 55716,
     "scorecard_unit_id": "196079",
     "scorecard_avg_annual_cost": 21620,
-    "scorecard_graduation_rate": 0.84,
-    "scorecard_acceptance_rate": 0.386,
+    "scorecard_graduation_rate": 0.8162,
+    "scorecard_acceptance_rate": 0.3861,
     "scorecard_median_earnings_display": 80304,
-    "scorecard_median_earnings_10yr": null,
-    "scorecard_median_earnings_6yr": null,
-    "scorecard_median_debt": 19500,
+    "scorecard_median_earnings_10yr": 80596,
+    "scorecard_median_earnings_6yr": 61621,
+    "scorecard_median_debt": 18500,
     "scorecard_notes": "Strong broad academic/value signal; less clearly a medical-center ecosystem school.",
     "family_cost_flag": "OOS_public_cost_sensitive",
     "cost_notes": "Good public-value reputation, but not NJ in-state for Lucy.",
@@ -605,9 +629,12 @@
     "gpa_risk_notes": "Strong academic environment; pre-health coursework still demanding.",
     "student_fit_notes": "Best if Lucy likes the campus and academic culture enough to justify OOS pricing.",
     "parent_roi_note": "Binghamton is a strong regional public comparison, but not obviously better than Rutgers or TCNJ for a NJ premed student.",
-    "source_confidence": "medium",
-    "data_status": "starter_record_verify_scorecard_api",
-    "sources": ["college_scorecard_main"]
+    "source_confidence": "high",
+    "data_status": "verified_scorecard_api_2026_07",
+    "sources": [
+      "college_scorecard_main"
+    ],
+    "scorecard_sat_average": 1415
   },
   {
     "id": "temple",
@@ -624,11 +651,11 @@
     "official_cost_out_of_state": null,
     "scorecard_unit_id": "216339",
     "scorecard_avg_annual_cost": 28198,
-    "scorecard_graduation_rate": 0.75,
-    "scorecard_acceptance_rate": 0.8045,
+    "scorecard_graduation_rate": 0.7505,
+    "scorecard_acceptance_rate": 0.8041,
     "scorecard_median_earnings_display": 67232,
     "scorecard_median_earnings_10yr": 63727,
-    "scorecard_median_earnings_6yr": null,
+    "scorecard_median_earnings_6yr": 50860,
     "scorecard_median_debt": 24395,
     "scorecard_notes": "ROI signal is fair, not elite; Temple's inclusion is mainly for urban clinical/pathway comparison.",
     "family_cost_flag": "OOS_public_cost_sensitive",
@@ -639,15 +666,20 @@
     "clinical_ecosystem_notes": "Urban Philadelphia clinical context and Lewis Katz School of Medicine pathway relevance.",
     "research_access_notes": "Verify undergraduate clinical/research access and how students use Temple Health connections.",
     "has_direct_med_program": true,
-    "direct_med_program_ids": ["temple_premed_health_scholars"],
+    "direct_med_program_ids": [
+      "temple_premed_health_scholars"
+    ],
     "early_assurance_notes": "Temple Pre-Med Health Scholars begins after starting at Temple and still requires GPA and MCAT thresholds.",
     "gpa_risk": "medium",
     "gpa_risk_notes": "Urban pre-health environment with continuation requirements for special pathway.",
     "student_fit_notes": "Urban Philadelphia campus fit is central.",
     "parent_roi_note": "Temple is valuable as an urban clinical ecosystem comparison, not as a pure ROI winner.",
-    "source_confidence": "medium",
-    "data_status": "starter_record_needs_official_coa_total",
-    "sources": ["college_scorecard_main"]
+    "source_confidence": "high",
+    "data_status": "verified_scorecard_api_2026_07",
+    "sources": [
+      "college_scorecard_main"
+    ],
+    "scorecard_sat_average": null
   },
   {
     "id": "drexel",
@@ -664,11 +696,11 @@
     "official_cost_out_of_state": null,
     "scorecard_unit_id": "212054",
     "scorecard_avg_annual_cost": 38509,
-    "scorecard_graduation_rate": 0.74,
-    "scorecard_acceptance_rate": 0.7753,
+    "scorecard_graduation_rate": 0.7816,
+    "scorecard_acceptance_rate": 0.7944,
     "scorecard_median_earnings_display": 91041,
     "scorecard_median_earnings_10yr": 84648,
-    "scorecard_median_earnings_6yr": 54400,
+    "scorecard_median_earnings_6yr": 69063,
     "scorecard_median_debt": 25325,
     "scorecard_notes": "Strong earnings signal likely reflects co-op, STEM, business, and career-oriented pathways. Not premed-specific.",
     "family_cost_flag": "private_aid_dependent",
@@ -679,15 +711,20 @@
     "clinical_ecosystem_notes": "Urban Philadelphia healthcare/research context and Drexel College of Medicine pathway relevance.",
     "research_access_notes": "Co-op model may create distinctive experiential opportunities, but premed sequencing should be planned carefully.",
     "has_direct_med_program": true,
-    "direct_med_program_ids": ["drexel_babs_md"],
+    "direct_med_program_ids": [
+      "drexel_babs_md"
+    ],
     "early_assurance_notes": "Drexel BA/BS+MD offers provisional early assurance but does not guarantee medical-school admission.",
     "gpa_risk": "medium",
     "gpa_risk_notes": "Co-op and quarter/calendar structure may complicate traditional premed sequencing.",
     "student_fit_notes": "Best if Lucy likes urban Philadelphia and experiential/co-op learning.",
     "parent_roi_note": "Drexel has strong career/earnings signals, but must be judged by net price and whether co-op genuinely helps Lucy's path.",
-    "source_confidence": "medium",
-    "data_status": "starter_record_verify_scorecard_api",
-    "sources": ["college_scorecard_main"]
+    "source_confidence": "high",
+    "data_status": "verified_scorecard_api_2026_07",
+    "sources": [
+      "college_scorecard_main"
+    ],
+    "scorecard_sat_average": 1345
   },
   {
     "id": "princeton",
@@ -704,11 +741,11 @@
     "official_cost_out_of_state": null,
     "scorecard_unit_id": "186131",
     "scorecard_avg_annual_cost": 6128,
-    "scorecard_graduation_rate": 0.98,
-    "scorecard_acceptance_rate": null,
+    "scorecard_graduation_rate": 0.9761,
+    "scorecard_acceptance_rate": 0.0462,
     "scorecard_median_earnings_display": 108590,
     "scorecard_median_earnings_10yr": 110066,
-    "scorecard_median_earnings_6yr": null,
+    "scorecard_median_earnings_6yr": 87815,
     "scorecard_median_debt": 10320,
     "scorecard_notes": "Very strong average-net-price and earnings signal, but average net price may not reflect Jeff's family-specific cost. Princeton has no medical school on campus.",
     "family_cost_flag": "elite_need_aid_only",
@@ -725,9 +762,12 @@
     "gpa_risk_notes": "High academic expectations; premed GPA still matters.",
     "student_fit_notes": "Best if Lucy wants an intense, undergraduate-focused elite academic environment close to home.",
     "parent_roi_note": "Princeton is compelling if admitted and affordable, but it should not be treated as a medical-ecosystem school.",
-    "source_confidence": "medium",
-    "data_status": "starter_record_verify_scorecard_api",
-    "sources": ["college_scorecard_main"]
+    "source_confidence": "high",
+    "data_status": "verified_scorecard_api_2026_07",
+    "sources": [
+      "college_scorecard_main"
+    ],
+    "scorecard_sat_average": 1553
   },
   {
     "id": "penn",
@@ -744,12 +784,12 @@
     "official_cost_out_of_state": null,
     "scorecard_unit_id": "215062",
     "scorecard_avg_annual_cost": 28699,
-    "scorecard_graduation_rate": 0.97,
-    "scorecard_acceptance_rate": 0.05,
+    "scorecard_graduation_rate": 0.9654,
+    "scorecard_acceptance_rate": 0.054,
     "scorecard_median_earnings_display": 124586,
     "scorecard_median_earnings_10yr": 111371,
-    "scorecard_median_earnings_6yr": null,
-    "scorecard_median_debt": 19600,
+    "scorecard_median_earnings_6yr": 90555,
+    "scorecard_median_debt": 15715,
     "scorecard_notes": "Strong earnings may reflect major mix including business, finance, tech, and professional pathways. Not premed-specific.",
     "family_cost_flag": "elite_need_aid_only",
     "cost_notes": "Penn aid is need-based; no merit-aid strategy. Family-specific net price matters.",
@@ -765,9 +805,12 @@
     "gpa_risk_notes": "Intense Ivy/pre-professional environment; GPA and stress fit should be considered.",
     "student_fit_notes": "Best if Lucy likes urban Philadelphia, Ivy intensity, and strong pre-professional culture.",
     "parent_roi_note": "Penn is one of the clearest elite medical-ecosystem examples, but cost, admission odds, and fit are major constraints.",
-    "source_confidence": "medium",
-    "data_status": "starter_record_verify_scorecard_api",
-    "sources": ["college_scorecard_main"]
+    "source_confidence": "high",
+    "data_status": "verified_scorecard_api_2026_07",
+    "sources": [
+      "college_scorecard_main"
+    ],
+    "scorecard_sat_average": 1553
   },
   {
     "id": "johns_hopkins",
@@ -783,13 +826,13 @@
     "official_cost_in_state": null,
     "official_cost_out_of_state": null,
     "scorecard_unit_id": "162928",
-    "scorecard_avg_annual_cost": 29800,
-    "scorecard_graduation_rate": 0.95,
-    "scorecard_acceptance_rate": null,
+    "scorecard_avg_annual_cost": 18809,
+    "scorecard_graduation_rate": 0.9378,
+    "scorecard_acceptance_rate": 0.0644,
     "scorecard_median_earnings_display": 97200,
-    "scorecard_median_earnings_10yr": 97200,
-    "scorecard_median_earnings_6yr": null,
-    "scorecard_median_debt": 22500,
+    "scorecard_median_earnings_10yr": 87555,
+    "scorecard_median_earnings_6yr": 86306,
+    "scorecard_median_debt": 10250,
     "scorecard_notes": "Some values came from secondary Scorecard-derived sources and should be verified directly. Hopkins' value is not fully captured by broad earnings metrics.",
     "family_cost_flag": "elite_need_aid_only",
     "cost_notes": "Very high sticker cost. Need-aid policies may help some families; verify family-specific net price.",
@@ -805,9 +848,12 @@
     "gpa_risk_notes": "Potentially intense premed/science culture; fit and stress tolerance matter.",
     "student_fit_notes": "Best if Lucy genuinely wants a serious biomedical research and premed environment.",
     "parent_roi_note": "Hopkins is powerful but not necessary. It should be evaluated as an intense biomedical ecosystem, not a generic prestige upgrade.",
-    "source_confidence": "medium",
-    "data_status": "starter_record_verify_scorecard_api",
-    "sources": ["college_scorecard_main"]
+    "source_confidence": "high",
+    "data_status": "verified_scorecard_api_2026_07",
+    "sources": [
+      "college_scorecard_main"
+    ],
+    "scorecard_sat_average": 1553
   },
   {
     "id": "duke",
@@ -824,12 +870,12 @@
     "official_cost_out_of_state": null,
     "scorecard_unit_id": "198419",
     "scorecard_avg_annual_cost": 29612,
-    "scorecard_graduation_rate": 0.97,
-    "scorecard_acceptance_rate": 0.06,
+    "scorecard_graduation_rate": 0.9678,
+    "scorecard_acceptance_rate": 0.0571,
     "scorecard_median_earnings_display": 115722,
     "scorecard_median_earnings_10yr": 97800,
-    "scorecard_median_earnings_6yr": null,
-    "scorecard_median_debt": null,
+    "scorecard_median_earnings_6yr": 85792,
+    "scorecard_median_debt": 13000,
     "scorecard_notes": "Strong broad ROI and prestige signal. Earnings are broad school-level outcomes, not premed-specific.",
     "family_cost_flag": "elite_need_aid_only",
     "cost_notes": "Very high sticker cost; need-based affordability should be checked.",
@@ -845,9 +891,12 @@
     "gpa_risk_notes": "Elite academics and competitive prehealth environment; fit matters.",
     "student_fit_notes": "Best if Lucy likes Duke's campus culture and is comfortable farther from NJ.",
     "parent_roi_note": "Duke is a strong elite medical-ecosystem school, but for v1 it may be optional if we already include Penn/Hopkins/Stanford/Yale.",
-    "source_confidence": "medium",
-    "data_status": "starter_record_verify_scorecard_api",
-    "sources": ["college_scorecard_main"]
+    "source_confidence": "high",
+    "data_status": "verified_scorecard_api_2026_07",
+    "sources": [
+      "college_scorecard_main"
+    ],
+    "scorecard_sat_average": 1548
   },
   {
     "id": "brown",
@@ -864,12 +913,12 @@
     "official_cost_out_of_state": null,
     "scorecard_unit_id": "217156",
     "scorecard_avg_annual_cost": 25184,
-    "scorecard_graduation_rate": null,
-    "scorecard_acceptance_rate": null,
+    "scorecard_graduation_rate": 0.9569,
+    "scorecard_acceptance_rate": 0.0539,
     "scorecard_median_earnings_display": 94678,
     "scorecard_median_earnings_10yr": 93487,
-    "scorecard_median_earnings_6yr": null,
-    "scorecard_median_debt": 10000,
+    "scorecard_median_earnings_6yr": 79131,
+    "scorecard_median_debt": 11428,
     "scorecard_notes": "Brown regular undergrad and Brown PLME should be modeled as different strategies.",
     "family_cost_flag": "elite_need_aid_only",
     "cost_notes": "Very high sticker cost; need aid matters.",
@@ -879,15 +928,20 @@
     "clinical_ecosystem_notes": "Brown has medical-school connections, but its main distinctive feature here is PLME and open curriculum.",
     "research_access_notes": "Elite undergraduate environment with flexible academic structure.",
     "has_direct_med_program": true,
-    "direct_med_program_ids": ["brown_plme"],
+    "direct_med_program_ids": [
+      "brown_plme"
+    ],
     "early_assurance_notes": "Brown PLME is a direct-med strategy and must be separated from Brown regular premed.",
     "gpa_risk": "medium",
     "gpa_risk_notes": "Open curriculum may improve flexibility, but elite academic expectations remain.",
     "student_fit_notes": "Best if Lucy values academic flexibility and can make a credible medicine case early.",
     "parent_roi_note": "Brown earns v1 inclusion mainly because PLME teaches the direct-med strategy better than almost any other elite example.",
-    "source_confidence": "medium",
-    "data_status": "starter_record_verify_scorecard_api",
-    "sources": ["college_scorecard_main"]
+    "source_confidence": "high",
+    "data_status": "verified_scorecard_api_2026_07",
+    "sources": [
+      "college_scorecard_main"
+    ],
+    "scorecard_sat_average": 1546
   },
   {
     "id": "cornell",
@@ -904,11 +958,11 @@
     "official_cost_out_of_state": null,
     "scorecard_unit_id": "190415",
     "scorecard_avg_annual_cost": 28690,
-    "scorecard_graduation_rate": 0.954,
-    "scorecard_acceptance_rate": null,
+    "scorecard_graduation_rate": 0.9538,
+    "scorecard_acceptance_rate": 0.0876,
     "scorecard_median_earnings_display": 113372,
     "scorecard_median_earnings_10yr": 104043,
-    "scorecard_median_earnings_6yr": 76300,
+    "scorecard_median_earnings_6yr": 87830,
     "scorecard_median_debt": 14000,
     "scorecard_notes": "Strong broad ROI and life-sciences signal; less direct urban clinical adjacency than some elite peers.",
     "family_cost_flag": "elite_need_aid_only",
@@ -925,9 +979,12 @@
     "gpa_risk_notes": "Large rigorous Ivy environment; GPA and fit should be considered.",
     "student_fit_notes": "Best if Lucy likes a large, rigorous, rural/college-town Ivy environment.",
     "parent_roi_note": "Cornell is strong, but may be less distinctive for this app than Penn, Hopkins, Brown, Stanford, MIT, or Princeton.",
-    "source_confidence": "medium",
-    "data_status": "starter_record_verify_scorecard_api",
-    "sources": ["college_scorecard_main"]
+    "source_confidence": "high",
+    "data_status": "verified_scorecard_api_2026_07",
+    "sources": [
+      "college_scorecard_main"
+    ],
+    "scorecard_sat_average": 1535
   },
   {
     "id": "columbia",
@@ -944,12 +1001,12 @@
     "official_cost_out_of_state": null,
     "scorecard_unit_id": "190150",
     "scorecard_avg_annual_cost": 21590,
-    "scorecard_graduation_rate": 0.95,
-    "scorecard_acceptance_rate": null,
+    "scorecard_graduation_rate": 0.961,
+    "scorecard_acceptance_rate": 0.0399,
     "scorecard_median_earnings_display": 115519,
-    "scorecard_median_earnings_10yr": null,
-    "scorecard_median_earnings_6yr": null,
-    "scorecard_median_debt": 18750,
+    "scorecard_median_earnings_10yr": 102491,
+    "scorecard_median_earnings_6yr": 88535,
+    "scorecard_median_debt": 21500,
     "scorecard_notes": "Strong earnings and urban ecosystem signal; Core and NYC intensity should be treated as fit variables.",
     "family_cost_flag": "elite_need_aid_only",
     "cost_notes": "Very high sticker cost; need aid and family-specific net price matter.",
@@ -965,9 +1022,12 @@
     "gpa_risk_notes": "Core Curriculum plus urban intensity may add stress for some premed students.",
     "student_fit_notes": "Best if Lucy wants NYC, Core Curriculum, and an intense urban Ivy environment.",
     "parent_roi_note": "Columbia is a strong elite medical-ecosystem example, but fit risk may be higher than at more campus-contained schools.",
-    "source_confidence": "medium",
-    "data_status": "starter_record_verify_scorecard_api",
-    "sources": ["college_scorecard_main"]
+    "source_confidence": "high",
+    "data_status": "verified_scorecard_api_2026_07",
+    "sources": [
+      "college_scorecard_main"
+    ],
+    "scorecard_sat_average": 1553
   },
   {
     "id": "harvard",
@@ -984,11 +1044,11 @@
     "official_cost_out_of_state": null,
     "scorecard_unit_id": "166027",
     "scorecard_avg_annual_cost": 19066,
-    "scorecard_graduation_rate": 0.98,
-    "scorecard_acceptance_rate": null,
+    "scorecard_graduation_rate": 0.9758,
+    "scorecard_acceptance_rate": 0.0365,
     "scorecard_median_earnings_display": 134794,
     "scorecard_median_earnings_10yr": 101817,
-    "scorecard_median_earnings_6yr": 91300,
+    "scorecard_median_earnings_6yr": 99572,
     "scorecard_median_debt": 14000,
     "scorecard_notes": "Strong earnings and aid-adjusted value signal. Earnings reflect broad elite option value, not premed-specific outcomes.",
     "family_cost_flag": "elite_need_aid_only",
@@ -1005,9 +1065,12 @@
     "gpa_risk_notes": "Elite expectations and self-directed environment; GPA and fit still matter.",
     "student_fit_notes": "Best if Lucy would thrive in a highly elite, self-directed academic environment.",
     "parent_roi_note": "Harvard is maximum broad option value, but not necessary for med school.",
-    "source_confidence": "medium",
-    "data_status": "starter_record_verify_scorecard_api",
-    "sources": ["college_scorecard_main"]
+    "source_confidence": "high",
+    "data_status": "verified_scorecard_api_2026_07",
+    "sources": [
+      "college_scorecard_main"
+    ],
+    "scorecard_sat_average": 1553
   },
   {
     "id": "yale",
@@ -1024,11 +1087,11 @@
     "official_cost_out_of_state": null,
     "scorecard_unit_id": "130794",
     "scorecard_avg_annual_cost": 23777,
-    "scorecard_graduation_rate": 0.98,
-    "scorecard_acceptance_rate": null,
+    "scorecard_graduation_rate": 0.9574,
+    "scorecard_acceptance_rate": 0.0387,
     "scorecard_median_earnings_display": 142936,
     "scorecard_median_earnings_10yr": 100533,
-    "scorecard_median_earnings_6yr": 67800,
+    "scorecard_median_earnings_6yr": 81765,
     "scorecard_median_debt": 12975,
     "scorecard_notes": "Very strong elite outcomes and low-debt signal, but family-specific net price matters.",
     "family_cost_flag": "elite_need_aid_only",
@@ -1045,9 +1108,12 @@
     "gpa_risk_notes": "Elite academic environment; premed fundamentals still matter.",
     "student_fit_notes": "Best if Lucy likes Yale's academic culture, New Haven, and residential-college environment.",
     "parent_roi_note": "Yale is a strong elite medical/research ecosystem example, but may be optional in v1 if Harvard/Penn/Hopkins/Stanford are already included.",
-    "source_confidence": "medium",
-    "data_status": "starter_record_verify_scorecard_api",
-    "sources": ["college_scorecard_main"]
+    "source_confidence": "high",
+    "data_status": "verified_scorecard_api_2026_07",
+    "sources": [
+      "college_scorecard_main"
+    ],
+    "scorecard_sat_average": 1534
   },
   {
     "id": "stanford",
@@ -1064,11 +1130,11 @@
     "official_cost_out_of_state": null,
     "scorecard_unit_id": "243744",
     "scorecard_avg_annual_cost": 13807,
-    "scorecard_graduation_rate": 0.97,
-    "scorecard_acceptance_rate": null,
+    "scorecard_graduation_rate": 0.9192,
+    "scorecard_acceptance_rate": 0.0361,
     "scorecard_median_earnings_display": 137000,
     "scorecard_median_earnings_10yr": 124080,
-    "scorecard_median_earnings_6yr": 92800,
+    "scorecard_median_earnings_6yr": 102887,
     "scorecard_median_debt": 12000,
     "scorecard_notes": "Very strong earnings and net-price signal. Graduation-rate discrepancies across sources should be verified directly.",
     "family_cost_flag": "elite_need_aid_only",
@@ -1085,9 +1151,12 @@
     "gpa_risk_notes": "Elite STEM/innovation environment may be intense but also high-option-value.",
     "student_fit_notes": "Best if Lucy is excited by medicine plus technology, biotech, AI, devices, or entrepreneurship and is comfortable far from home.",
     "parent_roi_note": "Stanford is the clearest health-tech/biomed innovation elite option, but it is far from NJ and ultra-selective.",
-    "source_confidence": "medium",
-    "data_status": "starter_record_verify_scorecard_api",
-    "sources": ["college_scorecard_main"]
+    "source_confidence": "high",
+    "data_status": "verified_scorecard_api_2026_07",
+    "sources": [
+      "college_scorecard_main"
+    ],
+    "scorecard_sat_average": 1553
   },
   {
     "id": "mit",
@@ -1104,11 +1173,11 @@
     "official_cost_out_of_state": null,
     "scorecard_unit_id": "166683",
     "scorecard_avg_annual_cost": 20111,
-    "scorecard_graduation_rate": 0.964,
-    "scorecard_acceptance_rate": null,
+    "scorecard_graduation_rate": 0.9641,
+    "scorecard_acceptance_rate": 0.0455,
     "scorecard_median_earnings_display": 161961,
     "scorecard_median_earnings_10yr": 143372,
-    "scorecard_median_earnings_6yr": 99600,
+    "scorecard_median_earnings_6yr": 131633,
     "scorecard_median_debt": 14768,
     "scorecard_notes": "Highest broad earnings signal, but this reflects STEM/tech outcomes and should not be read as premed-specific.",
     "family_cost_flag": "elite_need_aid_only",
@@ -1125,9 +1194,12 @@
     "gpa_risk_notes": "High academic intensity and possible GPA pressure for premed.",
     "student_fit_notes": "Best only if Lucy genuinely loves STEM, math, computing, engineering, or health-tech intensity.",
     "parent_roi_note": "MIT has exceptional broad ROI and health-tech option value, but it may make classic premed harder than necessary if Lucy is not a STEM-intensity kid.",
-    "source_confidence": "medium",
-    "data_status": "starter_record_verify_scorecard_api",
-    "sources": ["college_scorecard_main"]
+    "source_confidence": "high",
+    "data_status": "verified_scorecard_api_2026_07",
+    "sources": [
+      "college_scorecard_main"
+    ],
+    "scorecard_sat_average": 1560
   },
   {
     "id": "uchicago",
@@ -1144,12 +1216,12 @@
     "official_cost_out_of_state": null,
     "scorecard_unit_id": "144050",
     "scorecard_avg_annual_cost": 14860,
-    "scorecard_graduation_rate": null,
-    "scorecard_acceptance_rate": null,
+    "scorecard_graduation_rate": 0.9585,
+    "scorecard_acceptance_rate": 0.0448,
     "scorecard_median_earnings_display": 127757,
     "scorecard_median_earnings_10yr": 91885,
-    "scorecard_median_earnings_6yr": null,
-    "scorecard_median_debt": null,
+    "scorecard_median_earnings_6yr": 80870,
+    "scorecard_median_debt": 15000,
     "scorecard_notes": "Strong net-price and earnings signal, but official total COA and exact Scorecard fields should be verified.",
     "family_cost_flag": "elite_need_aid_only",
     "cost_notes": "Need-based aid policy and timing should be verified. Official total COA still needs cleanup.",
@@ -1165,8 +1237,11 @@
     "gpa_risk_notes": "Core Curriculum, quarter system, and academic intensity may create GPA/stress risk for premed.",
     "student_fit_notes": "Best if Lucy would enjoy intense academic culture and Core requirements.",
     "parent_roi_note": "UChicago is strategically useful as the elite rigor/Core example, but may not be essential for v1.",
-    "source_confidence": "medium",
-    "data_status": "starter_record_needs_official_coa_total",
-    "sources": ["college_scorecard_main"]
+    "source_confidence": "high",
+    "data_status": "verified_scorecard_api_2026_07",
+    "sources": [
+      "college_scorecard_main"
+    ],
+    "scorecard_sat_average": 1554
   }
 ]

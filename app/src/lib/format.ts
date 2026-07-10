@@ -3,6 +3,11 @@ export function fmtCurrency(val: number | null | undefined): string {
   return `$${val.toLocaleString('en-US')}/yr`;
 }
 
+export function fmtMoney(val: number | null | undefined): string {
+  if (val == null) return 'n/a';
+  return `$${val.toLocaleString('en-US')}`;
+}
+
 export function fmtPct(val: number | null | undefined): string {
   if (val == null) return 'n/a';
   return `${Math.round(val * 100)}%`;

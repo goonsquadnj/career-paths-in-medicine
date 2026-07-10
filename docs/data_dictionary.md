@@ -906,6 +906,22 @@ Example:
 
 ---
 
+### `scorecard_sat_average`
+
+Average overall SAT score (`latest.admissions.sat_scores.average.overall` from
+the College Scorecard API). Number or `null` — many schools don't report this
+(test-optional policies, or the field is simply not populated in Scorecard for
+that year). Do not guess a value; leave `null` with `scorecard_notes` context if
+useful.
+
+Example:
+
+```json id="satavg1"
+"scorecard_sat_average": 1410
+```
+
+---
+
 ### `scorecard_notes`
 
 Caveats about Scorecard data.

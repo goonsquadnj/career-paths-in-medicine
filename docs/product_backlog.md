@@ -74,6 +74,12 @@ what moves the needle — honestly, not to flatter.
 
 ## Epic E — Rich School Data & Profiles  · Phase R1 (+ ongoing)
 
+**Status (2026-07-09):** All 27 schools refreshed with live College Scorecard
+values via `app/scripts/fetch-scorecard.mjs` (re-runnable script, kept in
+repo). Still open: IPEDS/Common Data Set enrichment where Scorecard is thin,
+sub-school/major-level detail, and populating `data/sources.json` with real
+URLs.
+
 **Intent:** Give each school a real, trustworthy profile — the useful parts of a
 US-News page, without the ranking theater.
 
@@ -90,6 +96,11 @@ US-News page, without the ranking theater.
 ---
 
 ## Epic F — Career Paths Data  · Phase R1 (browse) → R6 (financials)
+
+**Status (2026-07-09):** Baseline records for all 15 paths listed below now
+exist in `data/paths.json` and render in the app's "Career Paths" tab. Salary
+is deliberately qualitative-only per path (`salary_range_notes`); no specific
+numbers yet — that's still gated on the salary-triangulation work below.
 
 **Intent:** The undergrad decision depends on the career path. Make the paths
 themselves explorable and honest about training, timing, and money.
@@ -232,3 +243,9 @@ eventually sync between Lucy's phone and Jeff's machine.
   essay support with Claude.
 - **What-if sliders:** budget/scholarship sensitivity on ROI in real time.
 - **Grad-leg depth:** richer medical/grad-school modeling if/when useful.
+- **Theme color picker:** let Lucy pick an accent/theme color for her own
+  instance. Cheap to build (CSS custom properties + a stored preference), but
+  meaningfully increases ownership — makes it feel like *her* app, not just
+  dad's spreadsheet with a nicer coat of paint. Good candidate to pull forward
+  into an earlier release (e.g. alongside R2 persistence) since it's low effort
+  relative to the delight it adds.

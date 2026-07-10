@@ -6,7 +6,7 @@
 
 ## Data verification (high priority)
 
-- [ ] **Verify all Scorecard values** directly against the College Scorecard API or data download. All `scorecard_avg_annual_cost`, `scorecard_graduation_rate`, `scorecard_acceptance_rate`, `scorecard_median_earnings_*`, and `scorecard_median_debt` values in school records are starter estimates and must be confirmed against the official data source before relying on them.
+- [x] **Verify all Scorecard values** directly against the College Scorecard API. Done 2026-07-09 via `app/scripts/fetch-scorecard.mjs` (re-runnable) — all 27 schools in `data/schools_undergrad.json` updated with fresh `scorecard_avg_annual_cost`, `scorecard_graduation_rate`, `scorecard_acceptance_rate`, `scorecard_median_earnings_10yr`, `scorecard_median_earnings_6yr`, `scorecard_median_debt`, and a new `scorecard_sat_average` field; `source_confidence: "high"` and `data_status: "verified_scorecard_api_2026_07"` set on every record. Note: `scorecard_avg_annual_cost` now reflects Scorecard's average net price (fallback: sticker attendance cost) per school-year data currently published by Scorecard — re-run the script periodically as Scorecard updates its award-year data.
 
 - [ ] **Expand data/sources.json** — all 21 source records are stubs with `"url": null`. Each one needs a real URL, verified title, and source type before the app can link out to primary sources.
 
@@ -16,7 +16,7 @@
 
 - [ ] **`data/schools_undergrad_private_premed_stem.json` is a duplicate of the regional file** — the intended private pre-health/STEM records (Northeastern, Case Western, Wake Forest, Tulane, Emory, Villanova, etc.) are missing entirely. These schools represent a distinct strategic lane and should be added as a separate batch, then merged into `schools_undergrad.json`.
 
-- [ ] **Add career paths data (data/paths.json)** per data dictionary spec. Career paths (physician, PA, NP, PT, pharmacy, dentistry, etc.) are referenced in the app concept but not yet modeled.
+- [x] **Add career paths data (data/paths.json)** per data dictionary spec. Done 2026-07-09 — 15 baseline path records added (MD/DO, PA, RN, NP, CRNA, dentist, psychologist, psychiatrist, PT, pharmacist, public health, biomedical research, biotech/pharma, health tech/AI, healthcare admin). Salary is intentionally qualitative-only (`salary_range_notes`); `sources: []` with `notes: "general_knowledge_not_yet_sourced"` — this is a placeholder layer pending Epic K salary triangulation, not final data.
 
 - [ ] **Add salary/ROI assumptions (data/assumptions.json)** — discount rate, expected earnings by specialty, loan repayment assumptions, and other parameters needed for any ROI scoring.
 

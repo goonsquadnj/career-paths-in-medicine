@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react';
 import { useData } from './lib/useData';
 import { SchoolCard } from './components/SchoolCard';
 import { ProgramCard } from './components/ProgramCard';
+import { PathCard } from './components/PathCard';
 import { FilterBar } from './components/FilterBar';
 import { CertaintyExplainer } from './components/CertaintyExplainer';
 import { CERTAINTY_ORDER } from './types/program';
@@ -14,8 +15,17 @@ interface Filters {
   directMed: string;
 }
 
+type Tab = 'schools' | 'programs' | 'paths';
+
+const TABS: { id: Tab; label: string }[] = [
+  { id: 'schools', label: 'Schools' },
+  { id: 'programs', label: 'Programs' },
+  { id: 'paths', label: 'Career Paths' },
+];
+
 function App() {
-  const { schools, programs, loading, error } = useData();
+  const { schools, programs, paths, loading, error } = useData();
+  const [tab, setTab] = useState<Tab>('schools');
   const [filters, setFilters] = useState<Filters>({
     bucket: '',
     status: '',
@@ -80,35 +90,72 @@ function App() {
         <>
           <CertaintyExplainer />
 
-          <section className="flex flex-col gap-4">
-            <h2 className="text-xl font-semibold text-gray-900">Schools</h2>
-            <FilterBar
-              buckets={buckets}
-              statuses={statuses}
-              costFlags={costFlags}
-              bucket={filters.bucket}
-              status={filters.status}
-              costFlag={filters.costFlag}
-              directMed={filters.directMed}
-              onChange={(patch) => setFilters((f) => ({ ...f, ...patch }))}
-              visibleCount={filteredSchools.length}
-              totalCount={schools.length}
-            />
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {filteredSchools.map((school) => (
-                <SchoolCard key={school.id} school={school} />
-              ))}
-            </div>
-          </section>
+          <div className="flex gap-2 border-b border-gray-200">
+            {TABS.map((t) => (
+              <button
+                key={t.id}
+                type="button"
+                onClick={() => setTab(t.id)}
+                className={`px-4 py-2 text-sm font-medium border-b-2 -mb-px transition-colors ${
+                  tab === t.id
+                    ? 'border-blue-600 text-blue-700'
+                    : 'border-transparent text-gray-500 hover:text-gray-700'
+                }`}
+              >
+                {t.label}
+              </button>
+            ))}
+          </div>
 
-          <section className="flex flex-col gap-4">
-            <h2 className="text-xl font-semibold text-gray-900">Medical Pathway Programs</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {sortedPrograms.map((program) => (
-                <ProgramCard key={program.id} program={program} />
-              ))}
-            </div>
-          </section>
+          {tab === 'schools' && (
+            <section className="flex flex-col gap-4">
+              <h2 className="text-xl font-semibold text-gray-900">Schools</h2>
+              <FilterBar
+                buckets={buckets}
+                statuses={statuses}
+                costFlags={costFlags}
+                bucket={filters.bucket}
+                status={filters.status}
+                costFlag={filters.costFlag}
+                directMed={filters.directMed}
+                onChange={(patch) => setFilters((f) => ({ ...f, ...patch }))}
+                visibleCount={filteredSchools.length}
+                totalCount={schools.length}
+              />
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {filteredSchools.map((school) => (
+                  <SchoolCard key={school.id} school={school} />
+                ))}
+              </div>
+            </section>
+          )}
+
+          {tab === 'programs' && (
+            <section className="flex flex-col gap-4">
+              <h2 className="text-xl font-semibold text-gray-900">Medical Pathway Programs</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {sortedPrograms.map((program) => (
+                  <ProgramCard key={program.id} program={program} />
+                ))}
+              </div>
+            </section>
+          )}
+
+          {tab === 'paths' && (
+            <section className="flex flex-col gap-4">
+              <h2 className="text-xl font-semibold text-gray-900">Career Paths</h2>
+              <p className="text-sm text-gray-600">
+                Baseline research on 15 healthcare career paths. Salary figures are intentionally
+                left qualitative for now — see Epic K for the eventual cross-checked salary
+                triangulation.
+              </p>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {paths.map((path) => (
+                  <PathCard key={path.id} path={path} />
+                ))}
+              </div>
+            </section>
+          )}
         </>
       )}
     </div>

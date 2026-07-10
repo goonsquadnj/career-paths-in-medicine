@@ -1,0 +1,377 @@
+[
+  {
+    "id": "md_do_physician",
+    "name": "MD/DO Physician",
+    "category": "clinical",
+    "what_they_do": "Diagnose and treat patients as a licensed physician, either in primary care or a specialty (surgery, psychiatry, radiology, etc.), after completing residency (and sometimes fellowship). MD and DO are both full physicians with equivalent practice rights in the US; DOs receive additional training in osteopathic manipulative medicine.",
+    "typical_degrees": ["Bachelor's (any major, with premed prerequisites)", "MD or DO"],
+    "training_length_years": "4 years undergrad + 4 years medical school + 3-7 years residency (specialty-dependent) + optional 1-3 year fellowship. Full training to independent practice is typically 11-15+ years after high school.",
+    "requires_medical_school": true,
+    "patient_care_level": "high",
+    "admissions_difficulty_notes": "Very high. Competitive GPA/MCAT, clinical/research/volunteer experience, and a multi-year application cycle are all expected. MD programs are generally more selective than DO on average, but both are demanding compared to most other paths in this list.",
+    "salary_range_notes": "Highly variable by specialty, geography, and employment model (employed vs. private practice); national median figures often undercount real-world compensation and vary a lot by source methodology. Do not treat any single number as final - see Epic K (salary triangulation) for the eventual cross-checked comparison.",
+    "lifestyle_notes": "Residency years (often 60-80 hour weeks) are demanding regardless of eventual specialty. Long-run lifestyle varies hugely by specialty choice - some (dermatology, radiology) trend more controllable, others (surgery, OB/GYN, emergency medicine) trend less so. Delayed full earnings until early-to-mid 30s is typical.",
+    "best_for": [
+      "Students who want the broadest clinical scope of practice and are willing to commit to the longest training path",
+      "Students drawn to a specific specialty (surgery, research-heavy academic medicine) only physicians can practice",
+      "Students comfortable with significant deferred gratification (income, independence) in exchange for long-term scope and ceiling"
+    ],
+    "watch_outs": [
+      "Longest and most expensive training path in healthcare; substantial debt risk if aid is limited",
+      "Attrition/pivot risk exists at multiple gates: undergrad GPA, MCAT, med school admission, matching into a residency, and boards",
+      "\"Keep options open\" is harder here than most paths - premed is a demanding track that can crowd out exploring alternatives early"
+    ],
+    "sources": [],
+    "notes": "general_knowledge_not_yet_sourced"
+  },
+  {
+    "id": "physician_assistant",
+    "name": "Physician Assistant (PA)",
+    "category": "clinical",
+    "what_they_do": "Practice medicine under physician collaboration/supervision (requirements vary by state) - diagnosing, treating, and prescribing across primary care or specialties. Can often switch specialties more easily than physicians since PA training is generalist.",
+    "typical_degrees": ["Bachelor's (any major, with prerequisite science courses + patient-care hours)", "Master's in Physician Assistant Studies (MSPA/MPAS)"],
+    "training_length_years": "4 years undergrad + ~2-3 years PA school. Many programs require 500-1000+ hours of hands-on patient-care experience before applying, which often adds 1-3 gap years.",
+    "requires_medical_school": false,
+    "patient_care_level": "high",
+    "admissions_difficulty_notes": "High and rising - PA programs are increasingly competitive, partly because the training is shorter than medical school for similar clinical involvement. Direct patient-contact hours (CNA, EMT, scribe, etc.) are usually required before applying, not just coursework.",
+    "salary_range_notes": "Highly variable by specialty and region; generally strong relative to training length, but exact figures deferred to Epic K salary triangulation rather than stated here.",
+    "lifestyle_notes": "Much shorter path to full earning and independence than MD/DO. Ability to switch specialties within a career without redoing residency is a distinctive advantage. Still real clinical hours/on-call depending on specialty.",
+    "best_for": [
+      "Students who want strong patient-care involvement without the full physician training timeline",
+      "Students who value flexibility to move between specialties over a career",
+      "Students who want to start earning and gain independence sooner than the MD/DO track allows"
+    ],
+    "watch_outs": [
+      "Required pre-application patient-care hours mean the path often isn't a straight 4-years-then-done route - budget for gap time",
+      "Scope of practice and supervision requirements vary meaningfully by state and are evolving; verify current rules",
+      "Competitive admissions despite shorter training length - not a 'backup' to medical school, it is its own competitive track"
+    ],
+    "sources": [],
+    "notes": "general_knowledge_not_yet_sourced"
+  },
+  {
+    "id": "registered_nurse",
+    "name": "Registered Nurse (RN)",
+    "category": "clinical",
+    "what_they_do": "Provide direct patient care, medication administration, care coordination, and patient education across hospital, clinic, school, or community settings. Foundational clinical role and also the entry point toward NP, CRNA, or nursing leadership.",
+    "typical_degrees": ["BSN (Bachelor of Science in Nursing) - most common recommended path", "ADN (Associate Degree in Nursing) - also licensure-eligible, shorter, community-college route", "Direct-entry MSN for career-changers with a non-nursing bachelor's"],
+    "training_length_years": "BSN: 4 years. ADN: 2 years (often with subsequent RN-to-BSN bridge). Licensure requires passing the NCLEX-RN after either path.",
+    "requires_medical_school": false,
+    "patient_care_level": "high",
+    "admissions_difficulty_notes": "Moderate. Competitive at well-regarded BSN programs but generally far more accessible than PA/MD/DO/dental paths, with multiple entry routes (BSN, ADN-to-BSN, accelerated/direct-entry for career changers).",
+    "salary_range_notes": "Varies significantly by region, setting (hospital vs. outpatient vs. school), and specialty certification; treat as a foundation income with upside from specialization, certifications, or moving into NP - exact figures deferred to Epic K.",
+    "lifestyle_notes": "Shift-based work (often 12-hour hospital shifts, nights/weekends/holidays common) versus more standard hours in outpatient or school settings. Fastest entry into paid clinical work of any path on this list, and a common stepping stone to NP or CRNA later.",
+    "best_for": [
+      "Students who want direct patient care with the shortest, most flexible training path",
+      "Students who may want to specialize or advance later (NP, CRNA, nurse leadership) but want real-world clinical experience first",
+      "Students who value multiple on-ramps (BSN, ADN, accelerated programs) and strong job-market demand"
+    ],
+    "watch_outs": [
+      "Shift work and physical/emotional demands of bedside nursing are real and a common source of burnout - worth exploring honestly, not romanticizing",
+      "ADN path is faster/cheaper but many hospitals now prefer or require BSN for career advancement - verify local market expectations",
+      "Lower ceiling than NP/CRNA/physician tracks unless used as a stepping stone to further credentialing"
+    ],
+    "sources": [],
+    "notes": "general_knowledge_not_yet_sourced"
+  },
+  {
+    "id": "nurse_practitioner",
+    "name": "Nurse Practitioner (NP)",
+    "category": "clinical",
+    "what_they_do": "Advanced-practice nurse who can diagnose, treat, and prescribe, often with a specialty population focus (family, pediatric, psychiatric, acute care, etc.). Scope of independent practice varies significantly by state.",
+    "typical_degrees": ["BSN", "RN licensure + clinical experience (most programs expect 1-2+ years)", "MSN or DNP (Doctor of Nursing Practice) with an NP specialization"],
+    "training_length_years": "4 years BSN + 1-2+ years RN clinical experience (commonly expected, not always formally required) + 2-4 years MSN/DNP. Total commonly 8-10 years from start of undergrad.",
+    "requires_medical_school": false,
+    "patient_care_level": "high",
+    "admissions_difficulty_notes": "Moderate to high, and rising with the DNP-track trend. Programs increasingly favor applicants with real bedside RN experience, not just a BSN straight through.",
+    "salary_range_notes": "Generally a meaningful step up from RN; strong national demand especially in primary care and psychiatric NP. Exact figures deferred to Epic K rather than stated here.",
+    "lifestyle_notes": "More clinic-based, typically more predictable hours than bedside nursing shift work. Independent scope of practice (prescribing, running a panel of patients) varies a lot by state - verify current state law before treating this as uniform.",
+    "best_for": [
+      "Students who want physician-like scope of practice (diagnosing, prescribing) without the MD/DO timeline",
+      "Students who want to build real bedside nursing experience first, then specialize/advance",
+      "Students who want strong optionality within nursing - could stop at RN, or keep going to NP/DNP later"
+    ],
+    "watch_outs": [
+      "State-by-state variation in independent practice authority is significant - a plan that assumes full independence should verify the target state's rules",
+      "DNP is increasingly the expected terminal degree at many programs, which lengthens the timeline versus older MSN-only routes",
+      "Skipping bedside RN experience before NP school is possible at some direct-entry programs but is a real tradeoff worth discussing"
+    ],
+    "sources": [],
+    "notes": "general_knowledge_not_yet_sourced"
+  },
+  {
+    "id": "crna",
+    "name": "CRNA (Certified Registered Nurse Anesthetist)",
+    "category": "clinical",
+    "what_they_do": "Advanced-practice nurse specializing in anesthesia care - administering and managing anesthesia for surgery, obstetrics, and pain management, often working closely with (and in some settings independently of) anesthesiologists.",
+    "typical_degrees": ["BSN", "RN licensure + critical-care nursing experience (typically ICU, usually required, often 1-3+ years)", "DNAP or DNP with a nurse anesthesia specialization (doctoral-level is now the standard entry credential)"],
+    "training_length_years": "4 years BSN + 1-3+ years required ICU experience + 3 years doctoral CRNA program. Total commonly 8-10 years from start of undergrad.",
+    "requires_medical_school": false,
+    "patient_care_level": "high",
+    "admissions_difficulty_notes": "High. CRNA programs are among the most competitive advanced-practice nursing tracks - required ICU experience, strong GPA, and GRE/interview components at many schools.",
+    "salary_range_notes": "One of the highest-earning advanced-practice nursing roles nationally, though exact figures and how they compare to physician anesthesiologists are deferred to Epic K salary triangulation rather than stated here.",
+    "lifestyle_notes": "Operating-room based work; on-call and irregular hours are common depending on setting (hospital OR vs. outpatient surgical center). The required ICU years before CRNA school are themselves demanding, shift-based bedside work.",
+    "best_for": [
+      "Students drawn to a procedural, high-acuity nursing specialty with strong compensation",
+      "Students willing to put in required ICU bedside years before advancing",
+      "Students who want an alternative to anesthesiologist (MD/DO) training with a shorter overall timeline"
+    ],
+    "watch_outs": [
+      "Required critical-care (usually ICU) RN experience before applying means this is not a direct-from-BSN path - plan for real bedside years first",
+      "Doctoral-level entry (DNAP/DNP) is now standard, lengthening the program itself versus older master's-level programs",
+      "High-acuity, high-stakes clinical environment - worth an honest look at fit, not just the compensation upside"
+    ],
+    "sources": [],
+    "notes": "general_knowledge_not_yet_sourced"
+  },
+  {
+    "id": "dentist",
+    "name": "Dentist (DDS/DMD)",
+    "category": "clinical",
+    "what_they_do": "Diagnose and treat conditions of the teeth, gums, and mouth; many dentists own or work in a private practice, which is a distinctive business dimension compared to most other clinical paths.",
+    "typical_degrees": ["Bachelor's (any major, with premed-style science prerequisites)", "DDS or DMD (equivalent degrees, different naming by school)"],
+    "training_length_years": "4 years undergrad + 4 years dental school. Optional 2-6 year specialty residency (orthodontics, oral surgery, periodontics, etc.) for those who sub-specialize.",
+    "requires_medical_school": false,
+    "patient_care_level": "high",
+    "admissions_difficulty_notes": "High. Competitive GPA and DAT (Dental Admission Test) score, plus shadowing/clinical exposure hours are expected, similar in shape to premed but a separate application system (AADSAS).",
+    "salary_range_notes": "Often strong, especially with practice ownership, but highly variable by specialty, ownership vs. associate status, and geography. Exact figures deferred to Epic K rather than stated here.",
+    "lifestyle_notes": "Shorter total training timeline than MD/DO (no lengthy residency required for general dentistry), with more control over hours and setting for many general dentists, especially in private practice. Practice ownership adds a business-management dimension some students may not expect.",
+    "best_for": [
+      "Students who want strong patient-care involvement with a shorter, more predictable timeline than medicine",
+      "Students interested in eventually owning/running a practice (an entrepreneurial dimension distinct from most clinical paths)",
+      "Students who prefer procedural, hands-on work in a generally more controllable schedule than hospital medicine"
+    ],
+    "watch_outs": [
+      "Dental school itself is expensive and debt levels can be significant - cost/ROI math deserves real scrutiny (Epic K)",
+      "Practice ownership requires business skills/interest beyond clinical training - not automatic or for everyone",
+      "General dentistry vs. specialization (ortho, oral surgery) is a major fork with very different training length and economics"
+    ],
+    "sources": [],
+    "notes": "general_knowledge_not_yet_sourced"
+  },
+  {
+    "id": "clinical_psychologist",
+    "name": "Clinical Psychologist",
+    "category": "clinical",
+    "what_they_do": "Assess and treat mental health conditions through therapy/psychotherapy and, in some cases, psychological testing; typically cannot prescribe medication (with rare state-specific exceptions), distinguishing the role from psychiatry.",
+    "typical_degrees": ["Bachelor's (psychology or related field common but not required)", "PhD (research + clinical, often includes a funded assistantship) or PsyD (more clinically focused, often less funded/more tuition-dependent)"],
+    "training_length_years": "4 years undergrad + 5-7 years PhD/PsyD (including a required predoctoral internship year) + often 1-2 years supervised postdoctoral hours before independent licensure.",
+    "requires_medical_school": false,
+    "patient_care_level": "high",
+    "admissions_difficulty_notes": "High for funded PhD programs (very competitive, cohorts are small); PsyD programs are often somewhat less selective on admission but come with a real cost tradeoff (see watch-outs).",
+    "salary_range_notes": "Varies widely by setting (academic, hospital, private practice) and geography; private practice can meaningfully change the picture versus institutional employment. Exact figures deferred to Epic K.",
+    "lifestyle_notes": "Long training timeline (often 9-11+ years including internship/postdoc) similar in length to some medical paths, but without medical school's clinical intensity. Private practice offers schedule control long-term; institutional roles vary more.",
+    "best_for": [
+      "Students drawn to mental health and therapeutic work who do not want to prescribe medication or attend medical school",
+      "Students interested in a research + clinical hybrid career (PhD track), especially in an academic or research setting",
+      "Students who want eventual private-practice autonomy and are comfortable with a long training runway"
+    ],
+    "watch_outs": [
+      "Funded PhD programs are highly competitive and small in cohort size; PsyD programs are more accessible but often tuition-heavy with less funding - the cost/ROI difference between the two tracks is significant and worth real scrutiny later",
+      "Predoctoral internship match (similar in spirit to medical residency match) is itself a competitive, high-stakes step late in training",
+      "Total time to independent licensure (doctorate + internship + postdoc hours) is longer than many students expect going in"
+    ],
+    "sources": [],
+    "notes": "general_knowledge_not_yet_sourced"
+  },
+  {
+    "id": "psychiatrist",
+    "name": "Psychiatrist",
+    "category": "clinical",
+    "what_they_do": "Physician specializing in mental health - diagnoses and treats psychiatric conditions, can prescribe medication, and often combines medication management with (or coordinates around) psychotherapy.",
+    "typical_degrees": ["Bachelor's (any major, with premed prerequisites)", "MD or DO", "Psychiatry residency"],
+    "training_length_years": "4 years undergrad + 4 years medical school + 4 years psychiatry residency. Optional 1-2 year fellowship for subspecialties (child/adolescent, forensic, addiction, etc.).",
+    "requires_medical_school": true,
+    "patient_care_level": "high",
+    "admissions_difficulty_notes": "Same as MD/DO broadly (very high - competitive GPA/MCAT, full medical school admissions cycle); psychiatry residency itself is generally less competitive to match into than many other specialties, which is a distinct fact from getting into medical school in the first place.",
+    "salary_range_notes": "Generally solid physician-level compensation, though it trends toward the lower-to-middle end of physician specialties in most figures; strong demand nationally given a well-documented shortage of psychiatrists. Exact figures deferred to Epic K.",
+    "lifestyle_notes": "Generally more controllable hours than surgical or acute-care specialties, less physically demanding, though therapy/medication-management work carries its own emotional weight. Full independent practice starts later than mid-length nursing/PA tracks due to the full MD/DO + residency timeline.",
+    "best_for": [
+      "Students who want to combine physician-level prescribing authority with deep mental-health-focused patient work",
+      "Students interested in medicine broadly but drawn more to psychological/behavioral aspects of care than surgical/procedural medicine",
+      "Students who want the ability to also do therapy themselves or work closely alongside psychologists/therapists"
+    ],
+    "watch_outs": [
+      "Still requires the full medical school + MCAT + premed timeline even though the specialty itself is a relatively accessible match afterward - it is not a 'shortcut' into being a physician",
+      "National shortage of psychiatrists is well documented, which is favorable for job availability but says nothing about individual compensation figures without a real source check",
+      "Emotional weight of psychiatric patient populations (crisis, safety planning) is real and worth discussing honestly, not just the schedule upside"
+    ],
+    "sources": [],
+    "notes": "general_knowledge_not_yet_sourced"
+  },
+  {
+    "id": "physical_therapist",
+    "name": "Physical Therapist (PT)",
+    "category": "clinical",
+    "what_they_do": "Evaluate and treat movement, mobility, and pain issues through therapeutic exercise, manual therapy, and rehabilitation programs, working in settings from sports medicine and orthopedics to hospitals, pediatrics, and home health.",
+    "typical_degrees": ["Bachelor's (any major, with prerequisite science coursework and observation hours)", "DPT (Doctor of Physical Therapy) - now the standard entry-level degree"],
+    "training_length_years": "4 years undergrad + 3 years DPT program. Many applicants also complete observation hours across multiple PT settings before applying.",
+    "requires_medical_school": false,
+    "patient_care_level": "high",
+    "admissions_difficulty_notes": "Moderate to high, and rising as DPT has become the universal entry credential (used to be a bachelor's or master's in some programs decades ago). Observation hours across varied settings are typically expected.",
+    "salary_range_notes": "Moderate relative to training length and debt load; a notable ongoing discussion in the field is that DPT program cost has risen faster than starting compensation in many markets - this is a real tradeoff worth checking with current sources before committing, deferred to Epic K.",
+    "lifestyle_notes": "Generally standard clinic/outpatient hours in many settings (a real lifestyle advantage over shift-based nursing or physician training), though hospital/inpatient PT roles can involve less predictable schedules. Physically active job.",
+    "best_for": [
+      "Students who want direct, hands-on patient care with a relatively predictable schedule and moderate training length",
+      "Students interested in sports medicine, orthopedics, or rehabilitation specifically rather than general primary care",
+      "Students who want a clinical career without the multi-year residency structure of medicine or nursing's advanced-practice tracks"
+    ],
+    "watch_outs": [
+      "DPT program cost versus starting salary is a widely discussed tension in the field right now - worth a real, current cross-check before treating this as a slam-dunk ROI path (see Epic K)",
+      "Physically demanding day-to-day work (assisting patient movement, standing/demonstrating exercises) - worth an honest look at long-term physical sustainability",
+      "Setting matters a lot for both lifestyle and pay (outpatient ortho vs. hospital vs. home health vs. skilled nursing) - 'PT' is not one uniform job"
+    ],
+    "sources": [],
+    "notes": "general_knowledge_not_yet_sourced"
+  },
+  {
+    "id": "pharmacist",
+    "name": "Pharmacist",
+    "category": "clinical",
+    "what_they_do": "Dispense medications, counsel patients on drug interactions/side effects, and increasingly provide clinical services (immunizations, medication therapy management); settings range from retail/community pharmacy to hospital, industry, and specialty clinical roles.",
+    "typical_degrees": ["Bachelor's or 2+ years of prerequisite coursework (a full bachelor's degree is not always required before PharmD, though many students complete one)", "PharmD (Doctor of Pharmacy)"],
+    "training_length_years": "Often 2-4 years undergrad prerequisites + 4 years PharmD. Optional 1-2 year residency for hospital/clinical specialization (increasingly common for clinical roles).",
+    "requires_medical_school": false,
+    "patient_care_level": "medium",
+    "admissions_difficulty_notes": "Moderate. PharmD admissions have become notably less competitive over the last decade in most of the US as the job market has softened and program capacity has grown - this is a real, well-documented market shift worth discussing honestly rather than assuming pharmacy is still the reliably strong bet it once was.",
+    "salary_range_notes": "Historically strong and stable, but the market (especially retail pharmacy) has softened in recent years in many regions due to oversupply of graduates and automation/consolidation pressure in retail settings; hospital and clinical-specialty roles are generally viewed as more resilient. Exact figures and current market read deferred to Epic K.",
+    "lifestyle_notes": "Retail pharmacy can involve high-volume, high-pressure shifts with limited breaks in some chains - a real and widely discussed burnout concern in the field. Hospital and clinical pharmacy roles tend to offer a different, often more team-based day-to-day experience.",
+    "best_for": [
+      "Students interested in medications/pharmacology who want a clinical-adjacent role without direct hands-on procedures",
+      "Students who want to combine clinical training with potential industry, research, or specialty-clinical paths (not just retail)",
+      "Students comfortable investigating current, local job-market realities carefully before committing, given how much this field has shifted recently"
+    ],
+    "watch_outs": [
+      "Job market oversupply concerns (especially retail) are widely reported in the last several years - this path deserves an honest, current market check, not a decision based on older assumptions about pharmacy being a 'safe bet'",
+      "Retail pharmacy workload/pressure has been a significant, publicly documented concern (walkouts, understaffing complaints) in recent years - worth understanding before assuming retail is the default setting",
+      "Distinguishing retail vs. hospital vs. clinical vs. industry pharmacy matters enormously for both lifestyle and outlook - 'pharmacist' is not one uniform job"
+    ],
+    "sources": [],
+    "notes": "general_knowledge_not_yet_sourced"
+  },
+  {
+    "id": "public_health",
+    "name": "Public Health",
+    "category": "non_clinical",
+    "what_they_do": "Work on population-level health - epidemiology, health policy, program management, health communication, global health, or biostatistics - typically not providing direct one-on-one patient care but working to improve health outcomes at scale (government agencies, nonprofits, hospitals, academia, or industry).",
+    "typical_degrees": ["Bachelor's (public health, biology, or many other fields)", "MPH (Master of Public Health) most common; PhD (e.g. in epidemiology or health policy) for research/academic tracks"],
+    "training_length_years": "4 years undergrad + 2 years MPH (some accelerated 1-year options exist). PhD tracks add 4-6 more years for research/academic careers.",
+    "requires_medical_school": false,
+    "patient_care_level": "low",
+    "admissions_difficulty_notes": "Low to moderate for MPH programs generally - much more accessible than clinical tracks, though top-tier programs (Johns Hopkins, Harvard) are competitive. PhD tracks are more selective and research-focused.",
+    "salary_range_notes": "Wide range depending on sector (government/nonprofit tends lower, industry/consulting tends higher) and degree level; generally more modest than clinical paths at the MPH level but with real upside in health policy, industry, or leadership roles. Exact figures deferred to Epic K.",
+    "lifestyle_notes": "Generally standard office/professional hours, no shift work or on-call - one of the more predictable lifestyle paths on this list. Career satisfaction often tied to mission/impact orientation rather than compensation ceiling.",
+    "best_for": [
+      "Students who care about health impact at a population/systems level rather than one-on-one patient care",
+      "Students interested in policy, data/epidemiology, or program/systems work rather than clinical practice",
+      "Students who want a lower-barrier-to-entry path that still sits squarely in the healthcare space, and who value schedule predictability"
+    ],
+    "watch_outs": [
+      "Compensation ceiling is generally lower than clinical paths unless paired with a strong specialization (biostatistics, health policy, industry roles) or leadership track",
+      "MPH alone (without complementary experience or a technical specialization like biostatistics/data) can be a fairly general credential - differentiation matters for job outcomes",
+      "This is a broad category - 'public health' careers vary enormously by sector (government vs. nonprofit vs. industry vs. academia), so exploring specific sub-tracks matters"
+    ],
+    "sources": [],
+    "notes": "general_knowledge_not_yet_sourced"
+  },
+  {
+    "id": "biomedical_research",
+    "name": "Biomedical Research",
+    "category": "non_clinical",
+    "what_they_do": "Conduct laboratory or translational research aimed at understanding disease and developing treatments, typically in academic, government (e.g. NIH), or hospital-affiliated research settings; may also work as part of a physician-scientist (MD/PhD) track.",
+    "typical_degrees": ["Bachelor's (biology, chemistry, biomedical engineering, or related science)", "PhD (most common terminal path for an independent research career); MD/PhD ('physician-scientist') for those who want both clinical practice and an independent research lab"],
+    "training_length_years": "4 years undergrad + 5-6 years PhD (typically funded via stipend/tuition waiver) + 2-5+ years postdoctoral research before an independent faculty or industry-lead role. MD/PhD tracks add the full medical training on top, often 7-8 combined years for the doctoral portion alone.",
+    "requires_medical_school": false,
+    "patient_care_level": "low",
+    "admissions_difficulty_notes": "High for well-funded PhD programs at strong research universities, though the structure differs from clinical admissions (no equivalent to MCAT/DAT; research experience and letters from labs matter most).",
+    "salary_range_notes": "Graduate stipends during the PhD itself are modest (usually enough to live on, not lucrative); postdoc pay is also modest relative to training length; the eventual ceiling varies enormously by path (academic faculty vs. moving into biotech/industry, which usually pays substantially more). Exact figures deferred to Epic K.",
+    "lifestyle_notes": "Long training runway with a famously uncertain 'academic job market' at the far end (tenure-track faculty positions are scarce relative to PhD output) - many biomedical PhDs now deliberately transition into industry (Epic F's biotech/pharma path) rather than academia. Lab-based work; hours can be intense, especially pre-tenure.",
+    "best_for": [
+      "Students genuinely drawn to open-ended scientific discovery and comfortable with a long, uncertain-payoff training path",
+      "Students who might want the MD/PhD physician-scientist route (clinical practice + independent research) rather than pure research",
+      "Students who see a PhD as a launchpad into biotech/pharma industry roles rather than necessarily academia"
+    ],
+    "watch_outs": [
+      "The academic job market for tenure-track faculty positions is well documented as difficult relative to PhD supply - going in eyes-open about the industry pivot as a common, often better-paying outcome is important",
+      "Graduate stipends and postdoc pay are modest for many years relative to peers in industry or clinical tracks - the financial ramp is slow even though tuition itself is typically funded",
+      "MD/PhD is its own long, demanding hybrid track (often 7-8+ years for the doctoral phase alone) - not simply 'MD plus a bit more'"
+    ],
+    "sources": [],
+    "notes": "general_knowledge_not_yet_sourced"
+  },
+  {
+    "id": "biotech_pharma",
+    "name": "Biotech / Pharma Industry",
+    "category": "non_clinical",
+    "what_they_do": "Work in the industry side of drug/therapeutic development and commercialization - R&D science roles, clinical trial operations, regulatory affairs, medical affairs, business/commercial roles, or bioinformatics/data roles - at pharmaceutical or biotech companies rather than in academia or direct patient care.",
+    "typical_degrees": ["Bachelor's (biology, chemistry, biomedical/bioengineering, business, or related)", "Master's or PhD often preferred for R&D/scientific roles; MBA or other professional degrees common for business/commercial tracks; no additional degree required for many entry-level industry roles"],
+    "training_length_years": "Varies enormously by track: entry-level roles can start right after a bachelor's (4 years); R&D scientist roles typically expect a master's (+2 years) or PhD (+5-6 years); regulatory/business tracks often add an MBA or other professional master's (+1-2 years) after some work experience.",
+    "requires_medical_school": false,
+    "patient_care_level": "low",
+    "admissions_difficulty_notes": "Varies by track and is more about competitive job-market entry than formal admissions - internships and undergraduate research experience matter a lot for landing a first industry role; graduate-level roles follow normal grad-school admissions competitiveness for that degree.",
+    "salary_range_notes": "Generally strong, often exceeding academic research pay at equivalent experience levels, and with a wide range across R&D science, regulatory, clinical operations, and commercial/business roles. Exact figures deferred to Epic K.",
+    "lifestyle_notes": "Standard corporate/professional hours in most roles (a real contrast to clinical shift work or academic lab hours), though drug-development timelines and regulatory deadlines can create intense crunch periods. Career paths are diverse - lab science, project management, regulatory, commercial - which offers flexibility to pivot within the industry.",
+    "best_for": [
+      "Students interested in the science of medicine/drug development but who want industry pace, structure, and pay rather than academia or direct patient care",
+      "Students who like the idea of translating research into real-world products at scale (drugs, diagnostics, devices)",
+      "Students who want optionality - this path has many sub-tracks (science, regulatory, business, data) to pivot among over a career"
+    ],
+    "watch_outs": [
+      "Industry is more cyclical than academia or clinical practice - biotech funding, layoffs, and company-specific volatility (mergers, failed trials) are real risks worth knowing about",
+      "'Biotech/pharma' spans very different day-to-day jobs (bench science vs. regulatory affairs vs. commercial strategy) - worth exploring specific sub-tracks rather than treating it as one job",
+      "Highest-paying and most senior roles often still favor an advanced degree (PhD, MBA) even though entry-level roles are accessible with a bachelor's"
+    ],
+    "sources": [],
+    "notes": "general_knowledge_not_yet_sourced"
+  },
+  {
+    "id": "health_tech_data_ai",
+    "name": "Health Tech / Data / AI",
+    "category": "non_clinical",
+    "what_they_do": "Apply software engineering, data science, or AI/ML skills to healthcare problems - building clinical software, health data platforms, medical AI/diagnostic tools, or working at health-tech startups and established health systems' technology/analytics teams.",
+    "typical_degrees": ["Bachelor's (computer science, data science, bioinformatics, biomedical engineering, or related technical field)", "Master's (often in CS, data science, bioinformatics, or biomedical informatics) is common but not always required; PhD for research-heavy AI/ML roles"],
+    "training_length_years": "4 years undergrad is often sufficient for many entry-level engineering/data roles. Master's (+1-2 years) is common and often expected for more advanced data science/ML roles; PhD (+5-6 years) for research-scientist-level AI roles.",
+    "requires_medical_school": false,
+    "patient_care_level": "low",
+    "admissions_difficulty_notes": "Not a formal admissions gate like clinical fields - competitiveness is about the tech job market itself (internships, portfolio/projects, technical interviews) rather than GPA/test-score thresholds, though top CS/data programs at the undergrad or master's level can be selective to get into.",
+    "salary_range_notes": "Can be very strong, particularly in data science/AI/ML roles and at well-funded health-tech companies, though the broader tech job market has had real volatility (layoffs, hiring slowdowns) in recent years that's worth tracking rather than assuming permanent boom conditions. Exact figures deferred to Epic K.",
+    "lifestyle_notes": "Generally standard tech-industry hours and remote/hybrid flexibility at many companies - one of the more schedule-flexible paths on this list. Career risk looks different than clinical fields: less training-gate risk, more market/company/layoff risk.",
+    "best_for": [
+      "Students who like both healthcare and technology/data and want to build software or models that touch healthcare at scale rather than treat patients directly",
+      "Students who want a shorter, more flexible training timeline with earlier earning potential than most paths on this list",
+      "Students comfortable with tech-industry-style career risk (market cycles, company stability) rather than the licensure-gated risk of clinical fields"
+    ],
+    "watch_outs": [
+      "Broader tech job market volatility (hiring slowdowns, layoffs) has been real in recent years - this path's job security profile is different from licensed clinical fields, not simply 'safer because it's tech'",
+      "Health tech/AI is a broad umbrella spanning clinical software engineering, health data analytics, and medical AI/ML research - very different skill sets and entry paths depending on which sub-track",
+      "Domain knowledge of healthcare (regulatory environment like HIPAA/FDA, clinical workflows) is a real differentiator - pure technical skill without healthcare context is a much more generic (and more competitive) tech-industry play"
+    ],
+    "sources": [],
+    "notes": "general_knowledge_not_yet_sourced"
+  },
+  {
+    "id": "healthcare_administration",
+    "name": "Healthcare Administration",
+    "category": "non_clinical",
+    "what_they_do": "Manage the operations, finance, strategy, or policy side of healthcare organizations - hospitals, health systems, insurance companies, or healthcare consulting firms - without providing direct clinical care.",
+    "typical_degrees": ["Bachelor's (healthcare administration, business, public health, or related)", "MHA (Master of Health Administration) or MBA (often with a healthcare focus) common for advancement into leadership roles"],
+    "training_length_years": "4 years undergrad is sufficient for many entry-level administrative/operations roles. MHA or MBA (+2 years, often after some work experience) is common for mid-to-senior leadership tracks.",
+    "requires_medical_school": false,
+    "patient_care_level": "low",
+    "admissions_difficulty_notes": "Low to moderate. Undergraduate entry is accessible; competitive MHA/MBA programs (especially top-ranked ones) are more selective and often expect some prior work experience.",
+    "salary_range_notes": "Wide range depending on organization size/type and seniority - entry-level administrative roles are modest, but senior hospital/health-system leadership (CFO, COO, CEO-track roles) can be quite lucrative. Exact figures deferred to Epic K.",
+    "lifestyle_notes": "Standard professional/office hours for most roles, though senior leadership roles in hospital systems can carry significant stress and long hours similar to any large-organization executive track. No shift work or clinical on-call.",
+    "best_for": [
+      "Students interested in the business, operations, or policy side of healthcare rather than direct clinical care",
+      "Students who like the idea of eventually leading or managing a hospital/health system, insurer, or healthcare company",
+      "Students who want a lower-barrier entry path with a long runway for advancement through experience and an MHA/MBA later"
+    ],
+    "watch_outs": [
+      "Entry-level compensation and career ceiling are heavily tied to climbing an organizational ladder over years - it's more of a long-game career-progression path than an immediate high earner",
+      "The most senior, highest-paying roles typically require significant work experience plus an MHA/MBA, not just an undergraduate degree - patience is part of the plan",
+      "Healthcare administration spans very different environments (nonprofit hospital, for-profit health system, insurer, consulting) with different cultures and incentives - worth exploring which sub-sector fits"
+    ],
+    "sources": [],
+    "notes": "general_knowledge_not_yet_sourced"
+  }
+]

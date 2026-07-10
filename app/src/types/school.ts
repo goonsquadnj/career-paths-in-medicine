@@ -60,6 +60,7 @@ export interface School {
   scorecard_median_earnings_10yr: number | null;
   scorecard_median_earnings_6yr: number | null;
   scorecard_median_debt: number | null;
+  scorecard_sat_average: number | null;
   scorecard_notes: string | null;
 
   family_cost_flag: FamilyCostFlag | null;

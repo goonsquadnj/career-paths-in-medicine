@@ -1,5 +1,5 @@
 import type { School } from '../types/school';
-import { fmtCurrency, fmtPct, humanize } from '../lib/format';
+import { fmtCurrency, fmtMoney, fmtPct, humanize } from '../lib/format';
 import { bucketChipClass } from '../lib/bucketColors';
 
 const STATUS_CLASSES: Record<string, string> = {
@@ -56,6 +56,14 @@ export function SchoolCard({ school }: { school: School }) {
         <div>
           <span className="text-gray-500">Acceptance</span>
           <div>{fmtPct(school.scorecard_acceptance_rate)}</div>
+        </div>
+        <div>
+          <span className="text-gray-500">SAT average</span>
+          <div>{school.scorecard_sat_average ?? 'n/a'}</div>
+        </div>
+        <div>
+          <span className="text-gray-500">Earnings (10yr)</span>
+          <div>{fmtMoney(school.scorecard_median_earnings_10yr)}</div>
         </div>
       </div>
 

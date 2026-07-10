@@ -11,6 +11,7 @@ const destDir = join(__dirname, '..', 'public', 'data');
 const files = [
   'schools_undergrad.json',
   'programs_medical_pathways.json',
+  'paths.json',
 ];
 
 mkdirSync(destDir, { recursive: true });
