@@ -1,12 +1,14 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useData } from './lib/useData';
 import { SchoolCard } from './components/SchoolCard';
 import { ProgramCard } from './components/ProgramCard';
 import { PathCard } from './components/PathCard';
 import { FilterBar } from './components/FilterBar';
 import { CertaintyExplainer } from './components/CertaintyExplainer';
+import { SchoolMap } from './components/SchoolMap';
 import { CERTAINTY_ORDER } from './types/program';
 import type { FamilyCostFlag } from './types/school';
+import { useWishlistStore, type WishlistTier } from './store/wishlistStore';
 
 interface Filters {
   bucket: string;
@@ -15,23 +17,53 @@ interface Filters {
   directMed: string;
 }
 
-type Tab = 'schools' | 'programs' | 'paths';
+type Tab = 'schools' | 'programs' | 'paths' | 'wishlist';
 
 const TABS: { id: Tab; label: string }[] = [
   { id: 'schools', label: 'Schools' },
   { id: 'programs', label: 'Programs' },
   { id: 'paths', label: 'Career Paths' },
+  { id: 'wishlist', label: 'My Wishlist' },
 ];
+
+const WISHLIST_TIER_ORDER: WishlistTier[] = ['reach', 'target', 'safety'];
+const WISHLIST_TIER_TITLES: Record<WishlistTier, string> = {
+  reach: 'Reach',
+  target: 'Target',
+  safety: 'Safety',
+};
+
+// Simple nice-to-have filter persistence (docs/release_plan.md R2 item 4):
+// keep the last-used filter selections so reopening the app doesn't reset
+// them. Kept deliberately simple — plain localStorage, no store/migration.
+const FILTERS_STORAGE_KEY = 'lucy-planner:filters:v1';
+
+function loadStoredFilters(): Filters {
+  try {
+    const raw = localStorage.getItem(FILTERS_STORAGE_KEY);
+    if (!raw) return { bucket: '', status: '', costFlag: '', directMed: '' };
+    const parsed = JSON.parse(raw);
+    return {
+      bucket: parsed.bucket ?? '',
+      status: parsed.status ?? '',
+      costFlag: parsed.costFlag ?? '',
+      directMed: parsed.directMed ?? '',
+    };
+  } catch {
+    return { bucket: '', status: '', costFlag: '', directMed: '' };
+  }
+}
 
 function App() {
   const { schools, programs, paths, loading, error } = useData();
   const [tab, setTab] = useState<Tab>('schools');
-  const [filters, setFilters] = useState<Filters>({
-    bucket: '',
-    status: '',
-    costFlag: '',
-    directMed: '',
-  });
+  const [filters, setFilters] = useState<Filters>(loadStoredFilters);
+  const [highlightedSchoolId, setHighlightedSchoolId] = useState<string | null>(null);
+  const wishlist = useWishlistStore((s) => s.wishlist);
+
+  useEffect(() => {
+    localStorage.setItem(FILTERS_STORAGE_KEY, JSON.stringify(filters));
+  }, [filters]);
 
   const buckets = useMemo(
     () => Array.from(new Set(schools.map((s) => s.school_bucket))).sort(),
@@ -67,6 +99,28 @@ function App() {
       return (ai === -1 ? 999 : ai) - (bi === -1 ? 999 : bi);
     });
   }, [programs]);
+
+  const wishlistedSchools = useMemo(() => {
+    const grouped: Record<WishlistTier, typeof schools> = { reach: [], target: [], safety: [] };
+    for (const school of schools) {
+      const t = wishlist[school.id];
+      if (t) grouped[t].push(school);
+    }
+    return grouped;
+  }, [schools, wishlist]);
+
+  // Clicking a map pin (or a wishlist card) jumps to the Schools tab, scrolls
+  // to that school's card, and briefly highlights it.
+  const handleSelectSchool = (schoolId: string) => {
+    setTab('schools');
+    // Wait a tick for the Schools tab (and its card grid) to render.
+    requestAnimationFrame(() => {
+      const el = document.getElementById(`school-card-${schoolId}`);
+      el?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+    setHighlightedSchoolId(schoolId);
+    window.setTimeout(() => setHighlightedSchoolId((cur) => (cur === schoolId ? null : cur)), 2500);
+  };
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-8 flex flex-col gap-8">
@@ -122,9 +176,14 @@ function App() {
                 visibleCount={filteredSchools.length}
                 totalCount={schools.length}
               />
+              <SchoolMap schools={filteredSchools} onSelectSchool={handleSelectSchool} />
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {filteredSchools.map((school) => (
-                  <SchoolCard key={school.id} school={school} />
+                  <SchoolCard
+                    key={school.id}
+                    school={school}
+                    highlighted={school.id === highlightedSchoolId}
+                  />
                 ))}
               </div>
             </section>
@@ -154,6 +213,44 @@ function App() {
                   <PathCard key={path.id} path={path} />
                 ))}
               </div>
+            </section>
+          )}
+
+          {tab === 'wishlist' && (
+            <section className="flex flex-col gap-6">
+              <div>
+                <h2 className="text-xl font-semibold text-gray-900">My Wishlist</h2>
+                <p className="mt-1 text-sm text-gray-600">
+                  This is Lucy's own list — mark schools reach / target / safety from a school
+                  card, and they'll show up here, grouped by tier. It sticks around across visits
+                  (saved in this browser).
+                </p>
+              </div>
+
+              {WISHLIST_TIER_ORDER.every((t) => wishlistedSchools[t].length === 0) && (
+                <p className="rounded border border-gray-200 bg-gray-50 px-4 py-3 text-sm text-gray-600">
+                  No schools tiered yet. Go to the Schools tab and use the Wishlist buttons on a
+                  card to add one.
+                </p>
+              )}
+
+              {WISHLIST_TIER_ORDER.map((t) =>
+                wishlistedSchools[t].length > 0 ? (
+                  <div key={t} className="flex flex-col gap-3">
+                    <h3 className="text-lg font-semibold text-gray-800">
+                      {WISHLIST_TIER_TITLES[t]}{' '}
+                      <span className="text-sm font-normal text-gray-500">
+                        ({wishlistedSchools[t].length})
+                      </span>
+                    </h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                      {wishlistedSchools[t].map((school) => (
+                        <SchoolCard key={school.id} school={school} />
+                      ))}
+                    </div>
+                  </div>
+                ) : null,
+              )}
             </section>
           )}
         </>

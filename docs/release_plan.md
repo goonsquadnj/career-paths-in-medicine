@@ -66,6 +66,32 @@ Last updated: 2026-07-09
 - Client-side persistence (localStorage).
 - **Done when:** Lucy curates a tiered list that survives closing the tab.
 
+**Status (2026-07-09): done.**
+- Done: all 27 schools in `data/schools_undergrad.json` now carry real
+  `latitude`/`longitude` (public campus coordinates, documented in
+  `docs/data_dictionary.md`). New `SchoolMap` component
+  (`app/src/components/SchoolMap.tsx`) using MapLibre GL JS with the free
+  `demotiles.maplibre.org` style as an explicitly-flagged placeholder basemap
+  (see `docs/architecture.md`'s open question, still to revisit). The map
+  lives in the Schools tab and plots exactly the filtered set already computed
+  in `App.tsx` — no separate filter logic. Clicking a pin opens a popup with
+  the school name + a "View school card" link that switches to the Schools
+  tab, scrolls to, and briefly highlights that school's card. A toggle switches
+  the map between "all filtered schools" and "my wishlist only."
+  New `app/src/store/wishlistStore.ts` (Zustand + `persist` middleware,
+  localStorage key `lucy-planner:wishlist:v1`) holds each school's
+  reach/target/safety tier. `SchoolCard` now has an inline tier picker
+  (click again to clear). A new "My Wishlist" tab in `App.tsx` groups tiered
+  schools by reach/target/safety using the existing `SchoolCard`. Verified via
+  the Claude Preview browser: pins render at correct geography, click→card
+  jump works, tier selection persists across a full page reload, no console
+  errors. Filter selections (bucket/status/cost-flag/direct-med) are also now
+  persisted to localStorage (`lucy-planner:filters:v1`) per the R2
+  nice-to-have.
+- Not done / deferred: basemap is still the free MapLibre demo tiles
+  (placeholder, revisit before this is Lucy's daily driver); road-trip
+  routing (Epic J) is out of scope for R2.
+
 ## R3 — Her Profile & Fit · Epics D, C
 **Goal:** Personalize honestly.
 - Academic profile inputs (PSAT10/11, SAT actual + target range, GPA, APs, ECs).

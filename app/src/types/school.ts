@@ -41,6 +41,8 @@ export interface School {
   name: string;
   school_type: SchoolType;
   location: string;
+  latitude: number;
+  longitude: number;
   distance_from_home_category: DistanceCategory;
 
   school_bucket: string;

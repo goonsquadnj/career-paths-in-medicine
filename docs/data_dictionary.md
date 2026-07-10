@@ -663,6 +663,23 @@ Example:
 
 ---
 
+### `latitude` / `longitude`
+
+Decimal-degree coordinates for the school's main campus, used to plot the
+school on the R2 map (`SchoolMap`). Real, publicly-documented campus
+coordinates — not estimated or invented. Precision is roughly 4 decimal
+places (main-campus-landmark level, not a specific building), which is
+sufficient for state/regional zoom levels.
+
+Example:
+
+```json id="lat9dol"
+"latitude": 40.5008,
+"longitude": -74.4474
+```
+
+---
+
 ### `distance_from_home_category`
 
 Useful for Jeff/Lucy.

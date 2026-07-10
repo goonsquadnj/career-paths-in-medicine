@@ -117,6 +117,16 @@ themselves explorable and honest about training, timing, and money.
 
 ## Epic G — Map  · Phase R2 (+ R7 for trips)
 
+**Status (2026-07-09):** Done for R2 scope. `SchoolMap`
+(`app/src/components/SchoolMap.tsx`) plots all 27 schools using MapLibre GL JS
+and the free `demotiles.maplibre.org` vector style — explicitly flagged in
+code as a placeholder basemap to revisit (see `architecture.md` open
+questions). Pins reflect the same filtered list `App.tsx` already computes for
+the school cards. Clicking a pin opens a popup (name + location) with a "View
+school card" link that jumps to and highlights the card. A toggle switches
+between "all filtered schools" and "my wishlist only." Road-trip routing
+(Epic J) is untouched, as intended for R2.
+
 **Intent:** Browse spatially, not just as a list. See where everything is, and
 see the current search reflected on the map.
 
@@ -127,6 +137,15 @@ see the current search reflected on the map.
 ---
 
 ## Epic H — Wishlist & School Selection  · Phase R2
+
+**Status (2026-07-09):** Done for R2 scope. Each `SchoolCard` has an inline
+reach/target/safety tier picker (click the active tier again to clear it).
+`app/src/store/wishlistStore.ts` is a Zustand store with the `persist`
+middleware, namespaced/versioned localStorage key `lucy-planner:wishlist:v1`.
+A new "My Wishlist" tab in `App.tsx` groups tiered schools by tier and renders
+them with the existing `SchoolCard`. Verified the tier survives a full page
+reload. "Applied" tier and deeper compare/contrast views are not yet built —
+left for later (R5 Epic M application tracking is the natural next step).
 
 **Intent:** This is *Lucy's* list. Curating it is the heart of her workflow.
 
@@ -222,6 +241,12 @@ without a painful process.
 ---
 
 ## Epic P — Persistence & Profiles  · Phase R2 (client) → R8+ (sync)
+
+**Status (2026-07-09):** Client-side wishlist persistence done (Zustand
+`persist`, `lucy-planner:wishlist:v1`). Filter-bar selections
+(bucket/status/cost-flag/direct-med) also persisted, simply, to
+`lucy-planner:filters:v1` in `App.tsx`. Academic profile and scenario
+persistence are not yet built (R3/R4). Cross-device sync remains R8+.
 
 **Intent:** Her inputs, wishlist, scenarios, and tracking must stick — and
 eventually sync between Lucy's phone and Jeff's machine.
