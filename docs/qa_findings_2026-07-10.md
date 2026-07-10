@@ -13,8 +13,8 @@ preserved below; status column added as fixes land.
 
 | # | Finding | Severity | Status |
 |---|---|---|---|
-| 1a | Map renders zero pins on most loads (StrictMode race) | HIGH | Fixing now |
-| 1b | "Wishlist only" map toggle empties map, doesn't recover | HIGH | Fixing now |
+| 1a | Map renders zero pins on most loads (StrictMode race) | HIGH | Resolved — commit `afcf436` (code bundled in with a concurrent doc-only commit due to a shared working tree; see note below) — rewrote `SchoolMap.tsx`'s init effect to track live-mount state in a ref and unregister its `load` handler on cleanup, so a stale `load` firing after StrictMode's dev unmount/remount can no longer sync markers onto a torn-down map. Marker sync is now driven by an `isStyleReady` state flag set exactly once per live map instance. Verified 7 consecutive reloads all show 27 pins. |
+| 1b | "Wishlist only" map toggle empties map, doesn't recover | HIGH | Resolved — commit `afcf436` (same fix as 1a) — `syncMarkers` is now a memoized, idempotent diff-based function (safe to call any number of times in any order) and `visibleSchools` is `useMemo`'d on its actual inputs instead of recreated every render. Verified the wishlist-only toggle cycled back-and-forth 3x, with the map's marker count matching the button's own label every time, and a bucket-filter change updating the map to match the filtered card count. |
 | 1c | preview_screenshot hangs on map canvas | MED | Tooling note, not a product bug |
 | 2a | No source/confidence shown in UI (violates vision non-negotiable) | HIGH | Resolved — commit `5846765` — added a low-key "Confidence / data status / Sources" line to `SchoolCard.tsx` and `ProgramCard.tsx`, plus a `fmtDataStatus` helper in `format.ts` |
 | 2b | Certainty nuance shallow on ProgramCard (badge only) | MED | Deferred — design pass |
