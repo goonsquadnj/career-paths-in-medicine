@@ -61,6 +61,14 @@ leg**, and different combinations express different strategies.
 **Intent:** Treat Lucy as an adult about where she realistically stands, and show
 what moves the needle — honestly, not to flatter.
 
+- **Client-side only, and generic by default.** The app shows a generic,
+  anonymous experience — no profile, no personalization — until someone actively
+  creates a profile on that device. Creating a profile is what unlocks
+  personalization (fit-tiering, remembered preferences, wishlist). The profile
+  is stored locally (localStorage, per `architecture.md` §Persistence Phase 1)
+  and never leaves the device on its own — no server round-trip, no account
+  required. This keeps the app safe to open on any device/browser without
+  assuming who's using it, and keeps Lucy's data hers.
 - Inputs: PSAT10, PSAT11, SAT (actual **and** an expected/target range slider),
   GPA, AP courses/grades, extracurriculars.
 - Note the odd PSAT scale (out of ~1520, not 1600) — verify and handle scales.
