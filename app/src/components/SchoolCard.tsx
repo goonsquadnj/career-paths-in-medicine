@@ -1,7 +1,14 @@
 import type { School } from '../types/school';
-import { fmtCurrency, fmtMoney, fmtPct, humanize } from '../lib/format';
+import { fmtCurrency, fmtDataStatus, fmtMoney, fmtPct, humanize } from '../lib/format';
 import { bucketChipClass } from '../lib/bucketColors';
 import { useWishlistStore, type WishlistTier } from '../store/wishlistStore';
+
+const CONFIDENCE_CLASSES: Record<string, string> = {
+  high: 'text-green-700',
+  medium_high: 'text-green-700',
+  medium: 'text-amber-700',
+  low: 'text-gray-500',
+};
 
 const STATUS_CLASSES: Record<string, string> = {
   likely_include: 'bg-green-100 text-green-800',
@@ -124,6 +131,19 @@ export function SchoolCard({ school, highlighted }: { school: School; highlighte
       {school.parent_roi_note && (
         <p className="text-sm text-gray-600 italic">{school.parent_roi_note}</p>
       )}
+
+      <div className="border-t border-gray-100 pt-1.5 text-xs text-gray-400 flex flex-col gap-0.5">
+        <p>
+          <span className={`font-medium ${CONFIDENCE_CLASSES[school.source_confidence] ?? 'text-gray-500'}`}>
+            Confidence: {humanize(school.source_confidence)}
+          </span>
+          {' · '}
+          {fmtDataStatus(school.data_status)}
+        </p>
+        {school.sources.length > 0 && (
+          <p>Sources: {school.sources.join(', ')}</p>
+        )}
+      </div>
     </article>
   );
 }
