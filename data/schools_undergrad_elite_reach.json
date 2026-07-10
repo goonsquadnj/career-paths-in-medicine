@@ -16,7 +16,6 @@
     "scorecard_avg_annual_cost": 6128,
     "scorecard_graduation_rate": 0.98,
     "scorecard_acceptance_rate": null,
-    "scorecard_median_earnings_display": 108590,
     "scorecard_median_earnings_10yr": 110066,
     "scorecard_median_earnings_6yr": null,
     "scorecard_median_debt": 10320,
@@ -37,7 +36,9 @@
     "parent_roi_note": "Princeton is compelling if admitted and affordable, but it should not be treated as a medical-ecosystem school.",
     "source_confidence": "medium",
     "data_status": "starter_record_verify_scorecard_api",
-    "sources": ["college_scorecard_main"]
+    "sources": [
+      "college_scorecard_main"
+    ]
   },
   {
     "id": "penn",
@@ -56,7 +57,6 @@
     "scorecard_avg_annual_cost": 28699,
     "scorecard_graduation_rate": 0.97,
     "scorecard_acceptance_rate": 0.05,
-    "scorecard_median_earnings_display": 124586,
     "scorecard_median_earnings_10yr": 111371,
     "scorecard_median_earnings_6yr": null,
     "scorecard_median_debt": 19600,
@@ -77,7 +77,9 @@
     "parent_roi_note": "Penn is one of the clearest elite medical-ecosystem examples, but cost, admission odds, and fit are major constraints.",
     "source_confidence": "medium",
     "data_status": "starter_record_verify_scorecard_api",
-    "sources": ["college_scorecard_main"]
+    "sources": [
+      "college_scorecard_main"
+    ]
   },
   {
     "id": "johns_hopkins",
@@ -96,7 +98,6 @@
     "scorecard_avg_annual_cost": 29800,
     "scorecard_graduation_rate": 0.95,
     "scorecard_acceptance_rate": null,
-    "scorecard_median_earnings_display": 97200,
     "scorecard_median_earnings_10yr": 97200,
     "scorecard_median_earnings_6yr": null,
     "scorecard_median_debt": 22500,
@@ -117,7 +118,9 @@
     "parent_roi_note": "Hopkins is powerful but not necessary. It should be evaluated as an intense biomedical ecosystem, not a generic prestige upgrade.",
     "source_confidence": "medium",
     "data_status": "starter_record_verify_scorecard_api",
-    "sources": ["college_scorecard_main"]
+    "sources": [
+      "college_scorecard_main"
+    ]
   },
   {
     "id": "duke",
@@ -136,7 +139,6 @@
     "scorecard_avg_annual_cost": 29612,
     "scorecard_graduation_rate": 0.97,
     "scorecard_acceptance_rate": 0.06,
-    "scorecard_median_earnings_display": 115722,
     "scorecard_median_earnings_10yr": 97800,
     "scorecard_median_earnings_6yr": null,
     "scorecard_median_debt": null,
@@ -157,7 +159,9 @@
     "parent_roi_note": "Duke is a strong elite medical-ecosystem school, but for v1 it may be optional if we already include Penn/Hopkins/Stanford/Yale.",
     "source_confidence": "medium",
     "data_status": "starter_record_verify_scorecard_api",
-    "sources": ["college_scorecard_main"]
+    "sources": [
+      "college_scorecard_main"
+    ]
   },
   {
     "id": "brown",
@@ -176,7 +180,6 @@
     "scorecard_avg_annual_cost": 25184,
     "scorecard_graduation_rate": null,
     "scorecard_acceptance_rate": null,
-    "scorecard_median_earnings_display": 94678,
     "scorecard_median_earnings_10yr": 93487,
     "scorecard_median_earnings_6yr": null,
     "scorecard_median_debt": 10000,
@@ -189,7 +192,9 @@
     "clinical_ecosystem_notes": "Brown has medical-school connections, but its main distinctive feature here is PLME and open curriculum.",
     "research_access_notes": "Elite undergraduate environment with flexible academic structure.",
     "has_direct_med_program": true,
-    "direct_med_program_ids": ["brown_plme"],
+    "direct_med_program_ids": [
+      "brown_plme"
+    ],
     "early_assurance_notes": "Brown PLME is a direct-med strategy and must be separated from Brown regular premed.",
     "gpa_risk": "medium",
     "gpa_risk_notes": "Open curriculum may improve flexibility, but elite academic expectations remain.",
@@ -197,7 +202,9 @@
     "parent_roi_note": "Brown earns v1 inclusion mainly because PLME teaches the direct-med strategy better than almost any other elite example.",
     "source_confidence": "medium",
     "data_status": "starter_record_verify_scorecard_api",
-    "sources": ["college_scorecard_main"]
+    "sources": [
+      "college_scorecard_main"
+    ]
   },
   {
     "id": "cornell",
@@ -216,7 +223,6 @@
     "scorecard_avg_annual_cost": 28690,
     "scorecard_graduation_rate": 0.954,
     "scorecard_acceptance_rate": null,
-    "scorecard_median_earnings_display": 113372,
     "scorecard_median_earnings_10yr": 104043,
     "scorecard_median_earnings_6yr": 76300,
     "scorecard_median_debt": 14000,
@@ -237,7 +243,9 @@
     "parent_roi_note": "Cornell is strong, but may be less distinctive for this app than Penn, Hopkins, Brown, Stanford, MIT, or Princeton.",
     "source_confidence": "medium",
     "data_status": "starter_record_verify_scorecard_api",
-    "sources": ["college_scorecard_main"]
+    "sources": [
+      "college_scorecard_main"
+    ]
   },
   {
     "id": "columbia",
@@ -256,7 +264,6 @@
     "scorecard_avg_annual_cost": 21590,
     "scorecard_graduation_rate": 0.95,
     "scorecard_acceptance_rate": null,
-    "scorecard_median_earnings_display": 115519,
     "scorecard_median_earnings_10yr": null,
     "scorecard_median_earnings_6yr": null,
     "scorecard_median_debt": 18750,
@@ -277,7 +284,9 @@
     "parent_roi_note": "Columbia is a strong elite medical-ecosystem example, but fit risk may be higher than at more campus-contained schools.",
     "source_confidence": "medium",
     "data_status": "starter_record_verify_scorecard_api",
-    "sources": ["college_scorecard_main"]
+    "sources": [
+      "college_scorecard_main"
+    ]
   },
   {
     "id": "harvard",
@@ -296,7 +305,6 @@
     "scorecard_avg_annual_cost": 19066,
     "scorecard_graduation_rate": 0.98,
     "scorecard_acceptance_rate": null,
-    "scorecard_median_earnings_display": 134794,
     "scorecard_median_earnings_10yr": 101817,
     "scorecard_median_earnings_6yr": 91300,
     "scorecard_median_debt": 14000,
@@ -317,7 +325,9 @@
     "parent_roi_note": "Harvard is maximum broad option value, but not necessary for med school.",
     "source_confidence": "medium",
     "data_status": "starter_record_verify_scorecard_api",
-    "sources": ["college_scorecard_main"]
+    "sources": [
+      "college_scorecard_main"
+    ]
   },
   {
     "id": "yale",
@@ -336,7 +346,6 @@
     "scorecard_avg_annual_cost": 23777,
     "scorecard_graduation_rate": 0.98,
     "scorecard_acceptance_rate": null,
-    "scorecard_median_earnings_display": 142936,
     "scorecard_median_earnings_10yr": 100533,
     "scorecard_median_earnings_6yr": 67800,
     "scorecard_median_debt": 12975,
@@ -357,7 +366,9 @@
     "parent_roi_note": "Yale is a strong elite medical/research ecosystem example, but may be optional in v1 if Harvard/Penn/Hopkins/Stanford are already included.",
     "source_confidence": "medium",
     "data_status": "starter_record_verify_scorecard_api",
-    "sources": ["college_scorecard_main"]
+    "sources": [
+      "college_scorecard_main"
+    ]
   },
   {
     "id": "stanford",
@@ -376,7 +387,6 @@
     "scorecard_avg_annual_cost": 13807,
     "scorecard_graduation_rate": 0.97,
     "scorecard_acceptance_rate": null,
-    "scorecard_median_earnings_display": 137000,
     "scorecard_median_earnings_10yr": 124080,
     "scorecard_median_earnings_6yr": 92800,
     "scorecard_median_debt": 12000,
@@ -397,7 +407,9 @@
     "parent_roi_note": "Stanford is the clearest health-tech/biomed innovation elite option, but it is far from NJ and ultra-selective.",
     "source_confidence": "medium",
     "data_status": "starter_record_verify_scorecard_api",
-    "sources": ["college_scorecard_main"]
+    "sources": [
+      "college_scorecard_main"
+    ]
   },
   {
     "id": "mit",
@@ -416,7 +428,6 @@
     "scorecard_avg_annual_cost": 20111,
     "scorecard_graduation_rate": 0.964,
     "scorecard_acceptance_rate": null,
-    "scorecard_median_earnings_display": 161961,
     "scorecard_median_earnings_10yr": 143372,
     "scorecard_median_earnings_6yr": 99600,
     "scorecard_median_debt": 14768,
@@ -437,7 +448,9 @@
     "parent_roi_note": "MIT has exceptional broad ROI and health-tech option value, but it may make classic premed harder than necessary if Lucy is not a STEM-intensity kid.",
     "source_confidence": "medium",
     "data_status": "starter_record_verify_scorecard_api",
-    "sources": ["college_scorecard_main"]
+    "sources": [
+      "college_scorecard_main"
+    ]
   },
   {
     "id": "uchicago",
@@ -456,7 +469,6 @@
     "scorecard_avg_annual_cost": 14860,
     "scorecard_graduation_rate": null,
     "scorecard_acceptance_rate": null,
-    "scorecard_median_earnings_display": 127757,
     "scorecard_median_earnings_10yr": 91885,
     "scorecard_median_earnings_6yr": null,
     "scorecard_median_debt": null,
@@ -477,6 +489,8 @@
     "parent_roi_note": "UChicago is strategically useful as the elite rigor/Core example, but may not be essential for v1.",
     "source_confidence": "medium",
     "data_status": "starter_record_needs_official_coa_total",
-    "sources": ["college_scorecard_main"]
+    "sources": [
+      "college_scorecard_main"
+    ]
   }
 ]

@@ -875,18 +875,6 @@ Example:
 
 ---
 
-### `scorecard_median_earnings_display`
-
-Median earnings value shown in Scorecard or captured from research.
-
-Example:
-
-```json id="sckklp"
-"scorecard_median_earnings_display": 77933
-```
-
----
-
 ### `scorecard_median_earnings_10yr`
 
 Ten-year post-entry earnings, if separately available.

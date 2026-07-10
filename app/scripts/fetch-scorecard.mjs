@@ -110,22 +110,53 @@ async function main() {
     const medianDebt = num(result['latest.aid.median_debt.completers.overall']);
 
     // Prefer avg net price (more representative "typical cost"); fall back to
-    // sticker attendance cost if net price isn't available.
+    // sticker attendance cost if net price isn't available. Both come from the
+    // same fresh API response, so this is not a stale-data fallback.
     const newAnnualCost = avgNetPrice ?? attendanceCost;
 
-    school.scorecard_avg_annual_cost = newAnnualCost ?? school.scorecard_avg_annual_cost;
-    school.scorecard_graduation_rate = gradRate ?? school.scorecard_graduation_rate;
-    school.scorecard_acceptance_rate = acceptanceRate ?? school.scorecard_acceptance_rate;
-    school.scorecard_median_earnings_10yr = earnings10yr ?? school.scorecard_median_earnings_10yr;
-    school.scorecard_median_earnings_6yr = earnings6yr ?? school.scorecard_median_earnings_6yr;
-    school.scorecard_median_debt = medianDebt ?? school.scorecard_median_debt;
-    school.scorecard_sat_average = satAvg ?? null;
+    // Honesty rule: every field below reflects ONLY what the API returned just
+    // now. If the API has no value for a field, the field becomes null — we
+    // never silently keep a prior hand-authored/estimated guess and relabel it
+    // "verified". A per-field note (scorecard_notes) records anything that
+    // came back null so a human can go verify it directly.
+    school.scorecard_avg_annual_cost = newAnnualCost;
+    school.scorecard_graduation_rate = gradRate;
+    school.scorecard_acceptance_rate = acceptanceRate;
+    school.scorecard_median_earnings_10yr = earnings10yr;
+    school.scorecard_median_earnings_6yr = earnings6yr;
+    school.scorecard_median_debt = medianDebt;
+    school.scorecard_sat_average = satAvg;
 
-    school.source_confidence = 'high';
-    school.data_status = 'verified_scorecard_api_2026_07';
+    const fetchedFields = {
+      scorecard_avg_annual_cost: newAnnualCost,
+      scorecard_graduation_rate: gradRate,
+      scorecard_acceptance_rate: acceptanceRate,
+      scorecard_median_earnings_10yr: earnings10yr,
+      scorecard_median_earnings_6yr: earnings6yr,
+      scorecard_median_debt: medianDebt,
+      scorecard_sat_average: satAvg,
+    };
+    const missingFields = Object.entries(fetchedFields)
+      .filter(([, value]) => value === null)
+      .map(([key]) => key);
+
+    if (missingFields.length === 0) {
+      school.source_confidence = 'high';
+      school.data_status = 'verified_scorecard_api_2026_07';
+    } else {
+      // Some fields genuinely came back null from the API — don't launder
+      // this record as fully "verified". Downgrade confidence and record
+      // exactly which fields are missing so a human knows what to check.
+      school.source_confidence = 'medium';
+      school.data_status = 'partially_verified_scorecard_api_2026_07';
+      const missingNote = `Scorecard API returned no value for: ${missingFields.join(', ')} (fetched ${new Date().toISOString().slice(0, 10)}). Do not assume these match any other institution's figures — verify directly.`;
+      school.scorecard_notes = school.scorecard_notes
+        ? `${school.scorecard_notes} ${missingNote}`
+        : missingNote;
+    }
 
     console.log(
-      `[fetch-scorecard] OK ${school.id} (${unitId}): cost=${newAnnualCost} grad=${gradRate} admit=${acceptanceRate} sat=${satAvg} e10=${earnings10yr} e6=${earnings6yr} debt=${medianDebt}`,
+      `[fetch-scorecard] OK ${school.id} (${unitId}): cost=${newAnnualCost} grad=${gradRate} admit=${acceptanceRate} sat=${satAvg} e10=${earnings10yr} e6=${earnings6yr} debt=${medianDebt}${missingFields.length ? ` MISSING=[${missingFields.join(',')}]` : ''}`,
     );
     updated++;
   }

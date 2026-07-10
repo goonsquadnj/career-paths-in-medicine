@@ -58,7 +58,6 @@ export interface School {
   scorecard_avg_annual_cost: number | null;
   scorecard_graduation_rate: number | null;
   scorecard_acceptance_rate: number | null;
-  scorecard_median_earnings_display: number | null;
   scorecard_median_earnings_10yr: number | null;
   scorecard_median_earnings_6yr: number | null;
   scorecard_median_debt: number | null;

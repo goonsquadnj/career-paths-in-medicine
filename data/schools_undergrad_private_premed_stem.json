@@ -16,7 +16,6 @@
     "scorecard_avg_annual_cost": 30434,
     "scorecard_graduation_rate": 0.82,
     "scorecard_acceptance_rate": 0.5808,
-    "scorecard_median_earnings_display": 73701,
     "scorecard_median_earnings_10yr": 66125,
     "scorecard_median_earnings_6yr": 44300,
     "scorecard_median_debt": 24250,
@@ -29,7 +28,9 @@
     "clinical_ecosystem_notes": "Major health-sciences ecosystem with UPMC and Pitt School of Medicine context.",
     "research_access_notes": "Strong research ecosystem; verify undergraduate access and fit.",
     "has_direct_med_program": true,
-    "direct_med_program_ids": ["pitt_medicine_gap"],
+    "direct_med_program_ids": [
+      "pitt_medicine_gap"
+    ],
     "early_assurance_notes": "Pitt Medicine GAP is strategically important but still requires a high MCAT minimum.",
     "gpa_risk": "medium",
     "gpa_risk_notes": "Strong science/premed ecosystem may be competitive.",
@@ -37,7 +38,9 @@
     "parent_roi_note": "Pitt is an ecosystem play, not a cheap OOS public. It needs to justify extra cost over NJ options.",
     "source_confidence": "medium",
     "data_status": "starter_record_verify_scorecard_api",
-    "sources": ["college_scorecard_main"]
+    "sources": [
+      "college_scorecard_main"
+    ]
   },
   {
     "id": "penn_state_university_park",
@@ -56,7 +59,6 @@
     "scorecard_avg_annual_cost": 32875,
     "scorecard_graduation_rate": 0.861,
     "scorecard_acceptance_rate": 0.5761,
-    "scorecard_median_earnings_display": 76659,
     "scorecard_median_earnings_10yr": 63435,
     "scorecard_median_earnings_6yr": 43600,
     "scorecard_median_debt": 25000,
@@ -77,7 +79,9 @@
     "parent_roi_note": "Penn State is a broad brand/fallback option, but not clearly better premed ROI than Rutgers for a NJ family.",
     "source_confidence": "medium",
     "data_status": "starter_record_verify_scorecard_api",
-    "sources": ["college_scorecard_main"]
+    "sources": [
+      "college_scorecard_main"
+    ]
   },
   {
     "id": "umd_college_park",
@@ -96,7 +100,6 @@
     "scorecard_avg_annual_cost": 15678,
     "scorecard_graduation_rate": 0.85,
     "scorecard_acceptance_rate": 0.4479,
-    "scorecard_median_earnings_display": 84365,
     "scorecard_median_earnings_10yr": 82860,
     "scorecard_median_earnings_6yr": 50100,
     "scorecard_median_debt": 19000,
@@ -117,7 +120,9 @@
     "parent_roi_note": "UMD has excellent outcome signals, but the actual OOS price must beat the NJ public baseline.",
     "source_confidence": "medium",
     "data_status": "starter_record_verify_scorecard_api",
-    "sources": ["college_scorecard_main"]
+    "sources": [
+      "college_scorecard_main"
+    ]
   },
   {
     "id": "university_of_delaware",
@@ -136,7 +141,6 @@
     "scorecard_avg_annual_cost": 17799,
     "scorecard_graduation_rate": 0.84,
     "scorecard_acceptance_rate": 0.6511,
-    "scorecard_median_earnings_display": 77675,
     "scorecard_median_earnings_10yr": 72950,
     "scorecard_median_earnings_6yr": null,
     "scorecard_median_debt": 21000,
@@ -157,7 +161,9 @@
     "parent_roi_note": "Delaware needs a fit or aid reason to beat NJ publics.",
     "source_confidence": "medium",
     "data_status": "starter_record_verify_scorecard_api",
-    "sources": ["college_scorecard_main"]
+    "sources": [
+      "college_scorecard_main"
+    ]
   },
   {
     "id": "stony_brook",
@@ -176,7 +182,6 @@
     "scorecard_avg_annual_cost": 18784,
     "scorecard_graduation_rate": 0.78,
     "scorecard_acceptance_rate": 0.4271,
-    "scorecard_median_earnings_display": 81850,
     "scorecard_median_earnings_10yr": null,
     "scorecard_median_earnings_6yr": null,
     "scorecard_median_debt": 18228,
@@ -197,7 +202,9 @@
     "parent_roi_note": "Stony Brook may offer a stronger medical/science ecosystem than some OOS publics, but it still needs to justify cost over NJ options.",
     "source_confidence": "medium",
     "data_status": "starter_record_verify_scorecard_api",
-    "sources": ["college_scorecard_main"]
+    "sources": [
+      "college_scorecard_main"
+    ]
   },
   {
     "id": "binghamton",
@@ -216,7 +223,6 @@
     "scorecard_avg_annual_cost": 21620,
     "scorecard_graduation_rate": 0.84,
     "scorecard_acceptance_rate": 0.386,
-    "scorecard_median_earnings_display": 80304,
     "scorecard_median_earnings_10yr": null,
     "scorecard_median_earnings_6yr": null,
     "scorecard_median_debt": 19500,
@@ -237,7 +243,9 @@
     "parent_roi_note": "Binghamton is a strong regional public comparison, but not obviously better than Rutgers or TCNJ for a NJ premed student.",
     "source_confidence": "medium",
     "data_status": "starter_record_verify_scorecard_api",
-    "sources": ["college_scorecard_main"]
+    "sources": [
+      "college_scorecard_main"
+    ]
   },
   {
     "id": "temple",
@@ -256,7 +264,6 @@
     "scorecard_avg_annual_cost": 28198,
     "scorecard_graduation_rate": 0.75,
     "scorecard_acceptance_rate": 0.8045,
-    "scorecard_median_earnings_display": 67232,
     "scorecard_median_earnings_10yr": 63727,
     "scorecard_median_earnings_6yr": null,
     "scorecard_median_debt": 24395,
@@ -269,7 +276,9 @@
     "clinical_ecosystem_notes": "Urban Philadelphia clinical context and Lewis Katz School of Medicine pathway relevance.",
     "research_access_notes": "Verify undergraduate clinical/research access and how students use Temple Health connections.",
     "has_direct_med_program": true,
-    "direct_med_program_ids": ["temple_premed_health_scholars"],
+    "direct_med_program_ids": [
+      "temple_premed_health_scholars"
+    ],
     "early_assurance_notes": "Temple Pre-Med Health Scholars begins after starting at Temple and still requires GPA and MCAT thresholds.",
     "gpa_risk": "medium",
     "gpa_risk_notes": "Urban pre-health environment with continuation requirements for special pathway.",
@@ -277,7 +286,9 @@
     "parent_roi_note": "Temple is valuable as an urban clinical ecosystem comparison, not as a pure ROI winner.",
     "source_confidence": "medium",
     "data_status": "starter_record_needs_official_coa_total",
-    "sources": ["college_scorecard_main"]
+    "sources": [
+      "college_scorecard_main"
+    ]
   },
   {
     "id": "drexel",
@@ -296,7 +307,6 @@
     "scorecard_avg_annual_cost": 38509,
     "scorecard_graduation_rate": 0.74,
     "scorecard_acceptance_rate": 0.7753,
-    "scorecard_median_earnings_display": 91041,
     "scorecard_median_earnings_10yr": 84648,
     "scorecard_median_earnings_6yr": 54400,
     "scorecard_median_debt": 25325,
@@ -309,7 +319,9 @@
     "clinical_ecosystem_notes": "Urban Philadelphia healthcare/research context and Drexel College of Medicine pathway relevance.",
     "research_access_notes": "Co-op model may create distinctive experiential opportunities, but premed sequencing should be planned carefully.",
     "has_direct_med_program": true,
-    "direct_med_program_ids": ["drexel_babs_md"],
+    "direct_med_program_ids": [
+      "drexel_babs_md"
+    ],
     "early_assurance_notes": "Drexel BA/BS+MD offers provisional early assurance but does not guarantee medical-school admission.",
     "gpa_risk": "medium",
     "gpa_risk_notes": "Co-op and quarter/calendar structure may complicate traditional premed sequencing.",
@@ -317,6 +329,8 @@
     "parent_roi_note": "Drexel has strong career/earnings signals, but must be judged by net price and whether co-op genuinely helps Lucy's path.",
     "source_confidence": "medium",
     "data_status": "starter_record_verify_scorecard_api",
-    "sources": ["college_scorecard_main"]
+    "sources": [
+      "college_scorecard_main"
+    ]
   }
 ]
