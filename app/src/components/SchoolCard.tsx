@@ -1,0 +1,73 @@
+import type { School } from '../types/school';
+import { fmtCurrency, fmtPct, humanize } from '../lib/format';
+import { bucketChipClass } from '../lib/bucketColors';
+
+const STATUS_CLASSES: Record<string, string> = {
+  likely_include: 'bg-green-100 text-green-800',
+  possible_include: 'bg-yellow-100 text-yellow-800',
+};
+const DEFAULT_STATUS_CLASS = 'bg-gray-100 text-gray-700';
+
+const GPA_CLASSES: Record<string, string> = {
+  low: 'text-green-700',
+  medium: 'text-amber-700',
+  high: 'text-red-700',
+};
+
+export function SchoolCard({ school }: { school: School }) {
+  return (
+    <article className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm flex flex-col gap-2">
+      <div>
+        <h3 className="text-lg font-semibold text-gray-900">{school.name}</h3>
+        <p className="text-sm text-gray-500">{school.location}</p>
+      </div>
+
+      <div className="flex flex-wrap gap-1.5">
+        <span className={`rounded px-2 py-0.5 text-xs font-medium ${bucketChipClass(school.school_bucket)}`}>
+          {school.school_bucket}
+        </span>
+        <span
+          className={`rounded px-2 py-0.5 text-xs font-medium ${STATUS_CLASSES[school.v1_status] ?? DEFAULT_STATUS_CLASS}`}
+        >
+          {humanize(school.v1_status)}
+        </span>
+        {school.has_direct_med_program && (
+          <span className="rounded px-2 py-0.5 text-xs font-medium bg-violet-100 text-violet-800">
+            Has direct-med program
+          </span>
+        )}
+      </div>
+
+      <hr className="border-gray-100" />
+
+      <div className="text-sm text-gray-700 grid grid-cols-2 gap-x-3 gap-y-1">
+        <div>
+          <span className="text-gray-500">Scorecard net price</span>
+          <div>{fmtCurrency(school.scorecard_avg_annual_cost)}</div>
+        </div>
+        <div>
+          <span className="text-gray-500">Cost flag</span>
+          <div>{humanize(school.family_cost_flag)}</div>
+        </div>
+        <div>
+          <span className="text-gray-500">Grad rate</span>
+          <div>{fmtPct(school.scorecard_graduation_rate)}</div>
+        </div>
+        <div>
+          <span className="text-gray-500">Acceptance</span>
+          <div>{fmtPct(school.scorecard_acceptance_rate)}</div>
+        </div>
+      </div>
+
+      {school.gpa_risk && (
+        <p className={`text-xs font-medium ${GPA_CLASSES[school.gpa_risk] ?? 'text-gray-600'}`}>
+          GPA risk: {school.gpa_risk}
+        </p>
+      )}
+
+      {school.parent_roi_note && (
+        <p className="text-sm text-gray-600 italic">{school.parent_roi_note}</p>
+      )}
+    </article>
+  );
+}

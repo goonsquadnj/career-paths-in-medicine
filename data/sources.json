@@ -1,0 +1,128 @@
+{
+  "rutgers_nb_cost_2025_26": {
+    "id": "rutgers_nb_cost_2025_26",
+    "url": null,
+    "notes": "stub — verify URL and details",
+    "data_status": "stub_needs_url"
+  },
+  "rutgers_admissions_tuition_fees": {
+    "id": "rutgers_admissions_tuition_fees",
+    "url": null,
+    "notes": "stub — verify URL and details",
+    "data_status": "stub_needs_url"
+  },
+  "rutgers_hpo": {
+    "id": "rutgers_hpo",
+    "url": null,
+    "notes": "stub — verify URL and details",
+    "data_status": "stub_needs_url"
+  },
+  "tcnj_cost_2026_27": {
+    "id": "tcnj_cost_2026_27",
+    "url": null,
+    "notes": "stub — verify URL and details",
+    "data_status": "stub_needs_url"
+  },
+  "tcnj_mcac": {
+    "id": "tcnj_mcac",
+    "url": null,
+    "notes": "stub — verify URL and details",
+    "data_status": "stub_needs_url"
+  },
+  "tcnj_njms_7_year": {
+    "id": "tcnj_njms_7_year",
+    "url": null,
+    "notes": "stub — verify URL and details",
+    "data_status": "stub_needs_url"
+  },
+  "rutgers_njms_7_8_year": {
+    "id": "rutgers_njms_7_8_year",
+    "url": null,
+    "notes": "stub — verify URL and details",
+    "data_status": "stub_needs_url"
+  },
+  "rowan_cost_2025_26": {
+    "id": "rowan_cost_2025_26",
+    "url": null,
+    "notes": "stub — verify URL and details",
+    "data_status": "stub_needs_url"
+  },
+  "rowan_prehealth": {
+    "id": "rowan_prehealth",
+    "url": null,
+    "notes": "stub — verify URL and details",
+    "data_status": "stub_needs_url"
+  },
+  "rowan_3plus4_medical": {
+    "id": "rowan_3plus4_medical",
+    "url": null,
+    "notes": "stub — verify URL and details",
+    "data_status": "stub_needs_url"
+  },
+  "njit_cost_2025_26": {
+    "id": "njit_cost_2025_26",
+    "url": null,
+    "notes": "stub — verify URL and details",
+    "data_status": "stub_needs_url"
+  },
+  "njit_premed": {
+    "id": "njit_premed",
+    "url": null,
+    "notes": "stub — verify URL and details",
+    "data_status": "stub_needs_url"
+  },
+  "njit_njms_bsmd_faq": {
+    "id": "njit_njms_bsmd_faq",
+    "url": null,
+    "notes": "stub — verify URL and details",
+    "data_status": "stub_needs_url"
+  },
+  "rutgers_newark_bamd": {
+    "id": "rutgers_newark_bamd",
+    "url": null,
+    "notes": "stub — verify URL and details",
+    "data_status": "stub_needs_url"
+  },
+  "stevens_cost_2026_27": {
+    "id": "stevens_cost_2026_27",
+    "url": null,
+    "notes": "stub — verify URL and details",
+    "data_status": "stub_needs_url"
+  },
+  "stevens_prehealth": {
+    "id": "stevens_prehealth",
+    "url": null,
+    "notes": "stub — verify URL and details",
+    "data_status": "stub_needs_url"
+  },
+  "stevens_accelerated_premed": {
+    "id": "stevens_accelerated_premed",
+    "url": null,
+    "notes": "stub — verify URL and details",
+    "data_status": "stub_needs_url"
+  },
+  "seton_hall_tuition_fees": {
+    "id": "seton_hall_tuition_fees",
+    "url": null,
+    "notes": "stub — verify URL and details",
+    "data_status": "stub_needs_url"
+  },
+  "seton_hall_ppac": {
+    "id": "seton_hall_ppac",
+    "url": null,
+    "notes": "stub — verify URL and details",
+    "data_status": "stub_needs_url"
+  },
+  "seton_hall_hmh_bamd": {
+    "id": "seton_hall_hmh_bamd",
+    "url": null,
+    "notes": "stub — verify URL and details",
+    "data_status": "stub_needs_url"
+  },
+  "college_scorecard_main": {
+    "id": "college_scorecard_main",
+    "url": "https://collegescorecard.ed.gov",
+    "notes": "U.S. Department of Education College Scorecard — primary source for net price, graduation rate, earnings, and debt data used in school records.",
+    "data_status": "stub_needs_url"
+  }
+}

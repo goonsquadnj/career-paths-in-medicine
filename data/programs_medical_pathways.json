@@ -1,0 +1,690 @@
+[
+  {
+    "id": "tcnj_njms_7yr",
+    "name": "TCNJ / Rutgers New Jersey Medical School Seven-Year Medical Program",
+    "program_type": "3+4 BS/MD",
+    "apply_stage": "high_school_senior",
+    "undergraduate_school": "The College of New Jersey",
+    "medical_school": "Rutgers New Jersey Medical School",
+    "medical_degree": "MD",
+    "years_undergrad": 3,
+    "years_medical": 4,
+    "total_years": 7,
+    "medical_seat_certainty": "conditional_dual_admission",
+    "certainty_category": "conditional_medical_school_seat",
+    "interview_guarantee": true,
+    "admission_guarantee": "conditional",
+    "mcat_required": true,
+    "mcat_minimum": null,
+    "mcat_policy": "MCAT required; TCNJ page says no minimum score required.",
+    "college_gpa_minimum": null,
+    "science_gpa_minimum": null,
+    "course_grade_minimum": null,
+    "known_academic_requirements": [
+      "Students spend three years at TCNJ and four years at Rutgers NJMS.",
+      "Students take the MCAT no later than spring of the third year at TCNJ.",
+      "TCNJ page says there is no minimum MCAT score required.",
+      "Approved majors apply; verify current list annually.",
+      "Student must meet NJMS citizenship/permanent-resident requirement by entry to NJMS."
+    ],
+    "application_deadline": "November 1, verify annually",
+    "cost_category": "NJ public value",
+    "strategic_value": "NJ public direct-med high-reach program that may reduce uncertainty and save one year.",
+    "best_for": [
+      "High-achieving NJ student strongly committed to medicine as a high-school senior",
+      "Student who wants a public-value undergrad path linked to Rutgers NJMS",
+      "Student comfortable with a more structured undergraduate plan"
+    ],
+    "watch_outs": [
+      "Treat as high reach, not the base plan.",
+      "Lucy would need a credible and mature medicine narrative at age 17.",
+      "Verify current GPA, course, interview, and applying-out rules before relying on this.",
+      "Program reduces uncertainty but may reduce flexibility."
+    ],
+    "app_label": "NJ public direct-med high-reach / 3+4 BS/MD",
+    "source_confidence": "medium_high",
+    "data_status": "starter_record_verify_current_cycle",
+    "sources": [
+      {
+        "name": "TCNJ Seven-Year Medical Program",
+        "type": "official_program_page",
+        "url": "https://biology.tcnj.edu/academics/medical-careers/7-year-medical-program/"
+      },
+      {
+        "name": "Rutgers NJMS Seven/Eight-Year Affiliated Programs",
+        "type": "official_med_school_page",
+        "url": "https://njms.rutgers.edu/admissions/programs_7_8_year.php"
+      }
+    ]
+  },
+  {
+    "id": "njit_njms_bsmd",
+    "name": "NJIT / Rutgers New Jersey Medical School Accelerated BS/MD Program",
+    "program_type": "3+4 BS/MD",
+    "apply_stage": "high_school_senior",
+    "undergraduate_school": "New Jersey Institute of Technology",
+    "medical_school": "Rutgers New Jersey Medical School",
+    "medical_degree": "MD",
+    "years_undergrad": 3,
+    "years_medical": 4,
+    "total_years": 7,
+    "medical_seat_certainty": "conditional_dual_admission",
+    "certainty_category": "conditional_medical_school_seat",
+    "interview_guarantee": true,
+    "admission_guarantee": "conditional",
+    "mcat_required": true,
+    "mcat_minimum": null,
+    "mcat_policy": "MCAT required; NJIT FAQ says no minimum score requirement.",
+    "college_gpa_minimum": 3.5,
+    "science_gpa_minimum": null,
+    "course_grade_minimum": "B or better in all premedical courses",
+    "known_academic_requirements": [
+      "Students complete three years at NJIT followed by four years at Rutgers NJMS.",
+      "Students must take the MCAT, but NJIT FAQ says there is no minimum score requirement.",
+      "Students must earn B or better in all premedical courses.",
+      "Students must maintain an overall GPA of at least 3.5 each semester.",
+      "Students must fulfill Albert Dorman Honors College requirements before matriculating at NJMS."
+    ],
+    "application_deadline": "Verify annually",
+    "cost_category": "NJ public STEM value",
+    "strategic_value": "Public STEM direct-med pathway with NJMS linkage and strong health-tech fallback potential.",
+    "best_for": [
+      "Student who likes medicine plus STEM, engineering, biomedical science, or health tech",
+      "Student who wants a NJ public direct-med high-reach option",
+      "Student who would be happy at NJIT even if medicine changed"
+    ],
+    "watch_outs": [
+      "STEM-heavy environment may raise GPA risk.",
+      "This should not be chosen only for the medical-school endpoint.",
+      "Highly selective; 2022–23 cycle listed 28 offers from 375 total applicants on NJIT FAQ.",
+      "Verify current cycle requirements and applicant counts."
+    ],
+    "app_label": "Public STEM direct-med high-reach / NJIT Honors + NJMS",
+    "source_confidence": "medium_high",
+    "data_status": "starter_record_verify_current_cycle",
+    "sources": [
+      {
+        "name": "NJIT NJMS Accelerated BS/MD Program FAQs",
+        "type": "official_program_faq",
+        "url": "https://honors.njit.edu/content/njms-accelerated-bsmd-program-faqs"
+      }
+    ]
+  },
+  {
+    "id": "rutgers_newark_njms_bamd",
+    "name": "Rutgers-Newark BA/MD with Rutgers New Jersey Medical School",
+    "program_type": "7-year BA/MD",
+    "apply_stage": "high_school_senior",
+    "undergraduate_school": "Rutgers University - Newark",
+    "medical_school": "Rutgers New Jersey Medical School",
+    "medical_degree": "MD",
+    "years_undergrad": 3,
+    "years_medical": 4,
+    "total_years": 7,
+    "medical_seat_certainty": "conditional_pathway",
+    "certainty_category": "conditional_medical_school_seat",
+    "interview_guarantee": true,
+    "admission_guarantee": "conditional",
+    "mcat_required": null,
+    "mcat_minimum": null,
+    "mcat_policy": "Verify current MCAT policy directly.",
+    "college_gpa_minimum": null,
+    "science_gpa_minimum": null,
+    "course_grade_minimum": null,
+    "known_academic_requirements": [
+      "Rutgers-Newark describes the BA/MD program as a seven-year joint degree program with Rutgers NJMS.",
+      "Rutgers-Newark page says admission is highly competitive.",
+      "Rutgers-Newark page lists minimum SAT-I critical reading and math score of 1400 in one test administration."
+    ],
+    "application_deadline": "Verify annually",
+    "cost_category": "NJ public value",
+    "strategic_value": "Urban NJ public direct-med pathway with NJMS proximity.",
+    "best_for": [
+      "Student interested in Rutgers NJMS and an urban campus",
+      "Student who wants a public direct-med pathway",
+      "Student comfortable with Newark campus fit and urban clinical context"
+    ],
+    "watch_outs": [
+      "Do not confuse Rutgers-Newark BA/MD with Rutgers-New Brunswick early assurance options.",
+      "Verify MCAT, GPA, continuation, and applying-out policies.",
+      "Urban-campus fit matters.",
+      "Treat as high reach."
+    ],
+    "app_label": "Rutgers-Newark direct-med / urban NJMS pathway",
+    "source_confidence": "medium",
+    "data_status": "starter_record_verify_current_cycle",
+    "sources": [
+      {
+        "name": "Rutgers-Newark BA/MD Program",
+        "type": "official_program_page",
+        "url": "https://sasn.rutgers.edu/bamd-program"
+      },
+      {
+        "name": "Rutgers Health Professions Office FAQ",
+        "type": "official_advising_page",
+        "url": "https://hpo.rutgers.edu/students/current-students/junior?catid=2&id=17%3Afaqs&view=article"
+      }
+    ]
+  },
+  {
+    "id": "sophie_davis_cuny_bsmd",
+    "name": "Sophie Davis Biomedical Education Program / CUNY School of Medicine",
+    "program_type": "7-year BS/MD",
+    "apply_stage": "high_school_senior",
+    "undergraduate_school": "CUNY School of Medicine / Sophie Davis Biomedical Education Program",
+    "medical_school": "CUNY School of Medicine",
+    "medical_degree": "MD",
+    "years_undergrad": 3,
+    "years_medical": 4,
+    "total_years": 7,
+    "medical_seat_certainty": "integrated_bs_md_pathway",
+    "certainty_category": "direct_medical_pathway",
+    "interview_guarantee": null,
+    "admission_guarantee": "conditional",
+    "mcat_required": null,
+    "mcat_minimum": null,
+    "mcat_policy": "Verify current MCAT and progression policy directly.",
+    "college_gpa_minimum": null,
+    "science_gpa_minimum": null,
+    "course_grade_minimum": null,
+    "known_academic_requirements": [
+      "Official page describes Sophie Davis as an accelerated pathway to a medical degree for high-school graduates.",
+      "Official requirements page lists minimum cumulative high-school GPA average of 85 across first three years.",
+      "Application requires personal essays and recommendation letters.",
+      "Program mission emphasizes preparing physicians committed to communities with healthcare provider shortages."
+    ],
+    "application_deadline": "Verify annually",
+    "cost_category": "public mission-driven",
+    "strategic_value": "Public, mission-driven direct-med pathway focused on physician workforce and underserved communities.",
+    "best_for": [
+      "Student with strong service/mission fit",
+      "Student interested in urban public medical education",
+      "Student committed to medicine and underserved communities"
+    ],
+    "watch_outs": [
+      "Mission fit is central.",
+      "Not just a prestige program.",
+      "Verify progression, MCAT, residency, and applying-out policies.",
+      "NYC/public-system fit matters."
+    ],
+    "app_label": "Public mission-driven direct-med / CUNY School of Medicine",
+    "source_confidence": "medium",
+    "data_status": "starter_record_verify_current_cycle",
+    "sources": [
+      {
+        "name": "CUNY School of Medicine Admissions",
+        "type": "official_admissions_page",
+        "url": "https://medicine.cuny.edu/admissions/"
+      },
+      {
+        "name": "Sophie Davis BS/MD Requirements",
+        "type": "official_requirements_page",
+        "url": "https://medicine.cuny.edu/admissions/bs-md-requirements/"
+      },
+      {
+        "name": "CUNY School of Medicine Facts & Figures",
+        "type": "official_facts_page",
+        "url": "https://medicine.cuny.edu/about/facts-figures/"
+      }
+    ]
+  },
+  {
+    "id": "brown_plme",
+    "name": "Brown Program in Liberal Medical Education",
+    "program_type": "8-year BA/BS + MD",
+    "apply_stage": "high_school_senior",
+    "undergraduate_school": "Brown University",
+    "medical_school": "Warren Alpert Medical School of Brown University",
+    "medical_degree": "MD",
+    "years_undergrad": 4,
+    "years_medical": 4,
+    "total_years": 8,
+    "medical_seat_certainty": "direct_medical_pathway_after_successful_undergrad_progression",
+    "certainty_category": "direct_medical_pathway",
+    "interview_guarantee": null,
+    "admission_guarantee": "conditional",
+    "mcat_required": null,
+    "mcat_minimum": null,
+    "mcat_policy": "Verify current MCAT policy directly.",
+    "college_gpa_minimum": null,
+    "science_gpa_minimum": null,
+    "course_grade_minimum": null,
+    "known_academic_requirements": [
+      "Brown describes PLME as an eight-year continuum combining liberal arts undergraduate education with medical education.",
+      "PLME eligibility page says there are no high-school prerequisites beyond Brown College requirements, though advanced coursework is encouraged.",
+      "PLME should be modeled separately from Brown regular undergrad premed."
+    ],
+    "application_deadline": "Brown application cycle; verify annually",
+    "cost_category": "elite private need-aid",
+    "strategic_value": "Elite direct-med path with open curriculum and reduced traditional premed uncertainty.",
+    "best_for": [
+      "Student who is highly committed to medicine and also wants broad liberal arts exploration",
+      "Student attracted to Brown's open curriculum",
+      "Student who can present a mature, credible medicine narrative in high school"
+    ],
+    "watch_outs": [
+      "Ultra-selective.",
+      "Brown PLME and Brown regular premed are different strategies.",
+      "Verify applying-out rules and MCAT/progression policies.",
+      "Direct-med structure may reduce uncertainty but can also lock in the path early."
+    ],
+    "app_label": "Elite direct-med / PLME / open curriculum",
+    "source_confidence": "medium",
+    "data_status": "starter_record_verify_current_cycle",
+    "sources": [
+      {
+        "name": "Brown PLME",
+        "type": "official_program_page",
+        "url": "https://plme.med.brown.edu/"
+      },
+      {
+        "name": "Brown PLME Eligibility",
+        "type": "official_eligibility_page",
+        "url": "https://plme.med.brown.edu/admission-aid/eligibility"
+      },
+      {
+        "name": "Brown PLME Facts & Figures",
+        "type": "official_facts_page",
+        "url": "https://plme.med.brown.edu/about/facts-figures"
+      }
+    ]
+  },
+  {
+    "id": "pitt_medicine_gap",
+    "name": "University of Pittsburgh School of Medicine Guaranteed Admission Program",
+    "program_type": "Guaranteed Admission Program",
+    "apply_stage": "high_school_senior",
+    "undergraduate_school": "University of Pittsburgh",
+    "medical_school": "University of Pittsburgh School of Medicine",
+    "medical_degree": "MD",
+    "years_undergrad": 4,
+    "years_medical": 4,
+    "total_years": 8,
+    "medical_seat_certainty": "conditional_guaranteed_admission",
+    "certainty_category": "guaranteed_admission_with_high_continuation_requirements",
+    "interview_guarantee": true,
+    "admission_guarantee": "conditional",
+    "mcat_required": true,
+    "mcat_minimum": 517,
+    "mcat_policy": "MCAT required with minimum composite score of 517 within stated attempt/timing limits.",
+    "college_gpa_minimum": 3.7,
+    "science_gpa_minimum": 3.7,
+    "course_grade_minimum": null,
+    "known_academic_requirements": [
+      "Maintain cumulative undergraduate GPA of 3.70.",
+      "Maintain BCPM GPA of 3.70.",
+      "Complete undergraduate degree within four years.",
+      "Achieve minimum composite MCAT score of 517 within three attempts by the specified timeline."
+    ],
+    "application_deadline": "Pitt application cycle; verify annually",
+    "cost_category": "OOS public cost-sensitive",
+    "strategic_value": "Strong health-sciences ecosystem with conditional medical admission, but MCAT bar remains very high.",
+    "best_for": [
+      "Student who wants Pitt's health-sciences ecosystem",
+      "Student who is highly academically prepared and comfortable with a high MCAT requirement",
+      "Student for whom Pitt's cost and fit make sense"
+    ],
+    "watch_outs": [
+      "The 517 MCAT minimum is a major continuation hurdle.",
+      "This reduces some uncertainty but does not eliminate premed pressure.",
+      "For a NJ family, out-of-state cost must be compared against NJ public options.",
+      "Verify current SAT/ACT, application, and continuation rules."
+    ],
+    "app_label": "Pitt health-sciences ecosystem / guaranteed admission with high MCAT bar",
+    "source_confidence": "high",
+    "data_status": "starter_record_verify_current_cycle",
+    "sources": [
+      {
+        "name": "Pitt School of Medicine Guaranteed Admission Program",
+        "type": "official_program_page",
+        "url": "https://www.medadmissions.pitt.edu/upsom-programs/guaranteed-admission-program"
+      },
+      {
+        "name": "Pitt Guaranteed Admissions Programs",
+        "type": "official_admissions_page",
+        "url": "https://admissions.pitt.edu/guaranteed-admissions-programs/"
+      }
+    ]
+  },
+  {
+    "id": "drexel_babs_md",
+    "name": "Drexel BA/BS+MD Early Assurance Program",
+    "program_type": "4+4 BA/BS + MD Early Assurance",
+    "apply_stage": "high_school_senior",
+    "undergraduate_school": "Drexel University",
+    "medical_school": "Drexel University College of Medicine",
+    "medical_degree": "MD",
+    "years_undergrad": 4,
+    "years_medical": 4,
+    "total_years": 8,
+    "medical_seat_certainty": "provisional_early_assurance_not_guaranteed",
+    "certainty_category": "provisional_acceptance",
+    "interview_guarantee": true,
+    "admission_guarantee": "not_guaranteed",
+    "mcat_required": null,
+    "mcat_minimum": null,
+    "mcat_policy": "Verify current MCAT requirement and minimum directly.",
+    "college_gpa_minimum": 3.6,
+    "science_gpa_minimum": 3.6,
+    "course_grade_minimum": null,
+    "known_academic_requirements": [
+      "Drexel describes this as a 4+4 combined degree program with provisional early acceptance.",
+      "Drexel undergraduate admissions page says acceptance into the College of Medicine is not guaranteed.",
+      "Program requires maintaining at least 3.6 GPA in all coursework and BCPM classes.",
+      "Program includes service and co-op-related requirements; verify current details."
+    ],
+    "application_deadline": "Verify annually",
+    "cost_category": "private aid-dependent",
+    "strategic_value": "Private urban co-op early-assurance pathway; useful but not a guaranteed medical-school seat.",
+    "best_for": [
+      "Student who likes Drexel's co-op model",
+      "Student interested in urban Philadelphia healthcare context",
+      "Student who wants a structured medicine-oriented private pathway"
+    ],
+    "watch_outs": [
+      "Not guaranteed admission to Drexel College of Medicine.",
+      "High sticker price.",
+      "Quarter/co-op structure may complicate premed sequencing.",
+      "Verify MCAT, GPA, service, co-op, and applying-out rules."
+    ],
+    "app_label": "Private urban co-op / early assurance / not fully guaranteed",
+    "source_confidence": "medium",
+    "data_status": "starter_record_verify_current_cycle",
+    "sources": [
+      {
+        "name": "Drexel College of Medicine Accelerated and Early Linkage Programs",
+        "type": "official_med_school_page",
+        "url": "https://drexel.edu/medicine/academics/md-program/md-program-admissions/accelerated-early-linkage/"
+      },
+      {
+        "name": "Drexel First-Year Accelerated Degree Instructions",
+        "type": "official_admissions_page",
+        "url": "https://drexel.edu/admissions/apply/undergrad-instructions/first-year-instructions/accelerated"
+      }
+    ]
+  },
+  {
+    "id": "rochester_rems",
+    "name": "University of Rochester Early Medical Scholars",
+    "program_type": "8-year BA/BS + MD",
+    "apply_stage": "high_school_senior",
+    "undergraduate_school": "University of Rochester",
+    "medical_school": "University of Rochester School of Medicine and Dentistry",
+    "medical_degree": "MD",
+    "years_undergrad": 4,
+    "years_medical": 4,
+    "total_years": 8,
+    "medical_seat_certainty": "accepted_to_medical_school_after_successful_completion",
+    "certainty_category": "direct_medical_pathway",
+    "interview_guarantee": null,
+    "admission_guarantee": "conditional",
+    "mcat_required": null,
+    "mcat_minimum": null,
+    "mcat_policy": "Verify current MCAT policy directly.",
+    "college_gpa_minimum": null,
+    "science_gpa_minimum": null,
+    "course_grade_minimum": null,
+    "known_academic_requirements": [
+      "REMS is an eight-year BA/BS + MD program.",
+      "Rochester says REMS students are admitted to the School of Medicine and Dentistry once they successfully complete the bachelor's degree and pre-med core courses.",
+      "Rochester advising handbook says REMS enrollment is limited to ten students per year."
+    ],
+    "application_deadline": "University of Rochester application cycle; verify annually",
+    "cost_category": "private aid-dependent",
+    "strategic_value": "Private research/medical-center direct-med path with very small cohort.",
+    "best_for": [
+      "Student strongly committed to medicine",
+      "Student attracted to Rochester's research and medical-center ecosystem",
+      "Student who values direct-med certainty and a smaller cohort"
+    ],
+    "watch_outs": [
+      "Extremely selective due to tiny cohort.",
+      "High sticker cost unless aid is strong.",
+      "Verify MCAT, GPA, applying-out, and progression rules.",
+      "Lucy would need a compelling medicine narrative."
+    ],
+    "app_label": "Private research/medical-center direct-med / REMS",
+    "source_confidence": "high",
+    "data_status": "starter_record_verify_current_cycle",
+    "sources": [
+      {
+        "name": "Rochester Early Medical Scholars",
+        "type": "official_program_page",
+        "url": "https://admissions.rochester.edu/academics/rems/"
+      },
+      {
+        "name": "Rochester Advising Handbook - Admissions Programs",
+        "type": "official_advising_handbook",
+        "url": "https://www.rochester.edu/college/ccas/handbook/admissions-programs.html"
+      }
+    ]
+  },
+  {
+    "id": "rowan_3plus4_md_do",
+    "name": "Rowan 3+4 Medical Degree Programs",
+    "program_type": "3+4 BS-MD / BS-DO",
+    "apply_stage": "high_school_senior_or_incoming_first_year",
+    "undergraduate_school": "Rowan University",
+    "medical_school": "Cooper Medical School of Rowan University and/or Rowan-Virtua School of Osteopathic Medicine",
+    "medical_degree": "MD_or_DO",
+    "years_undergrad": 3,
+    "years_medical": 4,
+    "total_years": 7,
+    "medical_seat_certainty": "conditional_accelerated_pathway",
+    "certainty_category": "conditional_medical_school_seat",
+    "interview_guarantee": null,
+    "admission_guarantee": "conditional",
+    "mcat_required": null,
+    "mcat_minimum": null,
+    "mcat_policy": "Verify specific MCAT policy separately for CMSRU MD and Rowan-Virtua SOM DO pathways.",
+    "college_gpa_minimum": null,
+    "science_gpa_minimum": null,
+    "course_grade_minimum": null,
+    "known_academic_requirements": [
+      "Rowan describes several accelerated seven-year medical school programs, also called 3+4 programs.",
+      "Programs are offered in partnership with Cooper Medical School of Rowan University and Rowan-Virtua School of Osteopathic Medicine.",
+      "Cooper CMSRU page describes the 3+4 BS-MD as an accelerated dual-degree program for exceptional high-school seniors applying to Rowan University and CMSRU."
+    ],
+    "application_deadline": "Verify annually",
+    "cost_category": "NJ public value",
+    "strategic_value": "NJ public accelerated MD/DO pathway that introduces both allopathic and osteopathic medicine options.",
+    "best_for": [
+      "Student interested in NJ public healthcare ecosystem",
+      "Student open to either MD or DO pathway depending program",
+      "Student attracted to Rowan's health-professions environment"
+    ],
+    "watch_outs": [
+      "Separate CMSRU MD and Rowan-Virtua SOM DO pathways in future data model.",
+      "Verify specific GPA, MCAT, interview, and progression policies.",
+      "Do not collapse MD and DO into one identical pathway.",
+      "Rowan fit matters."
+    ],
+    "app_label": "NJ public accelerated MD/DO / Rowan health ecosystem",
+    "source_confidence": "medium_high",
+    "data_status": "starter_record_split_md_do_later",
+    "sources": [
+      {
+        "name": "Rowan 3+4 Medical Degree Programs",
+        "type": "official_program_page",
+        "url": "https://sites.rowan.edu/academic-affairs/office-of-pre-health/affiliations-and-partnerships/3-4-medical-degree-program.html"
+      },
+      {
+        "name": "Cooper Medical School Special Pathways",
+        "type": "official_med_school_page",
+        "url": "https://cmsru.rowan.edu/education/medical-education-programs/special-pathways.html"
+      }
+    ]
+  },
+  {
+    "id": "temple_premed_health_scholars",
+    "name": "Temple Pre-Med Health Scholars Program",
+    "program_type": "Early Assurance / Linkage",
+    "apply_stage": "after_starting_college",
+    "undergraduate_school": "Temple University",
+    "medical_school": "Lewis Katz School of Medicine at Temple University",
+    "medical_degree": "MD",
+    "years_undergrad": 4,
+    "years_medical": 4,
+    "total_years": 8,
+    "medical_seat_certainty": "provisional_acceptance_after_college_enrollment",
+    "certainty_category": "early_assurance_after_enrollment",
+    "interview_guarantee": true,
+    "admission_guarantee": "conditional",
+    "mcat_required": true,
+    "mcat_minimum": 509,
+    "mcat_policy": "MCAT required; Temple page lists minimum composite 509 with no section below 126 for provisional acceptance.",
+    "college_gpa_minimum": 3.6,
+    "science_gpa_minimum": 3.6,
+    "course_grade_minimum": null,
+    "known_academic_requirements": [
+      "Students begin the process in their first year at Temple.",
+      "Students apply during the fall semester of sophomore year.",
+      "Temple lists cumulative GPA of 3.6 and science GPA of 3.6.",
+      "Temple lists MCAT minimum composite score of 509 with no section below 126.",
+      "Program includes healthcare exposure, service, and research expectations."
+    ],
+    "application_deadline": "Apply during Temple undergraduate timeline; verify annually",
+    "cost_category": "urban public/private-cost-sensitive depending residency and aid",
+    "strategic_value": "Urban clinical early-assurance path after starting college; not a high-school senior direct-med program.",
+    "best_for": [
+      "Student interested in Temple's urban clinical ecosystem",
+      "Student who wants to prove herself during freshman/sophomore year",
+      "Student comfortable with MCAT and GPA continuation requirements"
+    ],
+    "watch_outs": [
+      "Not the same as a high-school direct-admit BS/MD.",
+      "MCAT still required.",
+      "Honors Program and advising registration rules matter.",
+      "Cost and campus fit need analysis."
+    ],
+    "app_label": "Temple early assurance / urban clinical ecosystem / MCAT still required",
+    "source_confidence": "medium",
+    "data_status": "starter_record_verify_current_cycle",
+    "sources": [
+      {
+        "name": "Temple Pre-Med Health Scholars",
+        "type": "official_program_page",
+        "url": "https://undergraduate.temple.edu/healthadvising/specialprograms/premedscholars"
+      },
+      {
+        "name": "Temple LKSOM Special Admissions",
+        "type": "official_med_school_page",
+        "url": "https://medicine.temple.edu/education/md-program/how-apply/special-admissions"
+      }
+    ]
+  },
+  {
+    "id": "seton_hall_hmh_joint_md",
+    "name": "Seton Hall / Hackensack Meridian Joint Bachelor's/M.D. Program",
+    "program_type": "Joint Bachelor's/M.D. Guaranteed Interview Pathway",
+    "apply_stage": "high_school_senior",
+    "undergraduate_school": "Seton Hall University",
+    "medical_school": "Hackensack Meridian School of Medicine",
+    "medical_degree": "MD",
+    "years_undergrad": 4,
+    "years_medical": 3,
+    "total_years": 7,
+    "medical_seat_certainty": "guaranteed_interview_only",
+    "certainty_category": "guaranteed_interview_not_admission",
+    "interview_guarantee": true,
+    "admission_guarantee": "not_guaranteed",
+    "mcat_required": null,
+    "mcat_minimum": null,
+    "mcat_policy": "Verify current MCAT and continuation policy directly.",
+    "college_gpa_minimum": null,
+    "science_gpa_minimum": null,
+    "course_grade_minimum": null,
+    "known_academic_requirements": [
+      "Seton Hall states the program guarantees an interview with Hackensack Meridian School of Medicine if continuation requirements are met.",
+      "Seton Hall states the program does not guarantee admission to the School of Medicine.",
+      "Admission depends on application materials, fourth-year interview, academic record, and medical-school admissions committee decision."
+    ],
+    "application_deadline": "Verify annually",
+    "cost_category": "private aid-dependent",
+    "strategic_value": "Private NJ pre-health pathway that provides a guaranteed interview advantage but not a guaranteed medical-school seat.",
+    "best_for": [
+      "Student interested in Seton Hall's private NJ environment",
+      "Student interested in Hackensack Meridian School of Medicine",
+      "Student who values an interview advantage but understands it is not a seat"
+    ],
+    "watch_outs": [
+      "This is not a guaranteed BS/MD seat.",
+      "Private-school cost and aid matter.",
+      "The app should explicitly label this as guaranteed interview only.",
+      "Verify exact continuation requirements."
+    ],
+    "app_label": "Private NJ guaranteed-interview pathway / not guaranteed admission",
+    "source_confidence": "high",
+    "data_status": "starter_record_verify_current_cycle",
+    "sources": [
+      {
+        "name": "Seton Hall Joint Bachelor's/M.D. Program",
+        "type": "official_program_page",
+        "url": "https://www.shu.edu/academics/ba-bs-md.html"
+      },
+      {
+        "name": "Seton Hall Requirements for Admission to the 4+3 Program",
+        "type": "official_requirements_page",
+        "url": "https://www.shu.edu/undergraduate-admissions/requirements-for-admission-to-the-4-3-program.html"
+      }
+    ]
+  },
+  {
+    "id": "stevens_njms_accelerated_premed",
+    "name": "Stevens / Rutgers New Jersey Medical School Accelerated Pre-Medicine",
+    "program_type": "3+4 Accelerated Pre-Medicine",
+    "apply_stage": "high_school_senior",
+    "undergraduate_school": "Stevens Institute of Technology",
+    "medical_school": "Rutgers New Jersey Medical School",
+    "medical_degree": "MD",
+    "years_undergrad": 3,
+    "years_medical": 4,
+    "total_years": 7,
+    "medical_seat_certainty": "conditional_accelerated_pathway",
+    "certainty_category": "conditional_medical_school_seat",
+    "interview_guarantee": true,
+    "admission_guarantee": "conditional",
+    "mcat_required": null,
+    "mcat_minimum": null,
+    "mcat_policy": "Verify current MCAT policy directly.",
+    "college_gpa_minimum": null,
+    "science_gpa_minimum": null,
+    "course_grade_minimum": null,
+    "known_academic_requirements": [
+      "Stevens describes its Accelerated Pre-Medicine program as paired with Rutgers NJMS.",
+      "Students apply to both Stevens and the medical school.",
+      "Students complete a set program at Stevens and transfer to professional school after three years.",
+      "Stevens program pages list SAT 1400 or ACT 32 and medical exposure such as shadowing, volunteering, or research.",
+      "Stevens pages appear to differ on top 5% versus top 10% class-rank language; verify directly."
+    ],
+    "application_deadline": "November 1, verify annually",
+    "cost_category": "private STEM aid-dependent",
+    "strategic_value": "Private STEM direct-med pathway with NJMS linkage and strong STEM/health-tech fallback.",
+    "best_for": [
+      "Student interested in medicine plus STEM, engineering, or chemical biology",
+      "Student who would like Stevens even outside the medical pathway",
+      "Student seeking a private NJ-area direct-med option"
+    ],
+    "watch_outs": [
+      "Very high sticker cost unless aid is strong.",
+      "STEM rigor may create GPA risk.",
+      "Verify class-rank discrepancy and continuation requirements.",
+      "This is only a good fit if Stevens itself fits Lucy."
+    ],
+    "app_label": "Private STEM direct-med / Stevens + Rutgers NJMS",
+    "source_confidence": "medium",
+    "data_status": "starter_record_verify_current_cycle",
+    "sources": [
+      {
+        "name": "Stevens Pre-Professional and Accelerated Programs",
+        "type": "official_program_page",
+        "url": "https://www.stevens.edu/admission-aid/undergraduate-admissions/pre-professional-and-accelerated-programs"
+      },
+      {
+        "name": "Stevens Accelerated Chemical Biology Bachelor's Degree",
+        "type": "official_program_page",
+        "url": "https://www.stevens.edu/program/accelerated-chemical-biology-bachelor-degree"
+      }
+    ]
+  }
+]
