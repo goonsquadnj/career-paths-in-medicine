@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import maplibregl, { Map as MapLibreMap, Marker, Popup } from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import type { School } from '../types/school';
@@ -21,12 +21,23 @@ export function SchoolMap({ schools, onSelectSchool }: SchoolMapProps) {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const mapRef = useRef<MapLibreMap | null>(null);
   const markersRef = useRef<Map<string, Marker>>(new Map());
+  // Guards against React StrictMode's dev-only mount -> unmount -> remount
+  // cycle: without this, the first mount's async `load` handler can fire
+  // after the second mount has already created a new map instance (or after
+  // teardown), leaving markers unsynced. This ref is set synchronously in
+  // the init effect and cleared in its cleanup, so any callback that fires
+  // after teardown can check it and bail out instead of racing.
+  const isMountedRef = useRef(false);
+  const [isStyleReady, setIsStyleReady] = useState(false);
   const [showWishlistOnly, setShowWishlistOnly] = useState(false);
   const wishlist = useWishlistStore((s) => s.wishlist);
 
-  // Init map once.
+  // Init map once per mount.
   useEffect(() => {
-    if (!containerRef.current || mapRef.current) return;
+    if (!containerRef.current) return;
+
+    isMountedRef.current = true;
+    setIsStyleReady(false);
 
     const map = new maplibregl.Map({
       container: containerRef.current,
@@ -37,25 +48,50 @@ export function SchoolMap({ schools, onSelectSchool }: SchoolMapProps) {
     map.addControl(new maplibregl.NavigationControl(), 'top-right');
     mapRef.current = map;
 
+    const handleLoad = () => {
+      // Ignore a stale `load` firing after this effect instance was torn
+      // down (e.g. StrictMode's synchronous unmount/remount in dev).
+      if (!isMountedRef.current || mapRef.current !== map) return;
+      setIsStyleReady(true);
+    };
+
+    if (map.isStyleLoaded()) {
+      handleLoad();
+    } else {
+      map.once('load', handleLoad);
+    }
+
     return () => {
+      isMountedRef.current = false;
+      map.off('load', handleLoad);
+      // Clear marker bookkeeping — the markers themselves are destroyed
+      // along with the map's DOM via map.remove(), but stale entries here
+      // would make the next mount's sync think markers already exist.
+      markersRef.current.clear();
       map.remove();
-      mapRef.current = null;
+      if (mapRef.current === map) {
+        mapRef.current = null;
+      }
+      setIsStyleReady(false);
     };
   }, []);
 
   // Compute the schools actually visible on the map: the filtered set passed
   // in from App.tsx, optionally narrowed further to just the wishlist tiers.
-  const visibleSchools = showWishlistOnly
-    ? schools.filter((s) => Boolean(wishlist[s.id]))
-    : schools;
+  // Memoized so this array is only recreated when an actual input changes,
+  // not on every render (e.g. from unrelated parent re-renders).
+  const visibleSchools = useMemo(
+    () => (showWishlistOnly ? schools.filter((s) => Boolean(wishlist[s.id])) : schools),
+    [schools, showWishlistOnly, wishlist],
+  );
 
-  // Sync markers whenever the visible set changes.
-  useEffect(() => {
-    const map = mapRef.current;
-    if (!map) return;
-
-    const syncMarkers = () => {
-      const visibleIds = new Set(visibleSchools.map((s) => s.id));
+  // Idempotent marker reconciliation: safe to call any number of times with
+  // any visible set — it diffs against markersRef and only adds/removes what
+  // changed. This is the single source of truth for what's rendered, called
+  // both once the style is ready and whenever the visible set changes.
+  const syncMarkers = useCallback(
+    (map: MapLibreMap, visible: School[]) => {
+      const visibleIds = new Set(visible.map((s) => s.id));
 
       // Remove markers no longer visible.
       for (const [id, marker] of markersRef.current) {
@@ -66,7 +102,7 @@ export function SchoolMap({ schools, onSelectSchool }: SchoolMapProps) {
       }
 
       // Add markers for newly-visible schools.
-      for (const school of visibleSchools) {
+      for (const school of visible) {
         if (markersRef.current.has(school.id)) continue;
 
         const tier = wishlist[school.id];
@@ -97,15 +133,19 @@ export function SchoolMap({ schools, onSelectSchool }: SchoolMapProps) {
 
         markersRef.current.set(school.id, marker);
       }
-    };
+    },
+    [onSelectSchool, wishlist],
+  );
 
-    if (map.isStyleLoaded()) {
-      syncMarkers();
-    } else {
-      map.once('load', syncMarkers);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [visibleSchools, wishlist]);
+  // Re-run marker sync whenever the style becomes ready or the visible set
+  // (or wishlist tiers, which affect marker color) changes. Because
+  // syncMarkers is idempotent, this is correct regardless of how many times
+  // or in what order it fires.
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !isStyleReady) return;
+    syncMarkers(map, visibleSchools);
+  }, [isStyleReady, visibleSchools, syncMarkers]);
 
   return (
     <div className="flex flex-col gap-2">
