@@ -16,7 +16,7 @@ preserved below; status column added as fixes land.
 | 1a | Map renders zero pins on most loads (StrictMode race) | HIGH | Fixing now |
 | 1b | "Wishlist only" map toggle empties map, doesn't recover | HIGH | Fixing now |
 | 1c | preview_screenshot hangs on map canvas | MED | Tooling note, not a product bug |
-| 2a | No source/confidence shown in UI (violates vision non-negotiable) | HIGH | Resolved — commit `<pending>` — added a low-key "Confidence / data status / Sources" line to `SchoolCard.tsx` and `ProgramCard.tsx`, plus a `fmtDataStatus` helper in `format.ts` |
+| 2a | No source/confidence shown in UI (violates vision non-negotiable) | HIGH | Resolved — commit `5846765` — added a low-key "Confidence / data status / Sources" line to `SchoolCard.tsx` and `ProgramCard.tsx`, plus a `fmtDataStatus` helper in `format.ts` |
 | 2b | Certainty nuance shallow on ProgramCard (badge only) | MED | Deferred — design pass |
 | 3a | `rutgers_newark` has copied/fabricated-looking earnings+debt, falsely marked "verified" | HIGH | Fixing now |
 | 3b | `fetch-scorecard.mjs` blanket-stamps confidence/status regardless of which fields actually refreshed | HIGH | Fixing now |
