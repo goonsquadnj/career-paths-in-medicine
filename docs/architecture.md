@@ -1,6 +1,6 @@
 # Architecture & Technology Strategy
 
-Project: Lucy's Healthcare Pathway Planner
+Project: Healthcare Pathway Planner
 Status: **DECIDED (2026-07-09)** — React + Vite + TypeScript confirmed for R0
 Last updated: 2026-07-09
 

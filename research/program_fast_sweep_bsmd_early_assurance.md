@@ -1,7 +1,7 @@
 # Program Fast Sweep — BS/MD, BA/MD, Early Assurance, and Medical Linkage Programs
 
 Research date: 2026-07-09
-Project: Lucy Healthcare Pathway Planner
+Project: Healthcare Pathway Planner
 Batch: BS/MD / BA/MD / early assurance / medical linkage programs
 Status: Draft research notes before JSON conversion
 

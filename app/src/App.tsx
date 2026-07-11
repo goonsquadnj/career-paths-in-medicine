@@ -125,7 +125,7 @@ function App() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-8 flex flex-col gap-8">
       <header>
-        <h1 className="text-3xl font-bold text-gray-900">Lucy's Healthcare Pathway Planner</h1>
+        <h1 className="text-3xl font-bold text-gray-900">Healthcare Pathway Planner</h1>
         <p className="mt-1 text-gray-600">
           Exploring undergraduate schools and medical pathway programs. v1 data — not final admissions
           advice. See the certainty explainer below before treating any program as a guarantee.

@@ -1,7 +1,7 @@
 # School Fast Sweep — Regional Public / Urban Clinical Ecosystem Schools
 
 Research date: 2026-07-09
-Project: Lucy Healthcare Pathway Planner
+Project: Healthcare Pathway Planner
 Batch: Regional public / urban clinical ecosystem schools
 Status: Draft research notes before JSON conversion
 

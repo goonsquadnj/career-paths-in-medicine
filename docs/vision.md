@@ -1,6 +1,6 @@
 # Vision & Intent
 
-Project: Lucy's Healthcare Pathway Planner
+Project: Healthcare Pathway Planner
 Status: Living document — this is the north star
 Last updated: 2026-07-09
 

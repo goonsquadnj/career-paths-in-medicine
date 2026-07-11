@@ -1,6 +1,6 @@
 # Data Dictionary
 
-Project: Lucy Healthcare Pathway Planner
+Project: Healthcare Pathway Planner
 Status: Draft
 Purpose: Define the data files and fields used by the app
 

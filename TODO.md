@@ -1,4 +1,4 @@
-# TODO — Lucy's Healthcare Pathway Planner
+# TODO — Healthcare Pathway Planner
 
 > **Note:** This file tracks granular data/feature TODOs. The full product
 > strategy (features with intent, staged releases) lives in

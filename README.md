@@ -1,4 +1,4 @@
-# Lucy's Healthcare Pathway Planner
+# Healthcare Pathway Planner
 
 A personal planning tool for a father and daughter (Lucy) exploring healthcare
 college and career paths together — undergraduate schools, direct-med / BS-MD /

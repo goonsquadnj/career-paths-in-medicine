@@ -1,7 +1,7 @@
 # School Scorecard Sweep — Elite / Reach / Name-Brand Schools
 
 Research date: 2026-07-09
-Project: Lucy Healthcare Pathway Planner
+Project: Healthcare Pathway Planner
 Batch: Elite / reach / name-brand schools
 Status: Draft research notes before JSON conversion
 

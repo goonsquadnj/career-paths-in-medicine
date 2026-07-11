@@ -1,7 +1,7 @@
 # School Fast Sweep — NJ / Local Anchor Schools
 
 Research date: 2026-07-09
-Project: Lucy Healthcare Pathway Planner
+Project: Healthcare Pathway Planner
 Batch: NJ/local anchor schools
 Status: Draft research notes before JSON conversion
 

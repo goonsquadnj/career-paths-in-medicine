@@ -1,6 +1,6 @@
 # Medical Pathway Certainty Model
 
-Project: Lucy Healthcare Pathway Planner
+Project: Healthcare Pathway Planner
 Status: Draft explanation for app + scoring model
 
 ## Purpose

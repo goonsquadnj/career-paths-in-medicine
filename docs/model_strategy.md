@@ -1,6 +1,6 @@
 # Model Strategy
 
-Project: Lucy's Healthcare Pathway Planner
+Project: Healthcare Pathway Planner
 Status: Living document
 Last updated: 2026-07-09
 
