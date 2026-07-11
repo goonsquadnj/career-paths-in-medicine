@@ -106,7 +106,7 @@ export function SchoolMap({ schools, onSelectSchool }: SchoolMapProps) {
         if (markersRef.current.has(school.id)) continue;
 
         const tier = wishlist[school.id];
-        const color = tier === 'reach' ? '#dc2626' : tier === 'target' ? '#d97706' : tier === 'safety' ? '#16a34a' : '#2563eb';
+        const color = tier === 'reach' ? '#dc2626' : tier === 'target' ? '#d97706' : tier === 'safety' ? '#16a34a' : '#0d9488';
 
         const popupNode = document.createElement('div');
         popupNode.className = 'text-sm';
@@ -116,7 +116,7 @@ export function SchoolMap({ schools, onSelectSchool }: SchoolMapProps) {
         `;
         const viewButton = document.createElement('button');
         viewButton.textContent = 'View school card';
-        viewButton.className = 'mt-1 text-blue-600 underline text-xs';
+        viewButton.className = 'mt-1 text-brand-700 underline text-xs';
         viewButton.addEventListener('click', () => onSelectSchool?.(school.id));
         popupNode.appendChild(viewButton);
 
@@ -153,9 +153,9 @@ export function SchoolMap({ schools, onSelectSchool }: SchoolMapProps) {
         <button
           type="button"
           onClick={() => setShowWishlistOnly(false)}
-          className={`rounded px-3 py-1 text-sm font-medium border ${
+          className={`min-h-11 rounded px-3 py-2 text-sm font-medium border ${
             !showWishlistOnly
-              ? 'bg-blue-600 text-white border-blue-600'
+              ? 'bg-brand-600 text-white border-brand-600'
               : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-50'
           }`}
         >
@@ -164,9 +164,9 @@ export function SchoolMap({ schools, onSelectSchool }: SchoolMapProps) {
         <button
           type="button"
           onClick={() => setShowWishlistOnly(true)}
-          className={`rounded px-3 py-1 text-sm font-medium border ${
+          className={`min-h-11 rounded px-3 py-2 text-sm font-medium border ${
             showWishlistOnly
-              ? 'bg-blue-600 text-white border-blue-600'
+              ? 'bg-brand-600 text-white border-brand-600'
               : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-50'
           }`}
         >

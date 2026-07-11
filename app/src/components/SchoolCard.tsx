@@ -1,6 +1,6 @@
 import type { School } from '../types/school';
 import { fmtCurrency, fmtDataStatus, fmtMoney, fmtPct, humanize } from '../lib/format';
-import { bucketChipClass } from '../lib/bucketColors';
+import { bucketTier, TIER_DOT_CLASSES, TIER_LABELS } from '../lib/bucketColors';
 import { useWishlistStore, type WishlistTier } from '../store/wishlistStore';
 
 const CONFIDENCE_CLASSES: Record<string, string> = {
@@ -10,11 +10,14 @@ const CONFIDENCE_CLASSES: Record<string, string> = {
   low: 'text-gray-500',
 };
 
-const STATUS_CLASSES: Record<string, string> = {
-  likely_include: 'bg-green-100 text-green-800',
-  possible_include: 'bg-yellow-100 text-yellow-800',
+// Status is our own verdict (likely/possible include) — deliberately a
+// different visual form (dot + text, no pill background) from the bucket
+// tier dot above it, so the two kinds of signal don't blur together.
+const STATUS_DOT_CLASSES: Record<string, string> = {
+  likely_include: 'bg-brand-600',
+  possible_include: 'bg-amber-500',
 };
-const DEFAULT_STATUS_CLASS = 'bg-gray-100 text-gray-700';
+const DEFAULT_STATUS_DOT_CLASS = 'bg-gray-400';
 
 const GPA_CLASSES: Record<string, string> = {
   low: 'text-green-700',
@@ -22,7 +25,7 @@ const GPA_CLASSES: Record<string, string> = {
   high: 'text-red-700',
 };
 
-const TIER_LABELS: Record<WishlistTier, string> = {
+const TIER_LABELS_WISHLIST: Record<WishlistTier, string> = {
   reach: 'Reach',
   target: 'Target',
   safety: 'Safety',
@@ -41,20 +44,20 @@ function WishlistTierPicker({ schoolId }: { schoolId: string }) {
   const toggleTier = useWishlistStore((s) => s.toggleTier);
 
   return (
-    <div className="flex items-center gap-1.5">
+    <div className="flex items-center gap-1.5 flex-wrap">
       <span className="text-xs text-gray-500">Wishlist:</span>
-      <div className="flex gap-1">
-        {(Object.keys(TIER_LABELS) as WishlistTier[]).map((t) => (
+      <div className="flex gap-1.5">
+        {(Object.keys(TIER_LABELS_WISHLIST) as WishlistTier[]).map((t) => (
           <button
             key={t}
             type="button"
             onClick={() => toggleTier(schoolId, t)}
-            className={`rounded border px-2 py-0.5 text-xs font-medium transition-colors ${
+            className={`min-h-11 min-w-11 rounded border px-3 py-2 text-xs font-medium transition-colors ${
               tier === t ? TIER_ACTIVE_CLASSES[t] : TIER_INACTIVE_CLASS
             }`}
             aria-pressed={tier === t}
           >
-            {TIER_LABELS[t]}
+            {TIER_LABELS_WISHLIST[t]}
           </button>
         ))}
       </div>
@@ -63,11 +66,13 @@ function WishlistTierPicker({ schoolId }: { schoolId: string }) {
 }
 
 export function SchoolCard({ school, highlighted }: { school: School; highlighted?: boolean }) {
+  const tier = bucketTier(school.school_bucket);
+
   return (
     <article
       id={`school-card-${school.id}`}
-      className={`rounded-lg border bg-white p-4 shadow-sm flex flex-col gap-2 transition-shadow ${
-        highlighted ? 'border-blue-400 ring-2 ring-blue-300' : 'border-gray-200'
+      className={`rounded-lg border bg-white p-4 shadow-sm flex flex-col gap-3 transition-shadow ${
+        highlighted ? 'border-brand-400 ring-2 ring-brand-300' : 'border-gray-200'
       }`}
     >
       <div>
@@ -75,50 +80,63 @@ export function SchoolCard({ school, highlighted }: { school: School; highlighte
         <p className="text-sm text-gray-500">{school.location}</p>
       </div>
 
-      <WishlistTierPicker schoolId={school.id} />
-
-      <div className="flex flex-wrap gap-1.5">
-        <span className={`rounded px-2 py-0.5 text-xs font-medium ${bucketChipClass(school.school_bucket)}`}>
+      <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs">
+        <span className="flex items-center gap-1.5 text-gray-600" title={TIER_LABELS[tier]}>
+          <span className={`h-2 w-2 rounded-full ${TIER_DOT_CLASSES[tier]}`} />
           {school.school_bucket}
         </span>
-        <span
-          className={`rounded px-2 py-0.5 text-xs font-medium ${STATUS_CLASSES[school.v1_status] ?? DEFAULT_STATUS_CLASS}`}
-        >
+        <span className="flex items-center gap-1.5 text-gray-600">
+          <span className={`h-2 w-2 rounded-full ${STATUS_DOT_CLASSES[school.v1_status] ?? DEFAULT_STATUS_DOT_CLASS}`} />
           {humanize(school.v1_status)}
         </span>
         {school.has_direct_med_program && (
-          <span className="rounded px-2 py-0.5 text-xs font-medium bg-violet-100 text-violet-800">
-            Has direct-med program
+          <span className="inline-flex items-center gap-1 rounded-full bg-violet-600 px-2.5 py-0.5 text-xs font-medium text-white">
+            ✓ Direct-med program
           </span>
         )}
       </div>
 
+      <WishlistTierPicker schoolId={school.id} />
+
+      {(school.family_cost_flag || school.parent_roi_note) && (
+        <div className="rounded-md border-l-4 border-brand-500 bg-brand-50 px-3 py-2 flex flex-col gap-1">
+          {school.family_cost_flag && (
+            <span className="text-xs font-semibold uppercase tracking-wide text-brand-800">
+              {humanize(school.family_cost_flag)}
+            </span>
+          )}
+          {school.parent_roi_note && (
+            <p className="text-sm text-brand-900">{school.parent_roi_note}</p>
+          )}
+        </div>
+      )}
+
       <hr className="border-gray-100" />
 
-      <div className="text-sm text-gray-700 grid grid-cols-2 gap-x-3 gap-y-1">
+      <div className="text-sm text-gray-700 grid grid-cols-2 gap-x-3 gap-y-2">
         <div>
-          <span className="text-gray-500">Scorecard net price</span>
-          <div>{fmtCurrency(school.scorecard_avg_annual_cost)}</div>
+          <span className="text-xs text-gray-500">Scorecard net price</span>
+          <div className="text-base font-semibold text-gray-900">
+            {fmtCurrency(school.scorecard_avg_annual_cost)}
+          </div>
         </div>
         <div>
-          <span className="text-gray-500">Cost flag</span>
-          <div>{humanize(school.family_cost_flag)}</div>
+          <span className="text-xs text-gray-500">Earnings (10yr)</span>
+          <div className="text-base font-semibold text-gray-900">
+            {fmtMoney(school.scorecard_median_earnings_10yr)}
+          </div>
         </div>
         <div>
-          <span className="text-gray-500">Grad rate</span>
+          <span className="text-xs text-gray-500">Grad rate</span>
           <div>{fmtPct(school.scorecard_graduation_rate)}</div>
         </div>
         <div>
-          <span className="text-gray-500">Acceptance</span>
+          <span className="text-xs text-gray-500">Acceptance</span>
           <div>{fmtPct(school.scorecard_acceptance_rate)}</div>
         </div>
         <div>
-          <span className="text-gray-500">SAT average</span>
+          <span className="text-xs text-gray-500">SAT average</span>
           <div>{school.scorecard_sat_average ?? 'n/a'}</div>
-        </div>
-        <div>
-          <span className="text-gray-500">Earnings (10yr)</span>
-          <div>{fmtMoney(school.scorecard_median_earnings_10yr)}</div>
         </div>
       </div>
 
@@ -126,10 +144,6 @@ export function SchoolCard({ school, highlighted }: { school: School; highlighte
         <p className={`text-xs font-medium ${GPA_CLASSES[school.gpa_risk] ?? 'text-gray-600'}`}>
           GPA risk: {school.gpa_risk}
         </p>
-      )}
-
-      {school.parent_roi_note && (
-        <p className="text-sm text-gray-600 italic">{school.parent_roi_note}</p>
       )}
 
       <div className="border-t border-gray-100 pt-1.5 text-xs text-gray-400 flex flex-col gap-0.5">

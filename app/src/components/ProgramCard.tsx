@@ -32,8 +32,11 @@ export function ProgramCard({ program }: { program: Program }) {
         </p>
       </div>
 
-      <div>
-        <span className={`rounded px-2 py-0.5 text-xs font-medium ${badgeClass}`}>{badgeLabel}</span>
+      <div className="flex flex-col gap-1">
+        <span className={`self-start rounded px-2 py-0.5 text-xs font-medium ${badgeClass}`}>{badgeLabel}</span>
+        {program.medical_seat_certainty && (
+          <p className="text-xs text-gray-500">{humanize(program.medical_seat_certainty)}</p>
+        )}
       </div>
 
       <div className="text-sm text-gray-700 grid grid-cols-2 gap-x-3 gap-y-1">
@@ -106,7 +109,7 @@ export function ProgramCard({ program }: { program: Program }) {
                     href={src.url}
                     target="_blank"
                     rel="noreferrer"
-                    className="underline hover:text-gray-600"
+                    className="underline text-brand-700 hover:text-brand-800"
                   >
                     {src.name}
                   </a>

@@ -150,9 +150,9 @@ function App() {
                 key={t.id}
                 type="button"
                 onClick={() => setTab(t.id)}
-                className={`px-4 py-2 text-sm font-medium border-b-2 -mb-px transition-colors ${
+                className={`px-4 py-2 min-h-11 text-sm font-medium border-b-2 -mb-px transition-colors ${
                   tab === t.id
-                    ? 'border-blue-600 text-blue-700'
+                    ? 'border-brand-600 text-brand-700'
                     : 'border-transparent text-gray-500 hover:text-gray-700'
                 }`}
               >

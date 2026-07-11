@@ -1,20 +1,37 @@
-// Tailwind class pairs (bg/text) per school_bucket, ported from the
-// prototype's BUCKET_CHIP_CLASS map (src/styles.css in the old prototype).
-export const BUCKET_CHIP_CLASSES: Record<string, string> = {
-  'NJ public value': 'bg-blue-100 text-blue-800',
-  'NJ private': 'bg-indigo-100 text-indigo-800',
-  'STEM/ROI fallback': 'bg-teal-100 text-teal-800',
-  'urban clinical ecosystem': 'bg-amber-100 text-amber-800',
-  'regional public': 'bg-slate-100 text-slate-800',
-  'private co-op/career': 'bg-orange-100 text-orange-800',
-  'elite general prestige': 'bg-purple-100 text-purple-800',
-  'elite medical ecosystem': 'bg-rose-100 text-rose-800',
-  'elite biomedical/research': 'bg-pink-100 text-pink-800',
-  'elite health-tech/STEM': 'bg-cyan-100 text-cyan-800',
+// Semantic "value tier" system for school_bucket — replaces the old
+// per-bucket rainbow (10 near-distinct pastel chips that all read as the
+// same shape/saturation) with 3 meaningful tiers, per the QA design
+// critique (docs/qa_findings_2026-07-10.md finding 4). The bucket's own
+// taxonomy label is still shown as plain text; the tier only drives a
+// small color-coded dot so cost/prestige positioning reads at a glance
+// without competing with the v1_status and direct-med indicators.
+export type BucketTier = 'value' | 'mid' | 'elite';
+
+const BUCKET_TIER: Record<string, BucketTier> = {
+  'NJ public value': 'value',
+  'regional public': 'value',
+  'STEM/ROI fallback': 'value',
+  'NJ private': 'mid',
+  'urban clinical ecosystem': 'mid',
+  'private co-op/career': 'mid',
+  'elite general prestige': 'elite',
+  'elite medical ecosystem': 'elite',
+  'elite biomedical/research': 'elite',
+  'elite health-tech/STEM': 'elite',
 };
 
-export const DEFAULT_CHIP_CLASS = 'bg-gray-100 text-gray-800';
-
-export function bucketChipClass(bucket: string): string {
-  return BUCKET_CHIP_CLASSES[bucket] ?? DEFAULT_CHIP_CLASS;
+export function bucketTier(bucket: string): BucketTier {
+  return BUCKET_TIER[bucket] ?? 'mid';
 }
+
+export const TIER_DOT_CLASSES: Record<BucketTier, string> = {
+  value: 'bg-brand-500',
+  mid: 'bg-slate-400',
+  elite: 'bg-amber-500',
+};
+
+export const TIER_LABELS: Record<BucketTier, string> = {
+  value: 'Value tier',
+  mid: 'Mid tier',
+  elite: 'Elite/reach tier',
+};

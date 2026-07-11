@@ -17,13 +17,13 @@ preserved below; status column added as fixes land.
 | 1b | "Wishlist only" map toggle empties map, doesn't recover | HIGH | Resolved — commit `afcf436` (same fix as 1a) — `syncMarkers` is now a memoized, idempotent diff-based function (safe to call any number of times in any order) and `visibleSchools` is `useMemo`'d on its actual inputs instead of recreated every render. Verified the wishlist-only toggle cycled back-and-forth 3x, with the map's marker count matching the button's own label every time, and a bucket-filter change updating the map to match the filtered card count. |
 | 1c | preview_screenshot hangs on map canvas | MED | Tooling note, not a product bug |
 | 2a | No source/confidence shown in UI (violates vision non-negotiable) | HIGH | Resolved — commit `5846765` — added a low-key "Confidence / data status / Sources" line to `SchoolCard.tsx` and `ProgramCard.tsx`, plus a `fmtDataStatus` helper in `format.ts` |
-| 2b | Certainty nuance shallow on ProgramCard (badge only) | MED | Deferred — design pass |
+| 2b | Certainty nuance shallow on ProgramCard (badge only) | MED | Resolved (2026-07-11 look & feel pass) — `medical_seat_certainty` free-text now rendered as a subtitle under the certainty badge on `ProgramCard.tsx`. |
 | 3a | `rutgers_newark` has copied/fabricated-looking earnings+debt, falsely marked "verified" | HIGH | Resolved — commit `2be5d51` — re-ran fixed `fetch-scorecard.mjs` against the live Scorecard API for all 27 schools. Confirmed by direct API spot-check that Rutgers Newark (unit 186399) and New Brunswick (unit 186380) genuinely share `ope6_id=002629` (same OPEID6 institution; New Brunswick is `main_campus`), and the Scorecard API itself returns identical `earnings.10yr`/`earnings.6yr`/`median_debt` for both — this is a real federal-cohort-reporting artifact (earnings/debt are reported at the OPEID6 institution level, not per branch campus), not a script bug. Newark's SAT average genuinely came back null from the API and is now honestly `null` (was previously missing/absent); record is correctly downgraded to `medium` confidence / `partially_verified_scorecard_api_2026_07` with a note rather than falsely stamped "high/verified". |
 | 3b | `fetch-scorecard.mjs` blanket-stamps confidence/status regardless of which fields actually refreshed | HIGH | Resolved — commit `2be5d51` — merge logic no longer falls back to old hand-authored/estimated values when the API returns null (removed `newValue ?? oldValue` pattern for cost/grad/accept/earnings/debt, matching the SAT field's existing correct `?? null` behavior). `source_confidence`/`data_status` are now set per-record based on whether every fetched field actually came back non-null: full `high`/`verified_scorecard_api_2026_07` only if nothing was missing; otherwise `medium`/`partially_verified_scorecard_api_2026_07` with an auto-appended note in `scorecard_notes` naming exactly which fields the API returned null for. |
 | 3c | Stale unused `scorecard_median_earnings_display` field conflicts with `_10yr` | MED | Resolved — commit `2be5d51` — removed the field entirely from all `data/schools_undergrad*.json` records, from `School` type in `app/src/types/school.ts`, and from `docs/data_dictionary.md`. Confirmed via repo-wide grep it's not referenced by any UI component; `npm run build` passes with no TypeScript errors after removal. |
 | 3d | 6 elite schools share SAT avg 1553 — verify, not confirmed fabricated | LOW | Spot-checked directly against the live Scorecard API: Princeton, Penn, JHU, Columbia, Harvard, and Stanford all genuinely return `1553` for `latest.admissions.sat_scores.average.overall`; nearby elite schools return distinct values in the same fetch (MIT 1560, UChicago 1554, Duke 1548, Brown 1546, Cornell 1535, Yale 1534). This is a genuine Scorecard API value, not a fetch-script bug — likely reflects real closely-clustered SAT profiles among these six (possibly coincidental rounding at the reporting/cohort level), not a fabrication or copy-paste artifact. No fix needed. |
 | 3e | Doc/data count minor mismatch note | LOW | Open, trivial |
-| 4.* | Design/layout critique (chip pastel soup, no visual hierarchy, small mobile tap targets, generic template feel) | MED/LOW | **Deferred to the interactive look & feel pass** |
+| 4.* | Design/layout critique (chip pastel soup, no visual hierarchy, small mobile tap targets, generic template feel) | MED/LOW | Resolved (2026-07-11 look & feel pass) — see below for what changed. |
 
 ---
 
@@ -74,3 +74,20 @@ Repro: Load the app (Schools tab), wait 3–5s. Expected: 27 pins. Actual: basem
 ### 5. What's genuinely working well
 
 Wishlist persistence is solid and real (not a silent fake). Filtering is correct, not just responsive. The ROI-over-prestige philosophy is genuinely embedded in the data copy. The certainty badge palette is semantically ordered. Null-with-note discipline is followed for SAT fields, proving the team can do it — which is exactly why 3a/3b are a regression from their own standard.
+
+---
+
+## Look & feel pass (2026-07-11) — what changed
+
+Addressed the section 4 design critique directly, interactively, with Jeff (not auto-fixed — matches the plan from the R2 recap).
+
+- **Brand accent color**: added a `brand` (teal) palette as Tailwind v4 `@theme` tokens in `index.css`, backed by real CSS custom properties so a future theme-color picker (Epic Q) can repoint them at runtime. Replaced default `blue-600` everywhere (active tab, map toggle buttons, map markers, source links) with the brand teal.
+- **Chip "pastel soup" fixed by separating form, not just hue**: `school_bucket` (taxonomy) now renders as plain text with a small color-coded dot reflecting a new 3-tier value/mid/elite grouping (`lib/bucketColors.ts`), collapsed down from 10 near-identical pastel chips. `v1_status` (our verdict) is a separate dot+text using brand-teal/amber. `has_direct_med_program` is now a distinctly-shaped solid violet pill with a checkmark — three different visual forms for three different kinds of information.
+- **ROI given a visual home**: `parent_roi_note` and `family_cost_flag` moved into a dedicated callout box (teal left border, tinted background) near the top of the card, replacing the old muted-italic-at-the-bottom treatment.
+- **Typography hierarchy**: cost and 10yr-earnings figures are now `text-base font-semibold`; secondary stats (grad rate, acceptance, SAT) stay smaller/lighter.
+- **Mobile tap targets**: wishlist tier buttons and all filter selects bumped to a 44px minimum height.
+- **Mobile filter bar**: collapses behind a "Filters" toggle (with active-filter count) on mobile instead of stacking 4 full-width dropdowns before any content is visible; added a "Clear filters" control.
+- **Finding 2b addressed in the same pass**: `medical_seat_certainty` free text now renders under the certainty badge on `ProgramCard`.
+- Basemap placeholder (demotiles) intentionally not touched — still tracked separately.
+
+Verified via Claude Preview: clean build, teal applied consistently across tabs/map/cards, mobile filter collapse/expand works, card hierarchy visually confirmed against before/after screenshots, no console errors on a fresh dev server.
