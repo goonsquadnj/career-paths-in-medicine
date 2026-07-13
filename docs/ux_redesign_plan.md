@@ -219,9 +219,21 @@ the current filter-redesign work.
   (i.e. "show me every guaranteed-interview-only program regardless of
   school") that was lost when Phase 2.5 embedded programs into school cards
   — still an open nice-to-have, not blocking.
-- **Phase 4 — My Plan:** rename Wishlist → My Plan; add placeholder slots
-  (selected path, preferred route, open questions, next steps) + selected-path
-  client state (Zustand + persist, localStorage).
+- **Phase 4 — My Plan: done (2026-07-13).** Wishlist→My Plan rename was
+  already done back in Phase 1; this phase added the four placeholder slots
+  above the existing reach/target/safety school grouping: a "Selected career
+  path" dropdown (all 15 paths), a "Preferred training route" free-text
+  textarea, and two add/remove `NotesList`s ("Open questions", "Next steps").
+  New `planStore.ts` (Zustand + persist, localStorage key
+  `lucy-planner:plan:v1`) holds all four; new `NotesList` component and
+  `lib/id.ts` helper are shared/reusable. Verified live: all four fields
+  persist correctly across a full reload (confirmed via direct localStorage
+  read), both the "Add" button and real Enter-key submission work (an
+  earlier apparent Enter-key failure during testing was isolated and
+  confirmed to be a browser-automation-tool quirk, not an app bug — a raw
+  `KeyboardEvent` with `key: 'Enter'` dispatched directly worked correctly),
+  wishlist tier grouping still renders unaffected below, no console errors,
+  clean build.
 - **Phase 5 (new, scoped not built) — Preferences & fit onboarding:** see
   `docs/preferences_fit_plan.md`.
 

@@ -10,10 +10,12 @@ import { SchoolMap } from './components/SchoolMap';
 import { StartLanding } from './components/StartLanding';
 import { SectionHeader } from './components/SectionHeader';
 import { CareerCompareTable } from './components/CareerCompareTable';
+import { NotesList } from './components/NotesList';
 import type { FamilyCostFlag, DistanceCategory } from './types/school';
 import type { Program } from './types/program';
 import { GROUP_ORDER, PATH_GROUP_LABELS, type PathGroup } from './types/path';
 import { useWishlistStore, type WishlistTier } from './store/wishlistStore';
+import { usePlanStore } from './store/planStore';
 
 interface Filters {
   buckets: string[];
@@ -103,6 +105,7 @@ function App() {
   // Explore Careers view mode (docs/ux_redesign_plan.md Phase 3).
   const [careersView, setCareersView] = useState<'grouped' | 'compare'>('grouped');
   const wishlist = useWishlistStore((s) => s.wishlist);
+  const plan = usePlanStore();
 
   useEffect(() => {
     localStorage.setItem(FILTERS_STORAGE_KEY, JSON.stringify(filters));
@@ -396,6 +399,63 @@ function App() {
                 title="My plan"
                 subtitle="Your own working list — mark schools reach / target / safety from a school card, and they'll show up here, grouped by tier. It sticks around across visits (saved in this browser)."
               />
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="flex flex-col gap-2 rounded-xl border border-stone-200 bg-white p-4">
+                  <label className="text-xs font-medium text-stone-500 uppercase tracking-wide">
+                    Selected career path
+                  </label>
+                  <select
+                    value={plan.selectedPathId ?? ''}
+                    onChange={(e) => plan.setSelectedPathId(e.target.value || null)}
+                    className="min-h-11 rounded-lg border border-stone-300 bg-white px-3 py-2 text-sm"
+                  >
+                    <option value="">Not decided yet</option>
+                    {paths.map((path) => (
+                      <option key={path.id} value={path.id}>
+                        {path.name}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                <div className="flex flex-col gap-2 rounded-xl border border-stone-200 bg-white p-4">
+                  <label className="text-xs font-medium text-stone-500 uppercase tracking-wide">
+                    Preferred training route
+                  </label>
+                  <textarea
+                    value={plan.preferredRoute}
+                    onChange={(e) => plan.setPreferredRoute(e.target.value)}
+                    placeholder="e.g. value undergrad in-state, then aim for a strong medical school"
+                    rows={3}
+                    className="rounded-lg border border-stone-300 bg-white px-3 py-2 text-sm resize-y"
+                  />
+                </div>
+
+                <div className="flex flex-col gap-2 rounded-xl border border-stone-200 bg-white p-4">
+                  <label className="text-xs font-medium text-stone-500 uppercase tracking-wide">
+                    Open questions
+                  </label>
+                  <NotesList
+                    notes={plan.openQuestions}
+                    onAdd={plan.addOpenQuestion}
+                    onRemove={plan.removeOpenQuestion}
+                    placeholder="e.g. what does a net price calculator say for us?"
+                  />
+                </div>
+
+                <div className="flex flex-col gap-2 rounded-xl border border-stone-200 bg-white p-4">
+                  <label className="text-xs font-medium text-stone-500 uppercase tracking-wide">
+                    Next steps
+                  </label>
+                  <NotesList
+                    notes={plan.nextSteps}
+                    onAdd={plan.addNextStep}
+                    onRemove={plan.removeNextStep}
+                    placeholder="e.g. schedule a Rutgers campus visit"
+                  />
+                </div>
+              </div>
 
               {WISHLIST_TIER_ORDER.every((t) => wishlistedSchools[t].length === 0) && (
                 <p className="rounded-xl border border-stone-200 bg-stone-50 px-4 py-3 text-sm text-stone-600">
