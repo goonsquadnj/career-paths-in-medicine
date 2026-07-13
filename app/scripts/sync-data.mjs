@@ -12,6 +12,8 @@ const files = [
   'schools_undergrad.json',
   'programs_medical_pathways.json',
   'paths.json',
+  'pathway_strategies.json',
+  'assumptions.json',
 ];
 
 mkdirSync(destDir, { recursive: true });

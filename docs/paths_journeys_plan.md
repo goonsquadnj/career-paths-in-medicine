@@ -185,13 +185,35 @@ instead of a bucket.
 
 ## Build phases
 
-- **B1 — Teaching archetypes (this scope):** new bridge section, intro framing,
-  the 4-5 archetype illustrations with live-derived undergrad cost + a shared
-  sourced med-school cost assumption → honest total-cost estimate + qualitative
-  tradeoffs, viewable side by side, links into Schools/programs. Requires adding
-  the AAMC med-school cost/debt assumption to `data/assumptions.json` (real
-  source + accessed_date). Editorial content authored carefully (Opus-worthy for
-  the copy; Sonnet for the mechanical component build against authored content).
+- **B1 — Teaching archetypes: done (2026-07-13).** New "Strategies" tab
+  (bridge between Explore Careers and Schools) with the intro framing, the 4
+  archetypes as side-by-side cards, live-derived undergrad cost + the shared
+  AAMC med-school cost assumption (`data/assumptions.json`) → honest total-cost
+  estimate, qualitative tradeoffs, "See matching schools" routing into a
+  pre-filtered Schools tab (bucket-tier based, or direct-med-program based for
+  The Early Bet). New files: `data/pathway_strategies.json` (authored content),
+  `data/assumptions.json` (med-school cost/debt, AAMC-sourced), `types/
+  pathwayStrategy.ts`, `types/assumptions.ts`, `lib/strategyCost.ts`,
+  `components/PathwayStrategyCard.tsx`.
+
+  **Real bug caught and fixed during live verification, not just assumed
+  correct after a clean build:** the cost-derivation helper initially used
+  `scorecard_avg_annual_cost` (Scorecard's aid-adjusted net price) for the
+  undergrad leg, which made **The Prestige Route appear cheaper than The
+  Value Play** ($274k-$518k vs $312k-$565k) — because elite schools'
+  generous need-based aid drags their *average* net price below even in-state
+  public schools (verified: elite net-price range $6k-$30k vs value-tier
+  $16k-$41k). That inverted the entire lesson this feature exists to teach.
+  Fixed by switching to sticker cost (`official_cost_of_attendance` falling
+  back to `official_cost_in_state`) — the honest basis for a family not
+  counting on maximal aid (matches the existing `family_cost_flag` framing:
+  `elite_need_aid_only`, `likely_full_pay_warning`). Re-verified: Value Play
+  $383k-$765k vs Prestige Route $616k-$799k — correct direction. Card copy
+  updated to disclose it's sticker cost, not net price, and that aid can lower
+  it substantially. Verified live: correct cost ordering across all 4 cards,
+  both "See matching schools" routing paths (bucket-tier → 10 schools for
+  Value Play; direct-med-program → 11 schools for The Early Bet), no console
+  errors, clean build.
 - **B2 — Build-your-own (fast-follow, meets Epic I):** pick undergrad leg + grad
   leg → see the tradeoff profile → save as a named scenario → Plan A vs. Plan B.
 - **B3+ — Extend endpoints** beyond physician (PA, dentist, NP).

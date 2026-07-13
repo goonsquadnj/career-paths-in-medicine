@@ -11,11 +11,14 @@ import { StartLanding } from './components/StartLanding';
 import { SectionHeader } from './components/SectionHeader';
 import { CareerCompareTable } from './components/CareerCompareTable';
 import { NotesList } from './components/NotesList';
+import { PathwayStrategyCard } from './components/PathwayStrategyCard';
 import type { FamilyCostFlag, DistanceCategory } from './types/school';
 import type { Program } from './types/program';
+import type { PathwayStrategy } from './types/pathwayStrategy';
 import { GROUP_ORDER, PATH_GROUP_LABELS, type PathGroup } from './types/path';
 import { useWishlistStore, type WishlistTier } from './store/wishlistStore';
 import { usePlanStore } from './store/planStore';
+import { bucketsForTiers } from './lib/strategyCost';
 
 interface Filters {
   buckets: string[];
@@ -27,15 +30,17 @@ interface Filters {
   maxPrice: number | null;
 }
 
-// 4-tab structure per docs/ux_redesign_plan.md: Start · Explore Careers ·
-// Schools · My Plan (renamed from Wishlist). "Schools & Programs" was
-// renamed to just "Schools" in Phase 2.5 — programs are now embedded inside
-// their school's own card, not a separate standalone section.
-type Tab = 'start' | 'careers' | 'schools' | 'plan';
+// 5-tab structure: Start · Explore Careers · Strategies (Epic B, new — see
+// docs/paths_journeys_plan.md) · Schools · My Plan. Strategies is the bridge
+// between "what career" and "which schools": it teaches that most paths are
+// an undergrad-leg + grad-leg COMBINATION, and that overspending on the most
+// prestigious undergrad is often poor ROI for the physician path specifically.
+type Tab = 'start' | 'careers' | 'strategies' | 'schools' | 'plan';
 
 const TABS: { id: Tab; label: string }[] = [
   { id: 'start', label: 'Start' },
   { id: 'careers', label: 'Explore Careers' },
+  { id: 'strategies', label: 'Strategies' },
   { id: 'schools', label: 'Schools' },
   { id: 'plan', label: 'My Plan' },
 ];
@@ -92,7 +97,7 @@ function loadStoredFilters(): Filters {
 }
 
 function App() {
-  const { schools, programs, paths, loading, error } = useData();
+  const { schools, programs, paths, pathwayStrategies, assumptions, loading, error } = useData();
   const [tab, setTab] = useState<Tab>('start');
   const [filters, setFilters] = useState<Filters>(loadStoredFilters);
   const [highlightedSchoolId, setHighlightedSchoolId] = useState<string | null>(null);
@@ -225,6 +230,19 @@ function App() {
     window.setTimeout(() => setHighlightedSchoolId((cur) => (cur === schoolId ? null : cur)), 2500);
   };
 
+  // A Strategies archetype card's "See matching schools" link — pre-filters
+  // Schools to the schools that actually back that archetype's undergrad leg,
+  // derived live from the real dataset (never a stale hardcoded list).
+  const handleSeeSchoolsForStrategy = (strategy: PathwayStrategy) => {
+    if (strategy.undergrad_leg.program_linked) {
+      setFilters({ ...EMPTY_FILTERS, directMed: 'yes' });
+    } else {
+      const buckets = bucketsForTiers(schools, strategy.undergrad_leg.bucket_tiers ?? []);
+      setFilters({ ...EMPTY_FILTERS, buckets });
+    }
+    setTab('schools');
+  };
+
   return (
     <div className="mx-auto max-w-6xl px-4 py-8 flex flex-col gap-8">
       {error && (
@@ -325,6 +343,34 @@ function App() {
                   </div>
                 ))
               )}
+            </section>
+          )}
+
+          {tab === 'strategies' && pathwayStrategies && assumptions && (
+            <section className="flex flex-col gap-5">
+              <SectionHeader
+                title={pathwayStrategies.intro.title}
+                subtitle={pathwayStrategies.intro.body}
+              />
+
+              <p className="text-xs text-stone-400 italic max-w-2xl">
+                {pathwayStrategies.med_school_cost_note}
+              </p>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {pathwayStrategies.strategies.map((strategy) => (
+                  <PathwayStrategyCard
+                    key={strategy.id}
+                    strategy={strategy}
+                    schools={schools}
+                    medicalSchoolCostRange={{
+                      low: assumptions.medical_school_4yr_cost_estimate.public_low,
+                      high: assumptions.medical_school_4yr_cost_estimate.private_high,
+                    }}
+                    onSeeSchools={handleSeeSchoolsForStrategy}
+                  />
+                ))}
+              </div>
             </section>
           )}
 

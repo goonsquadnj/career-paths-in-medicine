@@ -1,0 +1,42 @@
+{
+  "inflation_rate": 0.03,
+  "student_loan_interest_rate": null,
+  "undergrad_years_default": 4,
+  "medical_school_years_default": 4,
+  "residency_years_default": 3,
+  "parent_budget_soft_cap": 200000,
+  "home_state": "NJ",
+
+  "medical_school_4yr_cost_estimate": {
+    "public_low": 250000,
+    "private_high": 400000,
+    "display_range": "$250,000-$400,000",
+    "basis": "4-year total cost of attendance (tuition, fees, health insurance — excludes living expenses), public vs. private median, held constant across every physician path archetype in Epic B since med-school cost does not vary by undergrad choice",
+    "source_confidence": "medium",
+    "data_status": "estimate_from_secondary_aamc_summaries_verify_primary_source",
+    "notes": "AAMC's own Tuition and Student Fees Reports page is the authoritative source but the underlying dataset is a downloadable workbook, not scraped text — this range is triangulated from secondary sources summarizing AAMC data (public ~$268k-298k, private ~$364k-408k depending on reporting year), not read directly off the primary dataset. Re-verify against the live AAMC workbook before treating this as more than an order-of-magnitude planning assumption.",
+    "sources": [
+      {
+        "name": "AAMC Tuition and Student Fees Reports",
+        "url": "https://www.aamc.org/data-reports/reporting-tools/report/tuition-and-student-fees-reports",
+        "accessed_date": "2026-07-13"
+      }
+    ]
+  },
+
+  "medical_school_median_debt_estimate": {
+    "amount": 200000,
+    "display": "$200,000",
+    "basis": "Median education debt (medical + undergrad debt combined) among medical school graduates who have debt (~73% of graduates in the underlying report)",
+    "source_confidence": "medium",
+    "data_status": "aamc_2019_cohort_verify_current_cycle",
+    "notes": "Sourced from AAMC's 'Physician Education Debt and the Cost to Attend Medical School' report. The specific $200,000 figure traces to 2019-cohort data reported as stable for the prior two years at the time of that report — it is NOT confirmed as the current-year figure. Flagged for re-verification against a newer AAMC update before this app is Lucy's daily driver.",
+    "sources": [
+      {
+        "name": "AAMC — Physician Education Debt and the Cost to Attend Medical School",
+        "url": "https://www.aamc.org/data-reports/students-residents/report/physician-education-debt-and-cost-attend-medical-school",
+        "accessed_date": "2026-07-13"
+      }
+    ]
+  }
+}
