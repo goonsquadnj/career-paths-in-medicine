@@ -22,6 +22,12 @@
 
 :root {
   color-scheme: light dark;
+  /* Always reserve the vertical scrollbar's width, even on short pages
+     (e.g. the Start tab) that don't need to scroll. Without this, switching
+     between a short tab and a tall tab changes the effective viewport width,
+     shifting the centered (mx-auto) layout horizontally by the scrollbar's
+     width — the "tab bar shifts sideways between tabs" bug. */
+  scrollbar-gutter: stable;
 }
 
 body {

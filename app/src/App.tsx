@@ -227,17 +227,6 @@ function App() {
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-8 flex flex-col gap-8">
-      {tab !== 'start' && (
-        <header>
-          <h1 className="font-display text-3xl font-normal text-stone-900">
-            Healthcare Pathway Planner
-          </h1>
-          <p className="mt-1 text-stone-600">
-            v1 data — a planning aid, not final admissions advice.
-          </p>
-        </header>
-      )}
-
       {error && (
         <p className="rounded border border-red-200 bg-red-50 px-4 py-3 text-red-700">
           Error loading data: {error}
