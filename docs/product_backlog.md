@@ -45,6 +45,13 @@ leg**, and different combinations express different strategies.
 
 ## Epic C — Preferences & Inputs  · Phase R3–R4
 
+**Status (2026-07-11):** Real scoping write-up at `docs/preferences_fit_plan.md`
+(raised by Jeff during Phase 2 UX-redesign review — the Start landing only
+captures career interest, never fit preferences, which `vision.md` step 1
+already calls for). Recommended to build as the front door to R3 (shared
+onboarding with the academic-profile/fit-tiering work), not a separate
+mini-project. Not yet built.
+
 **Intent:** Capture the levers that shape the whole search, and remember them.
 
 - Budget, with the understanding it's *dynamic* — moves with scholarships,

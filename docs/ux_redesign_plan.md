@@ -125,6 +125,69 @@ fit (`best_fit`). No salary column, no invented scores.
 - No walls of text — progressive disclosure ("View details"), compact cards.
 - Mobile-first: keep the QA-pass ergonomics (44px targets, collapsible filters).
 
+## Phase 2 review feedback + locked decisions (Jeff, 2026-07-11)
+
+Substantive round of feedback after Phase 2 landed. Key findings and decisions:
+
+**Real bugs / gaps found:**
+- **No default sort on school cards** — they render in raw JSON order (Rutgers
+  first only because it's first in the file). Fix: default sort = **closest to
+  home** (`distance_from_home_category`: local → regional_drive →
+  far_drive_or_short_flight → far_from_home), alphabetical within each tier.
+- **`scorecard_notes` and `cost_notes` exist on every school record but are
+  never rendered anywhere in the UI.** This is the single highest-leverage
+  fix found this round — the exact methodology caveats the vision requires
+  ("Scorecard net price ≠ your family's price," "earnings are broad
+  school-level outcomes, not premed-specific") are already written, just
+  orphaned. **Fix: surface both fields inline on the school card, and add a
+  collapsed-by-default "How to read this data" explainer** (same pattern as
+  `CertaintyExplainer`) covering: what average net price means (federal
+  aid-adjusted average across all students, not your price), what earnings
+  10yr/6yr means (all majors, not premed-specific), and what `gpa_risk`
+  actually is (see below).
+- **`gpa_risk` is editorial/qualitative judgment, not raw admissions data**,
+  and the UI presents it as a bare fact ("GPA risk: high") with no
+  indication of that. Fix: relabel for clarity (e.g. "Premed GPA pressure
+  (our assessment)") and always show `gpa_risk_notes` inline, not just the
+  word.
+
+**Locked decisions:**
+1. **Filters → toggle-chip multi-select groups**, replacing single-select
+   dropdowns. All options visible at once, click to toggle on/off.
+2. **Add a numeric net-price range slider** alongside the existing
+   `family_cost_flag` categorical filter (keep both — cost_flag encodes
+   affordability *risk* a raw number can't, e.g. "elite need-aid-only" is
+   about aid-dependency, not just price).
+3. **Default school sort = closest to home** (see above).
+4. **Programs get embedded into their school's card, not a standalone
+   section.** Jeff's read: having Schools and Programs as two separate lists
+   was confusing — "why are we showing the same schools twice." Clarified:
+   they're not duplicates (only 11 of 27 schools have a Program; a Program
+   has certainty/MCAT/GPA fields a School can't), but the relationship was
+   invisible. Decision: drop the standalone "Medical pathway programs"
+   section; a school with a direct-med pathway gets an expandable block
+   *inside* its own card instead. The certainty-sort cross-school comparison
+   view (currently: all programs sorted by certainty level) is deferred to
+   Phase 3's Compare work rather than lost. **Tab renamed "Schools" → "Schools"**
+   (drop "& Programs" from the label since there's no separate list anymore).
+5. **Explore Careers stays narrative, not charted** — Jeff explicitly invited
+   an adversarial view on "should this be more data-driven." Recommendation
+   given and accepted implicitly by moving on: career-path facts (training
+   length, admissions difficulty, lifestyle) are genuinely qualitative
+   summaries with no real numeric salary data behind them (Epic K defers
+   that deliberately) — charting them would be fake precision. Schools &
+   the future Compare view are where real quantitative data lives and where
+   charting/sorting should go instead.
+
+**Preferences/onboarding gap — acknowledged, scoped separately, not built
+yet.** `vision.md`'s own lived workflow step 1 already calls for asking about
+distance/size/campus preferences before browsing schools — this was never
+built (Start only captures career interest, not fit preferences). See
+`docs/preferences_fit_plan.md` for the real scoping write-up. Decision: this
+is real, valid, next work — but distinct enough (new data fields, a second
+onboarding layer) that it's scoped as its own piece rather than folded into
+the current filter-redesign work.
+
 ## Build phases (each ends buildable + reviewable)
 
 - **Phase 1 — Shell & reframe (no data changes):** new 4-tab nav defaulting to a
@@ -135,11 +198,23 @@ fit (`best_fit`). No salary column, no invented scores.
 - **Phase 2 — Explore Careers:** grouped layout + new compact PathCard (prose
   behind "View details"); add `group`, `training_length_short`, `best_fit` to
   data + type + dictionary; wire Start entry cards to route into the right group.
+- **Phase 2.5 — Review-round refinements (2026-07-11 feedback, above):**
+  embed programs into school cards (drop standalone section, rename tab
+  "Schools & Programs" → "Schools"); toggle-chip multi-select filters +
+  net-price range slider; default sort = closest to home; surface
+  `scorecard_notes`/`cost_notes` inline + a "How to read this data"
+  explainer; relabel/clarify `gpa_risk`.
 - **Phase 3 — Compare + Roadmap:** Compare table view; Training Roadmap on path
   open; add `admissions_difficulty` + `roadmap` to data + type + dictionary.
+  (Note: `admissions_difficulty` and `roadmap` were actually added in Phase 2
+  already, ahead of schedule — Compare table + Roadmap visual component are
+  what remain here.) Also where the deferred certainty-sort cross-school
+  program comparison (from Phase 2.5's embed decision) should resurface.
 - **Phase 4 — My Plan:** rename Wishlist → My Plan; add placeholder slots
   (selected path, preferred route, open questions, next steps) + selected-path
   client state (Zustand + persist, localStorage).
+- **Phase 5 (new, scoped not built) — Preferences & fit onboarding:** see
+  `docs/preferences_fit_plan.md`.
 
 Each phase: `npm run build` clean + preview-verify + commit. No parallel agents —
 one foreground Sonnet stream, Jeff reviews between phases.
