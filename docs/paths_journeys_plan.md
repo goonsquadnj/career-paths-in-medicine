@@ -42,11 +42,49 @@ from an existing field — not as an unsupported assertion.
 
 - **No medical-school dataset exists** (only 27 undergrads + 11 BS/MD programs).
   The grad leg is therefore **archetypal, not specific-school** — no fabricated
-  med-school cost/outcome numbers. Fine for teaching strategy.
+  per-school med-school cost/outcome numbers. Fine for teaching strategy.
 - **Cost/benefit stays honest:** undergrad cost = **real net-price ranges
-  derived live from our actual school data** per bucket tier; grad-leg cost =
-  qualitative or clearly-labeled assumption (real ROI math is Epic K, deferred);
+  derived live from our actual school data** per bucket tier; grad-leg cost = a
+  **single shared, sourced national assumption** (see Cost comparison below);
   flexibility / admissions-certainty = qualitative. No laundered precision.
+
+## Cost comparison (v1) — the lesson, quantified
+
+**Decision (Jeff, 2026-07-13): include an honest total-cost estimate in the v1
+archetype illustrations; keep full ROIC in Epic K.**
+
+The key realization that makes this honest *and* powerful: across physician
+archetypes, **the med-school leg costs roughly the same regardless of undergrad
+choice** — so the cost *difference* between archetypes is almost entirely the
+**undergrad leg, which is exactly where we have real data.** That turns the
+"don't overspend undergrad" lesson into a number: *"The Prestige Route costs
+~$Xk more than The Value Play — and the entire difference is undergrad, for the
+identical MD at the end."*
+
+How each leg is costed, honestly:
+- **Undergrad leg:** derived live from real `scorecard_avg_annual_cost` of the
+  schools in the archetype's bucket tier(s) — shown as a **4-year range**, not a
+  false point estimate. Labeled with the same caveat the app already surfaces
+  (Scorecard *average net price* — understates full-pay families; run a net
+  price calculator). Cross-reference the existing `DataMethodologyExplainer`.
+- **Med-school leg:** a **single shared national assumption** (AAMC median
+  4-year cost of attendance / median education debt), stored in
+  `data/assumptions.json` with a real source + `accessed_date`, and rendered
+  with an explicit "national median, not school-specific — same across every
+  physician path here" label. Because it's constant across archetypes, it's
+  honest to hold it fixed and lets the undergrad difference carry the story.
+- **Total** = 4-yr undergrad range + the shared med-school assumption, always
+  shown as a range with its assumption visible — never a single laundered figure.
+
+**Why NOT full ROIC in Epic B (the honest limit):** ROIC has a cost side and a
+return side. For *physician* archetypes the **return side is ~constant** — an
+MD's earnings track specialty and geography, not undergrad name (and where
+undergrad might matter, our own `gpa_risk` data cuts *against* prestige, not for
+it). So a cost comparison captures ~90% of the ROI insight for physician-only
+v1 without guessing physician salaries Epic K hasn't sourced yet. Full ROIC
+(lifetime earnings, delayed-earnings timing, break-even) earns its keep at the
+**cross-endpoint** level (MD vs NP vs PA), which is Epic K + multi-endpoint —
+deferred.
 
 ## The archetype set (v1 — physician endpoint)
 
@@ -112,11 +150,15 @@ instead of a bucket.
 
 - Each archetype = a compact **two-leg horizontal flow** illustration (undergrad
   chip → arrow → grad chip → "Physician"), plus a small tradeoff strip:
+  **total est. cost (range, with the med-school assumption visible)** ·
   undergrad-cost (real range) · flexibility (qualitative) · admissions-certainty
   (qualitative). Reuse the existing design system (serif headers, teal accent,
   stone neutrals, tier dots from `bucketColors.ts`).
 - A short intro that states the hero insight up front (the "two decisions, don't
   overspend undergrad" lesson) — this is the teaching frame.
+- **The comparison is the payoff:** archetypes should be viewable side by side so
+  the total-cost deltas are obvious at a glance (the whole point is that the
+  Prestige Route's extra cost is all undergrad, same MD endpoint).
 - Each archetype links out: undergrad leg → **Schools pre-filtered to that
   bucket tier**; Early Bet → the direct-med programs. Connects abstract strategy
   to concrete real data.
@@ -135,18 +177,25 @@ instead of a bucket.
 ## Build phases
 
 - **B1 — Teaching archetypes (this scope):** new bridge section, intro framing,
-  the 4-5 archetype illustrations with live-derived undergrad cost + qualitative
-  tradeoffs, links into Schools/programs. Editorial content authored carefully
-  (Opus-worthy for the copy; Sonnet for the mechanical component build against
-  authored content).
+  the 4-5 archetype illustrations with live-derived undergrad cost + a shared
+  sourced med-school cost assumption → honest total-cost estimate + qualitative
+  tradeoffs, viewable side by side, links into Schools/programs. Requires adding
+  the AAMC med-school cost/debt assumption to `data/assumptions.json` (real
+  source + accessed_date). Editorial content authored carefully (Opus-worthy for
+  the copy; Sonnet for the mechanical component build against authored content).
 - **B2 — Build-your-own (fast-follow, meets Epic I):** pick undergrad leg + grad
   leg → see the tradeoff profile → save as a named scenario → Plan A vs. Plan B.
 - **B3+ — Extend endpoints** beyond physician (PA, dentist, NP).
 
 ## Explicitly out of scope (v1)
 
-- No fabricated medical-school data or per-school grad cost.
-- No real ROI/dollar computation on the grad leg (that's Epic K).
+- No fabricated *per-school* medical-school data. (A single shared, sourced,
+  clearly-labeled *national* med-school cost assumption IS in scope — see Cost
+  comparison — because it's honest and held constant across archetypes.)
+- **No full ROIC / lifetime-earnings modeling.** Epic B compares *cost only*.
+  Lifetime-earnings ROIC — which only meaningfully differentiates *across*
+  endpoints (MD vs NP vs PA), not between physician archetypes — stays in Epic K
+  with salary triangulation. Don't guess physician salary figures here.
 - No non-physician endpoints yet.
 - Naming of the section is TBD (working title "Strategies" / "Paths to Med
   School" — avoid colliding with Explore Careers' use of "path" for careers).
