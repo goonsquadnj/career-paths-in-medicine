@@ -31,6 +31,13 @@ Help Lucy narrow the field by what matters to her before she sees a single schoo
 
 ## Epic B — Paths & Journeys  · Phase R4
 
+**Status (2026-07-13):** Scoped in an Opus session — full spec at
+`docs/paths_journeys_plan.md`. Reframed as **teaching-first** (land the "two
+decisions, don't overspend undergrad" mental model) rather than a builder.
+v1 = editorial archetype illustrations for the physician endpoint, as a bridge
+section between Explore Careers and Schools; build-your-own is a fast-follow.
+Not yet built.
+
 **Intent:** The core mental model. A plan is almost always **undergrad leg + grad
 leg**, and different combinations express different strategies.
 
