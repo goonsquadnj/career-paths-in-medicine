@@ -6,6 +6,7 @@ import { PathCard } from './components/PathCard';
 import { FilterBar } from './components/FilterBar';
 import { CertaintyExplainer } from './components/CertaintyExplainer';
 import { SchoolMap } from './components/SchoolMap';
+import { StartLanding } from './components/StartLanding';
 import { CERTAINTY_ORDER } from './types/program';
 import type { FamilyCostFlag } from './types/school';
 import { useWishlistStore, type WishlistTier } from './store/wishlistStore';
@@ -17,9 +18,14 @@ interface Filters {
   directMed: string;
 }
 
-type Tab = 'schools' | 'programs' | 'paths' | 'wishlist';
+type Tab = 'start' | 'schools' | 'programs' | 'paths' | 'wishlist';
 
+// NOTE: Phase 1 (Sonnet) consolidates these into the 4-tab structure from
+// docs/ux_redesign_plan.md (Start · Explore Careers · Schools & Programs ·
+// My Plan). For now Start is added as the default landing on top of the
+// existing tabs so the new landing + design foundation can be reviewed.
 const TABS: { id: Tab; label: string }[] = [
+  { id: 'start', label: 'Start' },
   { id: 'schools', label: 'Schools' },
   { id: 'programs', label: 'Programs' },
   { id: 'paths', label: 'Career Paths' },
@@ -56,7 +62,7 @@ function loadStoredFilters(): Filters {
 
 function App() {
   const { schools, programs, paths, loading, error } = useData();
-  const [tab, setTab] = useState<Tab>('schools');
+  const [tab, setTab] = useState<Tab>('start');
   const [filters, setFilters] = useState<Filters>(loadStoredFilters);
   const [highlightedSchoolId, setHighlightedSchoolId] = useState<string | null>(null);
   const wishlist = useWishlistStore((s) => s.wishlist);
@@ -124,13 +130,16 @@ function App() {
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-8 flex flex-col gap-8">
-      <header>
-        <h1 className="text-3xl font-bold text-gray-900">Healthcare Pathway Planner</h1>
-        <p className="mt-1 text-gray-600">
-          Exploring undergraduate schools and medical pathway programs. v1 data — not final admissions
-          advice. See the certainty explainer below before treating any program as a guarantee.
-        </p>
-      </header>
+      {tab !== 'start' && (
+        <header>
+          <h1 className="font-display text-3xl font-normal text-stone-900">
+            Healthcare Pathway Planner
+          </h1>
+          <p className="mt-1 text-stone-600">
+            v1 data — a planning aid, not final admissions advice.
+          </p>
+        </header>
+      )}
 
       {error && (
         <p className="rounded border border-red-200 bg-red-50 px-4 py-3 text-red-700">
@@ -142,9 +151,9 @@ function App() {
 
       {!loading && !error && (
         <>
-          <CertaintyExplainer />
+          {tab !== 'start' && <CertaintyExplainer />}
 
-          <div className="flex gap-2 border-b border-gray-200">
+          <div className="flex gap-2 border-b border-stone-200 overflow-x-auto">
             {TABS.map((t) => (
               <button
                 key={t.id}
@@ -160,6 +169,8 @@ function App() {
               </button>
             ))}
           </div>
+
+          {tab === 'start' && <StartLanding onChoose={() => setTab('paths')} />}
 
           {tab === 'schools' && (
             <section className="flex flex-col gap-4">
