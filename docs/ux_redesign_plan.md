@@ -204,12 +204,21 @@ the current filter-redesign work.
   net-price range slider; default sort = closest to home; surface
   `scorecard_notes`/`cost_notes` inline + a "How to read this data"
   explainer; relabel/clarify `gpa_risk`.
-- **Phase 3 — Compare + Roadmap:** Compare table view; Training Roadmap on path
-  open; add `admissions_difficulty` + `roadmap` to data + type + dictionary.
-  (Note: `admissions_difficulty` and `roadmap` were actually added in Phase 2
-  already, ahead of schedule — Compare table + Roadmap visual component are
-  what remain here.) Also where the deferred certainty-sort cross-school
-  program comparison (from Phase 2.5's embed decision) should resurface.
+- **Phase 3 — Compare + Roadmap: done (2026-07-13).** Explore Careers now has
+  a Cards/Compare toggle; Compare renders all 7 locked columns (Path, Group,
+  Training length, Med school?, Patient care, Admissions, Best fit) in an
+  HTML table, correctly scoped by the Start-routed group filter. `PathCard`'s
+  "View details" now shows a `TrainingRoadmap` (simple left-to-right step
+  chips with arrows, not a flowchart) built from each path's `roadmap` array.
+  Shared `DIFFICULTY_CLASSES`/`difficultyLabel` extracted to `lib/labels.ts`
+  so PathCard and the Compare table agree. Verified live: 15-row table with
+  correct data, group filter narrows both Cards and Compare identically
+  (nursing → exactly RN/NP/CRNA), roadmap step/arrow count correct, 44px
+  toggle tap targets, no console errors, clean build.
+  **Deferred, not built:** the cross-school certainty-sort program comparison
+  (i.e. "show me every guaranteed-interview-only program regardless of
+  school") that was lost when Phase 2.5 embedded programs into school cards
+  — still an open nice-to-have, not blocking.
 - **Phase 4 — My Plan:** rename Wishlist → My Plan; add placeholder slots
   (selected path, preferred route, open questions, next steps) + selected-path
   client state (Zustand + persist, localStorage).

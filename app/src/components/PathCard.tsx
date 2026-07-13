@@ -1,24 +1,12 @@
 import { useState } from 'react';
 import type { Path } from '../types/path';
+import { DIFFICULTY_CLASSES, DIFFICULTY_LABELS } from '../lib/labels';
+import { TrainingRoadmap } from './TrainingRoadmap';
 
 // Compact comparison card per docs/ux_redesign_plan.md Phase 2 — replaces the
 // old wall-of-text card. Structured fields up front; deep prose (what it is,
 // admissions notes, lifestyle, salary, best-for/watch-outs) sits behind
 // "View details" (progressive disclosure, per docs/design_system.md).
-
-const DIFFICULTY_CLASSES: Record<string, string> = {
-  low: 'text-green-700',
-  moderate: 'text-amber-700',
-  high: 'text-orange-700',
-  very_high: 'text-red-700',
-};
-
-const DIFFICULTY_LABELS: Record<string, string> = {
-  low: 'Low',
-  moderate: 'Moderate',
-  high: 'High',
-  very_high: 'Very high',
-};
 
 export function PathCard({ path }: { path: Path }) {
   const [expanded, setExpanded] = useState(false);
@@ -67,6 +55,15 @@ export function PathCard({ path }: { path: Path }) {
       {expanded && (
         <div className="flex flex-col gap-3 border-t border-stone-100 pt-3 text-sm text-stone-700">
           <p>{path.what_they_do}</p>
+
+          {path.roadmap.length > 0 && (
+            <div>
+              <div className="text-xs font-semibold text-stone-500 uppercase tracking-wide mb-1.5">
+                Training roadmap
+              </div>
+              <TrainingRoadmap steps={path.roadmap} />
+            </div>
+          )}
 
           <div>
             <div className="text-xs font-semibold text-stone-500 uppercase tracking-wide">

@@ -31,3 +31,24 @@ export function costFlagLabel(value: string | null | undefined): string {
   if (!value) return 'n/a';
   return COST_FLAG_LABELS[value] ?? humanize(value);
 }
+
+// Shared between PathCard and the Explore Careers Compare table (Phase 3)
+// so both views agree on labels/colors for admissions_difficulty.
+export const DIFFICULTY_CLASSES: Record<string, string> = {
+  low: 'text-green-700',
+  moderate: 'text-amber-700',
+  high: 'text-orange-700',
+  very_high: 'text-red-700',
+};
+
+export const DIFFICULTY_LABELS: Record<string, string> = {
+  low: 'Low',
+  moderate: 'Moderate',
+  high: 'High',
+  very_high: 'Very high',
+};
+
+export function difficultyLabel(value: string | null | undefined): string {
+  if (!value) return 'n/a';
+  return DIFFICULTY_LABELS[value] ?? humanize(value);
+}

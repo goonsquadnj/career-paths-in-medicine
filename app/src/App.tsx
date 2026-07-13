@@ -9,6 +9,7 @@ import { DataMethodologyExplainer } from './components/DataMethodologyExplainer'
 import { SchoolMap } from './components/SchoolMap';
 import { StartLanding } from './components/StartLanding';
 import { SectionHeader } from './components/SectionHeader';
+import { CareerCompareTable } from './components/CareerCompareTable';
 import type { FamilyCostFlag, DistanceCategory } from './types/school';
 import type { Program } from './types/program';
 import { GROUP_ORDER, PATH_GROUP_LABELS, type PathGroup } from './types/path';
@@ -99,6 +100,8 @@ function App() {
   // Which career groups the Start landing routed into; empty = show all
   // groups (the "not sure yet" / default state).
   const [careerGroupFilter, setCareerGroupFilter] = useState<PathGroup[]>([]);
+  // Explore Careers view mode (docs/ux_redesign_plan.md Phase 3).
+  const [careersView, setCareersView] = useState<'grouped' | 'compare'>('grouped');
   const wishlist = useWishlistStore((s) => s.wishlist);
 
   useEffect(() => {
@@ -180,16 +183,22 @@ function App() {
     return map;
   }, [programs]);
 
-  const groupedPaths = useMemo(() => {
-    const visible =
+  // Paths visible under the current Start-routed group filter — shared by
+  // both the grouped-cards view and the Compare table (Phase 3).
+  const visiblePaths = useMemo(
+    () =>
       careerGroupFilter.length === 0
         ? paths
-        : paths.filter((p) => careerGroupFilter.includes(p.group));
+        : paths.filter((p) => careerGroupFilter.includes(p.group)),
+    [paths, careerGroupFilter],
+  );
+
+  const groupedPaths = useMemo(() => {
     return GROUP_ORDER.map((group) => ({
       group,
-      paths: visible.filter((p) => p.group === group),
+      paths: visiblePaths.filter((p) => p.group === group),
     })).filter((g) => g.paths.length > 0);
-  }, [paths, careerGroupFilter]);
+  }, [visiblePaths]);
 
   const wishlistedSchools = useMemo(() => {
     const grouped: Record<WishlistTier, typeof schools> = { reach: [], target: [], safety: [] };
@@ -269,28 +278,61 @@ function App() {
                 subtitle="Fifteen healthcare career paths — what each one actually involves, how long training takes, and who it tends to fit. Salary is deliberately left qualitative for now; see Epic K for the eventual cross-checked comparison."
               />
 
-              {careerGroupFilter.length > 0 && (
-                <button
-                  type="button"
-                  onClick={() => setCareerGroupFilter([])}
-                  className="self-start min-h-11 rounded-lg border border-stone-300 bg-white px-3 py-2 text-sm text-stone-600 hover:bg-stone-50"
-                >
-                  Show all careers
-                </button>
-              )}
-
-              {groupedPaths.map(({ group, paths: groupPaths }) => (
-                <div key={group} className="flex flex-col gap-3">
-                  <h3 className="font-display text-xl font-normal text-stone-800">
-                    {PATH_GROUP_LABELS[group]}
-                  </h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {groupPaths.map((path) => (
-                      <PathCard key={path.id} path={path} />
-                    ))}
-                  </div>
+              <div className="flex flex-wrap items-center gap-3">
+                <div className="flex rounded-lg border border-stone-300 overflow-hidden">
+                  <button
+                    type="button"
+                    onClick={() => setCareersView('grouped')}
+                    aria-pressed={careersView === 'grouped'}
+                    className={`min-h-11 px-4 text-sm font-medium ${
+                      careersView === 'grouped'
+                        ? 'bg-brand-600 text-white'
+                        : 'bg-white text-stone-600 hover:bg-stone-50'
+                    }`}
+                  >
+                    Cards
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setCareersView('compare')}
+                    aria-pressed={careersView === 'compare'}
+                    className={`min-h-11 px-4 text-sm font-medium border-l border-stone-300 ${
+                      careersView === 'compare'
+                        ? 'bg-brand-600 text-white'
+                        : 'bg-white text-stone-600 hover:bg-stone-50'
+                    }`}
+                  >
+                    Compare
+                  </button>
                 </div>
-              ))}
+
+                {careerGroupFilter.length > 0 && (
+                  <button
+                    type="button"
+                    onClick={() => setCareerGroupFilter([])}
+                    className="min-h-11 rounded-lg border border-stone-300 bg-white px-3 py-2 text-sm text-stone-600 hover:bg-stone-50"
+                  >
+                    Show all careers
+                  </button>
+                )}
+              </div>
+
+              {careersView === 'compare' ? (
+                <CareerCompareTable paths={visiblePaths} />
+              ) : (
+                groupedPaths.map(({ group, paths: groupPaths }) => (
+                  <div key={group} className="flex flex-col gap-3">
+                    <h3 className="font-display text-xl font-normal text-stone-800">
+                      {PATH_GROUP_LABELS[group]}
+                    </h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                      {groupPaths.map((path) => (
+                        <PathCard key={path.id} path={path} />
+                      ))}
+                    </div>
+                  </div>
+                ))
+              )}
             </section>
           )}
 
