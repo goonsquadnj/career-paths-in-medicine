@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { statusLabel, costFlagLabel } from '../lib/labels';
 
 interface FilterBarProps {
   buckets: string[];
@@ -14,7 +15,7 @@ interface FilterBarProps {
 }
 
 const SELECT_CLASS =
-  'min-h-11 rounded border border-gray-300 bg-white px-3 py-2 text-sm w-full sm:w-auto';
+  'min-h-11 rounded-lg border border-stone-300 bg-white px-3 py-2 text-sm w-full sm:w-auto';
 
 export function FilterBar({
   buckets,
@@ -35,16 +36,16 @@ export function FilterBar({
   const activeCount = [bucket, status, costFlag, directMed].filter(Boolean).length;
 
   return (
-    <div className="rounded-lg border border-gray-200 bg-gray-50 p-3">
+    <div className="rounded-xl border border-stone-200 bg-stone-50 p-3">
       <button
         type="button"
         onClick={() => setMobileOpen((o) => !o)}
-        className="sm:hidden flex w-full min-h-11 items-center justify-between text-sm font-medium text-gray-700"
+        className="sm:hidden flex w-full min-h-11 items-center justify-between text-sm font-medium text-stone-700"
       >
         <span>
           Filters{activeCount > 0 ? ` (${activeCount} active)` : ''}
         </span>
-        <span className="text-gray-400">{mobileOpen ? '−' : '+'}</span>
+        <span className="text-stone-400">{mobileOpen ? '−' : '+'}</span>
       </button>
 
       <div
@@ -71,7 +72,7 @@ export function FilterBar({
           <option value="">All statuses</option>
           {statuses.map((s) => (
             <option key={s} value={s}>
-              {s.replace(/_/g, ' ')}
+              {statusLabel(s)}
             </option>
           ))}
         </select>
@@ -84,7 +85,7 @@ export function FilterBar({
           <option value="">All cost flags</option>
           {costFlags.map((c) => (
             <option key={c} value={c}>
-              {c.replace(/_/g, ' ')}
+              {costFlagLabel(c)}
             </option>
           ))}
         </select>
@@ -103,13 +104,13 @@ export function FilterBar({
           <button
             type="button"
             onClick={() => onChange({ bucket: '', status: '', costFlag: '', directMed: '' })}
-            className="min-h-11 rounded border border-gray-300 bg-white px-3 py-2 text-sm text-gray-600 hover:bg-gray-100"
+            className="min-h-11 rounded-lg border border-stone-300 bg-white px-3 py-2 text-sm text-stone-600 hover:bg-stone-100"
           >
             Clear filters
           </button>
         )}
 
-        <span className="sm:ml-auto text-sm text-gray-500">
+        <span className="sm:ml-auto text-sm text-stone-500">
           Showing {visibleCount} of {totalCount} schools
         </span>
       </div>

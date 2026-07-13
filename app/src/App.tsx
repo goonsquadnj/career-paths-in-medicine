@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
+import { Map as MapIcon } from 'lucide-react';
 import { useData } from './lib/useData';
 import { SchoolCard } from './components/SchoolCard';
 import { ProgramCard } from './components/ProgramCard';
@@ -7,6 +8,7 @@ import { FilterBar } from './components/FilterBar';
 import { CertaintyExplainer } from './components/CertaintyExplainer';
 import { SchoolMap } from './components/SchoolMap';
 import { StartLanding } from './components/StartLanding';
+import { SectionHeader } from './components/SectionHeader';
 import { CERTAINTY_ORDER } from './types/program';
 import type { FamilyCostFlag } from './types/school';
 import { useWishlistStore, type WishlistTier } from './store/wishlistStore';
@@ -18,18 +20,15 @@ interface Filters {
   directMed: string;
 }
 
-type Tab = 'start' | 'schools' | 'programs' | 'paths' | 'wishlist';
+// 4-tab structure per docs/ux_redesign_plan.md: Start · Explore Careers ·
+// Schools & Programs (merged) · My Plan (renamed from Wishlist).
+type Tab = 'start' | 'careers' | 'schools' | 'plan';
 
-// NOTE: Phase 1 (Sonnet) consolidates these into the 4-tab structure from
-// docs/ux_redesign_plan.md (Start · Explore Careers · Schools & Programs ·
-// My Plan). For now Start is added as the default landing on top of the
-// existing tabs so the new landing + design foundation can be reviewed.
 const TABS: { id: Tab; label: string }[] = [
   { id: 'start', label: 'Start' },
-  { id: 'schools', label: 'Schools' },
-  { id: 'programs', label: 'Programs' },
-  { id: 'paths', label: 'Career Paths' },
-  { id: 'wishlist', label: 'My Wishlist' },
+  { id: 'careers', label: 'Explore Careers' },
+  { id: 'schools', label: 'Schools & Programs' },
+  { id: 'plan', label: 'My Plan' },
 ];
 
 const WISHLIST_TIER_ORDER: WishlistTier[] = ['reach', 'target', 'safety'];
@@ -65,6 +64,9 @@ function App() {
   const [tab, setTab] = useState<Tab>('start');
   const [filters, setFilters] = useState<Filters>(loadStoredFilters);
   const [highlightedSchoolId, setHighlightedSchoolId] = useState<string | null>(null);
+  // Map is secondary/collapsed by default (docs/ux_redesign_plan.md: "the
+  // current dataset is too small for the map to dominate").
+  const [showMap, setShowMap] = useState(false);
   const wishlist = useWishlistStore((s) => s.wishlist);
 
   useEffect(() => {
@@ -151,18 +153,16 @@ function App() {
 
       {!loading && !error && (
         <>
-          {tab !== 'start' && <CertaintyExplainer />}
-
           <div className="flex gap-2 border-b border-stone-200 overflow-x-auto">
             {TABS.map((t) => (
               <button
                 key={t.id}
                 type="button"
                 onClick={() => setTab(t.id)}
-                className={`px-4 py-2 min-h-11 text-sm font-medium border-b-2 -mb-px transition-colors ${
+                className={`px-4 py-2 min-h-11 text-sm font-medium border-b-2 -mb-px whitespace-nowrap transition-colors ${
                   tab === t.id
                     ? 'border-brand-600 text-brand-700'
-                    : 'border-transparent text-gray-500 hover:text-gray-700'
+                    : 'border-transparent text-stone-500 hover:text-stone-700'
                 }`}
               >
                 {t.label}
@@ -170,55 +170,14 @@ function App() {
             ))}
           </div>
 
-          {tab === 'start' && <StartLanding onChoose={() => setTab('paths')} />}
+          {tab === 'start' && <StartLanding onChoose={() => setTab('careers')} />}
 
-          {tab === 'schools' && (
+          {tab === 'careers' && (
             <section className="flex flex-col gap-4">
-              <h2 className="text-xl font-semibold text-gray-900">Schools</h2>
-              <FilterBar
-                buckets={buckets}
-                statuses={statuses}
-                costFlags={costFlags}
-                bucket={filters.bucket}
-                status={filters.status}
-                costFlag={filters.costFlag}
-                directMed={filters.directMed}
-                onChange={(patch) => setFilters((f) => ({ ...f, ...patch }))}
-                visibleCount={filteredSchools.length}
-                totalCount={schools.length}
+              <SectionHeader
+                title="Explore careers"
+                subtitle="Fifteen healthcare career paths — what each one actually involves, how long training takes, and who it tends to fit. Salary is deliberately left qualitative for now; see Epic K for the eventual cross-checked comparison."
               />
-              <SchoolMap schools={filteredSchools} onSelectSchool={handleSelectSchool} />
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {filteredSchools.map((school) => (
-                  <SchoolCard
-                    key={school.id}
-                    school={school}
-                    highlighted={school.id === highlightedSchoolId}
-                  />
-                ))}
-              </div>
-            </section>
-          )}
-
-          {tab === 'programs' && (
-            <section className="flex flex-col gap-4">
-              <h2 className="text-xl font-semibold text-gray-900">Medical Pathway Programs</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {sortedPrograms.map((program) => (
-                  <ProgramCard key={program.id} program={program} />
-                ))}
-              </div>
-            </section>
-          )}
-
-          {tab === 'paths' && (
-            <section className="flex flex-col gap-4">
-              <h2 className="text-xl font-semibold text-gray-900">Career Paths</h2>
-              <p className="text-sm text-gray-600">
-                Baseline research on 15 healthcare career paths. Salary figures are intentionally
-                left qualitative for now — see Epic K for the eventual cross-checked salary
-                triangulation.
-              </p>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {paths.map((path) => (
                   <PathCard key={path.id} path={path} />
@@ -227,20 +186,74 @@ function App() {
             </section>
           )}
 
-          {tab === 'wishlist' && (
-            <section className="flex flex-col gap-6">
-              <div>
-                <h2 className="text-xl font-semibold text-gray-900">My Wishlist</h2>
-                <p className="mt-1 text-sm text-gray-600">
-                  This is Lucy's own list — mark schools reach / target / safety from a school
-                  card, and they'll show up here, grouped by tier. It sticks around across visits
-                  (saved in this browser).
-                </p>
+          {tab === 'schools' && (
+            <section className="flex flex-col gap-8">
+              <div className="flex flex-col gap-4">
+                <SectionHeader
+                  title="Schools & programs"
+                  subtitle="Which schools might support the path you're exploring — cost, outcomes, and pre-health ecosystem, side by side."
+                />
+                <FilterBar
+                  buckets={buckets}
+                  statuses={statuses}
+                  costFlags={costFlags}
+                  bucket={filters.bucket}
+                  status={filters.status}
+                  costFlag={filters.costFlag}
+                  directMed={filters.directMed}
+                  onChange={(patch) => setFilters((f) => ({ ...f, ...patch }))}
+                  visibleCount={filteredSchools.length}
+                  totalCount={schools.length}
+                />
+
+                <button
+                  type="button"
+                  onClick={() => setShowMap((v) => !v)}
+                  className="self-start flex items-center gap-2 min-h-11 rounded-lg border border-stone-300 bg-white px-3 py-2 text-sm font-medium text-stone-700 hover:bg-stone-50"
+                >
+                  <MapIcon className="h-4 w-4" strokeWidth={1.75} aria-hidden />
+                  {showMap ? 'Hide map' : 'Show map'}
+                </button>
+                {showMap && (
+                  <SchoolMap schools={filteredSchools} onSelectSchool={handleSelectSchool} />
+                )}
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {filteredSchools.map((school) => (
+                    <SchoolCard
+                      key={school.id}
+                      school={school}
+                      highlighted={school.id === highlightedSchoolId}
+                    />
+                  ))}
+                </div>
               </div>
 
+              <div className="flex flex-col gap-4 border-t border-stone-200 pt-8">
+                <SectionHeader
+                  title="Medical pathway programs"
+                  subtitle="BS/MD, BA/MD, and early-assurance programs — how much admissions certainty each one actually removes."
+                />
+                <CertaintyExplainer />
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {sortedPrograms.map((program) => (
+                    <ProgramCard key={program.id} program={program} />
+                  ))}
+                </div>
+              </div>
+            </section>
+          )}
+
+          {tab === 'plan' && (
+            <section className="flex flex-col gap-6">
+              <SectionHeader
+                title="My plan"
+                subtitle="Your own working list — mark schools reach / target / safety from a school card, and they'll show up here, grouped by tier. It sticks around across visits (saved in this browser)."
+              />
+
               {WISHLIST_TIER_ORDER.every((t) => wishlistedSchools[t].length === 0) && (
-                <p className="rounded border border-gray-200 bg-gray-50 px-4 py-3 text-sm text-gray-600">
-                  No schools tiered yet. Go to the Schools tab and use the Wishlist buttons on a
+                <p className="rounded-xl border border-stone-200 bg-stone-50 px-4 py-3 text-sm text-stone-600">
+                  Nothing here yet. Go to Schools & Programs and use the tier buttons on a school
                   card to add one.
                 </p>
               )}
@@ -248,9 +261,9 @@ function App() {
               {WISHLIST_TIER_ORDER.map((t) =>
                 wishlistedSchools[t].length > 0 ? (
                   <div key={t} className="flex flex-col gap-3">
-                    <h3 className="text-lg font-semibold text-gray-800">
+                    <h3 className="font-display text-lg font-normal text-stone-800">
                       {WISHLIST_TIER_TITLES[t]}{' '}
-                      <span className="text-sm font-normal text-gray-500">
+                      <span className="text-sm font-normal text-stone-500">
                         ({wishlistedSchools[t].length})
                       </span>
                     </h3>

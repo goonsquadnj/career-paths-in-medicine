@@ -1,5 +1,6 @@
 import type { School } from '../types/school';
 import { fmtCurrency, fmtDataStatus, fmtMoney, fmtPct, humanize } from '../lib/format';
+import { statusLabel, costFlagLabel } from '../lib/labels';
 import { bucketTier, TIER_DOT_CLASSES, TIER_LABELS } from '../lib/bucketColors';
 import { useWishlistStore, type WishlistTier } from '../store/wishlistStore';
 
@@ -87,7 +88,7 @@ export function SchoolCard({ school, highlighted }: { school: School; highlighte
         </span>
         <span className="flex items-center gap-1.5 text-gray-600">
           <span className={`h-2 w-2 rounded-full ${STATUS_DOT_CLASSES[school.v1_status] ?? DEFAULT_STATUS_DOT_CLASS}`} />
-          {humanize(school.v1_status)}
+          {statusLabel(school.v1_status)}
         </span>
         {school.has_direct_med_program && (
           <span className="inline-flex items-center gap-1 rounded-full bg-violet-600 px-2.5 py-0.5 text-xs font-medium text-white">
@@ -102,7 +103,7 @@ export function SchoolCard({ school, highlighted }: { school: School; highlighte
         <div className="rounded-md border-l-4 border-brand-500 bg-brand-50 px-3 py-2 flex flex-col gap-1">
           {school.family_cost_flag && (
             <span className="text-xs font-semibold uppercase tracking-wide text-brand-800">
-              {humanize(school.family_cost_flag)}
+              {costFlagLabel(school.family_cost_flag)}
             </span>
           )}
           {school.parent_roi_note && (
