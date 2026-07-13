@@ -61,26 +61,43 @@ export function PathwayStrategyCard({
         </span>
       </div>
 
-      <div className="grid grid-cols-2 gap-x-3 gap-y-2 text-sm border-t border-stone-100 pt-3">
-        <div className="col-span-2">
-          <span className="text-xs text-stone-500">Estimated total cost (undergrad + med school)</span>
-          <div className="text-base font-semibold text-stone-900">
-            {totalLow != null && totalHigh != null
-              ? `${fmtMoney(totalLow)} – ${fmtMoney(totalHigh)}`
+      <div className="flex flex-col gap-2 text-sm border-t border-stone-100 pt-3">
+        {/* Undergrad cost is primary — it's the actual differentiator between
+            archetypes (med-school cost is held constant across all of them,
+            see med_school_cost_note above the grid). Total cost is secondary
+            supporting context, not the headline, so the cards are easy to
+            tell apart at a glance (docs/paths_journeys_plan.md nit fix). */}
+        <div>
+          <span className="text-xs text-stone-500">Undergrad cost (4 years, sticker price)</span>
+          <div className="text-lg font-semibold text-stone-900">
+            {undergradCost
+              ? `${fmtMoney(undergradCost.min4yr)} – ${fmtMoney(undergradCost.max4yr)}`
               : 'Not enough priced schools yet'}
           </div>
         </div>
-        <div>
-          <span className="text-xs text-stone-500">Flexibility</span>
-          <div className={`font-medium capitalize ${FLEXIBILITY_CLASSES[strategy.tradeoffs.flexibility] ?? 'text-stone-700'}`}>
-            {strategy.tradeoffs.flexibility}
+
+        <div className="grid grid-cols-2 gap-x-3 gap-y-2">
+          <div>
+            <span className="text-xs text-stone-500">Flexibility</span>
+            <div className={`font-medium capitalize ${FLEXIBILITY_CLASSES[strategy.tradeoffs.flexibility] ?? 'text-stone-700'}`}>
+              {strategy.tradeoffs.flexibility}
+            </div>
+          </div>
+          <div>
+            <span className="text-xs text-stone-500">Admissions certainty</span>
+            <div className={`font-medium capitalize ${CERTAINTY_CLASSES[strategy.tradeoffs.admissions_certainty] ?? 'text-stone-700'}`}>
+              {strategy.tradeoffs.admissions_certainty}
+            </div>
           </div>
         </div>
-        <div>
-          <span className="text-xs text-stone-500">Admissions certainty</span>
-          <div className={`font-medium capitalize ${CERTAINTY_CLASSES[strategy.tradeoffs.admissions_certainty] ?? 'text-stone-700'}`}>
-            {strategy.tradeoffs.admissions_certainty}
-          </div>
+
+        <div className="text-xs text-stone-500">
+          Total incl. medical school (national estimate):{' '}
+          <span className="font-medium text-stone-700">
+            {totalLow != null && totalHigh != null
+              ? `${fmtMoney(totalLow)} – ${fmtMoney(totalHigh)}`
+              : 'n/a'}
+          </span>
         </div>
       </div>
 

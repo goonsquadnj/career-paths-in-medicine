@@ -18,7 +18,8 @@ import type { PathwayStrategy } from './types/pathwayStrategy';
 import { GROUP_ORDER, PATH_GROUP_LABELS, type PathGroup } from './types/path';
 import { useWishlistStore, type WishlistTier } from './store/wishlistStore';
 import { usePlanStore } from './store/planStore';
-import { bucketsForTiers } from './lib/strategyCost';
+import { strategyFilterPatch } from './lib/strategyCost';
+import { QuickStrategyFilters } from './components/QuickStrategyFilters';
 
 interface Filters {
   buckets: string[];
@@ -232,16 +233,25 @@ function App() {
 
   // A Strategies archetype card's "See matching schools" link — pre-filters
   // Schools to the schools that actually back that archetype's undergrad leg,
-  // derived live from the real dataset (never a stale hardcoded list).
+  // derived live from the real dataset (never a stale hardcoded list), then
+  // jumps tabs. The Schools tab's own quick-strategy-filter strip (below)
+  // shares the same strategyFilterPatch logic but applies in place, no jump.
   const handleSeeSchoolsForStrategy = (strategy: PathwayStrategy) => {
-    if (strategy.undergrad_leg.program_linked) {
-      setFilters({ ...EMPTY_FILTERS, directMed: 'yes' });
-    } else {
-      const buckets = bucketsForTiers(schools, strategy.undergrad_leg.bucket_tiers ?? []);
-      setFilters({ ...EMPTY_FILTERS, buckets });
-    }
+    setFilters({ ...EMPTY_FILTERS, ...strategyFilterPatch(strategy, schools) });
     setTab('schools');
   };
+
+  // Quick-strategy-filter strip on Schools: hover previews which chips a
+  // strategy maps to (ring highlight, doesn't apply); click applies for real,
+  // no tab jump since we're already there.
+  const [previewStrategyId, setPreviewStrategyId] = useState<string | null>(null);
+  const handleApplyStrategyFilter = (strategy: PathwayStrategy) => {
+    setFilters({ ...EMPTY_FILTERS, ...strategyFilterPatch(strategy, schools) });
+  };
+  const previewStrategyPatch = useMemo(() => {
+    const strategy = pathwayStrategies?.strategies.find((s) => s.id === previewStrategyId);
+    return strategy ? strategyFilterPatch(strategy, schools) : null;
+  }, [previewStrategyId, pathwayStrategies, schools]);
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-8 flex flex-col gap-8">
@@ -386,6 +396,14 @@ function App() {
                 <CertaintyExplainer />
               </div>
 
+              {pathwayStrategies && (
+                <QuickStrategyFilters
+                  strategies={pathwayStrategies.strategies}
+                  onHover={(s) => setPreviewStrategyId(s?.id ?? null)}
+                  onApply={handleApplyStrategyFilter}
+                />
+              )}
+
               <FilterBar
                 buckets={buckets}
                 statuses={statuses}
@@ -394,6 +412,8 @@ function App() {
                 selectedStatuses={filters.statuses}
                 selectedCostFlags={filters.costFlags}
                 directMed={filters.directMed}
+                previewBuckets={previewStrategyPatch?.buckets}
+                previewDirectMed={previewStrategyPatch?.directMed ?? null}
                 minPrice={effectiveMinPrice}
                 maxPrice={effectiveMaxPrice}
                 priceBounds={priceBounds}

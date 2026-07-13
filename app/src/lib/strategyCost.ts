@@ -1,6 +1,7 @@
 import type { School } from '../types/school';
 import { bucketTier } from './bucketColors';
-import type { StrategyUndergradLeg } from '../types/pathwayStrategy';
+import type { StrategyUndergradLeg, PathwayStrategy } from '../types/pathwayStrategy';
+import type { DirectMedFilter } from '../components/FilterBar';
 
 // Derives a REAL undergrad cost range live from the actual school dataset —
 // never a hardcoded number (docs/paths_journeys_plan.md's core honesty
@@ -52,4 +53,23 @@ export function bucketsForTiers(schools: School[], tiers: string[]): string[] {
     if (tiers.includes(bucketTier(s.school_bucket))) set.add(s.school_bucket);
   }
   return Array.from(set);
+}
+
+// Single source of truth for "what Schools filter does this strategy map
+// to" — shared by the Strategies tab's "See matching schools" link and the
+// Schools tab's quick-strategy-filter strip (hover-preview + click-to-apply),
+// so the two entry points can never drift apart.
+export interface StrategyFilterPatch {
+  buckets: string[];
+  directMed: DirectMedFilter;
+}
+
+export function strategyFilterPatch(strategy: PathwayStrategy, schools: School[]): StrategyFilterPatch {
+  if (strategy.undergrad_leg.program_linked) {
+    return { buckets: [], directMed: 'yes' };
+  }
+  return {
+    buckets: bucketsForTiers(schools, strategy.undergrad_leg.bucket_tiers ?? []),
+    directMed: 'any',
+  };
 }

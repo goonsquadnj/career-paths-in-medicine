@@ -12,6 +12,11 @@ export interface FilterBarProps {
   selectedStatuses: string[];
   selectedCostFlags: string[];
   directMed: DirectMedFilter;
+  // Strategy-card hover preview (docs/paths_journeys_plan.md quick-filter
+  // strip): buckets/direct-med value to ring-highlight WITHOUT applying them,
+  // so hovering a strategy pill shows what it maps to before committing.
+  previewBuckets?: string[];
+  previewDirectMed?: DirectMedFilter | null;
   minPrice: number;
   maxPrice: number;
   priceBounds: readonly [number, number];
@@ -42,12 +47,14 @@ function ChipGroup({
   label,
   options,
   selected,
+  previewed = [],
   onToggle,
   formatLabel,
 }: {
   label: string;
   options: string[];
   selected: string[];
+  previewed?: string[];
   onToggle: (value: string) => void;
   formatLabel?: (value: string) => string;
 }) {
@@ -58,6 +65,10 @@ function ChipGroup({
       <div className="flex flex-wrap gap-1.5">
         {options.map((opt) => {
           const isActive = selected.includes(opt);
+          // Preview = "this is what hovering a strategy pill would apply,"
+          // deliberately a lighter ring rather than the solid selected fill
+          // so it can't be mistaken for already-applied.
+          const isPreviewed = !isActive && previewed.includes(opt);
           return (
             <button
               key={opt}
@@ -67,7 +78,9 @@ function ChipGroup({
               className={`min-h-11 rounded-full border px-3 py-1 text-xs font-medium transition-colors ${
                 isActive
                   ? 'bg-brand-600 text-white border-brand-600'
-                  : 'bg-white text-stone-600 border-stone-300 hover:bg-stone-50'
+                  : isPreviewed
+                    ? 'bg-white text-stone-600 border-brand-400 ring-2 ring-brand-300'
+                    : 'bg-white text-stone-600 border-stone-300 hover:bg-stone-50'
               }`}
             >
               {formatLabel ? formatLabel(opt) : opt}
@@ -87,6 +100,8 @@ export function FilterBar({
   selectedStatuses,
   selectedCostFlags,
   directMed,
+  previewBuckets = [],
+  previewDirectMed = null,
   minPrice,
   maxPrice,
   priceBounds,
@@ -125,6 +140,7 @@ export function FilterBar({
             label="Bucket"
             options={buckets}
             selected={selectedBuckets}
+            previewed={previewBuckets}
             onToggle={(v) => onChange({ buckets: toggleIn(selectedBuckets, v) })}
           />
           <ChipGroup
@@ -152,21 +168,27 @@ export function FilterBar({
                   { value: 'yes', label: 'Has program' },
                   { value: 'no', label: 'No program' },
                 ] as const
-              ).map((opt) => (
+              ).map((opt) => {
+                const isActive = directMed === opt.value;
+                const isPreviewed = !isActive && previewDirectMed === opt.value;
+                return (
                 <button
                   key={opt.value}
                   type="button"
                   onClick={() => onChange({ directMed: opt.value })}
-                  aria-pressed={directMed === opt.value}
+                  aria-pressed={isActive}
                   className={`min-h-11 rounded-full border px-3 py-1 text-xs font-medium transition-colors ${
-                    directMed === opt.value
+                    isActive
                       ? 'bg-brand-600 text-white border-brand-600'
-                      : 'bg-white text-stone-600 border-stone-300 hover:bg-stone-50'
+                      : isPreviewed
+                        ? 'bg-white text-stone-600 border-brand-400 ring-2 ring-brand-300'
+                        : 'bg-white text-stone-600 border-stone-300 hover:bg-stone-50'
                   }`}
                 >
                   {opt.label}
                 </button>
-              ))}
+                );
+              })}
             </div>
           </div>
         </div>
