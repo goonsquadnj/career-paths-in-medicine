@@ -15,17 +15,22 @@ Model: designed in Opus; implemented in Sonnet (one foreground stream, phased)
 
 ## Known issues found during Phase 1 review (2026-07-11)
 
-- **Scrollbar artifact next to the tab bar** — investigated via screenshot at
-  narrow viewport width. Most likely explanation: Windows renders scrollbars
-  with visible tracks/arrow buttons (unlike Mac's overlay style), so (a) the
-  page's own vertical scrollbar naturally appears right at the top of the
-  viewport next to whatever's there first (the tab row), and (b) the tab bar's
-  `overflow-x-auto` shows its own horizontal scrollbar once tab labels
-  overflow (confirmed: "Schools & Programs" was visibly truncated at that
-  width). Functionally correct, just not visually polished. **Nice-to-have for
-  a later pass:** custom-style scrollbars (thin track) or hide the tab-row
-  scrollbar while keeping it scrollable, if it bothers Jeff on repeat viewing —
-  not blocking, not treated as a Phase 2 blocker.
+- **RESOLVED (2026-07-13), corrects the original diagnosis below.** The
+  scrollbar Jeff kept seeing "in the header" was a real bug, not benign OS
+  scrollbar styling as first guessed — his precise symptom report ("only in
+  the header," "moves by a pixel or two") led to finding the actual cause:
+  the tab-bar container (`overflow-x-auto`, added so tab labels can scroll
+  horizontally at narrow widths) has a CSS spec quirk where setting only
+  `overflow-x: auto` forces the browser to also compute `overflow-y` as
+  `auto` (a used-value coupling — a UA can't render one axis `visible` and
+  the other `auto`/`scroll` independently). A 1px box-model rounding
+  artifact (`scrollHeight: 44` vs `clientHeight: 43`, confirmed by direct
+  measurement) then gave that container exactly one real pixel to scroll
+  vertically, rendering its own native scrollbar confined to the tab row.
+  Fixed by adding `overflow-y-hidden` alongside `overflow-x-auto` in
+  `App.tsx`. Verified: `overflowY` computed style is now `hidden`,
+  `canActuallyScrollY: false`. ~~Original (wrong) diagnosis below, kept for
+  the record of how the investigation actually went:~~
 - **Certainty explainer appearing expanded at the very top of the page** —
   Jeff's screenshot showed this, but it reflects the *pre-Phase-1* 5-tab
   structure (Schools/Programs/Career Paths/My Wishlist), not the current

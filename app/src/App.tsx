@@ -237,7 +237,7 @@ function App() {
 
       {!loading && !error && (
         <>
-          <div className="flex gap-2 border-b border-stone-200 overflow-x-auto">
+          <div className="flex gap-2 border-b border-stone-200 overflow-x-auto overflow-y-hidden">
             {TABS.map((t) => (
               <button
                 key={t.id}
