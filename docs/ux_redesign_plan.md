@@ -7,8 +7,18 @@ Model: designed in Opus; implemented in Sonnet (one foreground stream, phased)
 > **Why this exists:** the R0-R2 app "feels like a data browser" (Schools /
 > Programs / Career Paths / Wishlist, opening on Schools). The intended product
 > starts with the *person's goals and uncertainty*, not schools. This plan
-> reworks the app around a guided journey. It pulls **Epic A (onboarding) and
-> Epic B (paths/journeys)** — originally sequenced at R4 — forward to now.
+> reworks the app around a guided journey. It intended to pull **Epic A
+> (onboarding) and Epic B (paths/journeys)** — originally sequenced at R4 —
+> forward to now.
+>
+> **Correction (2026-07-13):** that intention only partly landed. Phases 1-4
+> built career-*interest* routing (Start → Explore Careers group filter — part
+> of Epic A) and career-path browsing/Compare/Roadmap (Epic F). **Epic B — the
+> actual undergrad-leg + grad-leg combination model** ("state school → prestige
+> med," "prestige undergrad → keep options open") was never built. My Plan's
+> free-text "preferred training route" field is a loose placeholder for it, not
+> the real feature. Epic B remains real backlog, unbuilt, at R4 — see
+> `docs/product_backlog.md` Epic B.
 >
 > Honesty guardrails from `vision.md` remain absolute: never invent facts, no
 > fake numeric scores, keep `source_confidence`/`data_status` discipline.
