@@ -11,6 +11,7 @@ import { StartLanding } from './components/StartLanding';
 import { SectionHeader } from './components/SectionHeader';
 import { CERTAINTY_ORDER } from './types/program';
 import type { FamilyCostFlag } from './types/school';
+import { GROUP_ORDER, PATH_GROUP_LABELS, type PathGroup } from './types/path';
 import { useWishlistStore, type WishlistTier } from './store/wishlistStore';
 
 interface Filters {
@@ -67,6 +68,9 @@ function App() {
   // Map is secondary/collapsed by default (docs/ux_redesign_plan.md: "the
   // current dataset is too small for the map to dominate").
   const [showMap, setShowMap] = useState(false);
+  // Which career groups the Start landing routed into; empty = show all
+  // groups (the "not sure yet" / default state).
+  const [careerGroupFilter, setCareerGroupFilter] = useState<PathGroup[]>([]);
   const wishlist = useWishlistStore((s) => s.wishlist);
 
   useEffect(() => {
@@ -107,6 +111,17 @@ function App() {
       return (ai === -1 ? 999 : ai) - (bi === -1 ? 999 : bi);
     });
   }, [programs]);
+
+  const groupedPaths = useMemo(() => {
+    const visible =
+      careerGroupFilter.length === 0
+        ? paths
+        : paths.filter((p) => careerGroupFilter.includes(p.group));
+    return GROUP_ORDER.map((group) => ({
+      group,
+      paths: visible.filter((p) => p.group === group),
+    })).filter((g) => g.paths.length > 0);
+  }, [paths, careerGroupFilter]);
 
   const wishlistedSchools = useMemo(() => {
     const grouped: Record<WishlistTier, typeof schools> = { reach: [], target: [], safety: [] };
@@ -170,19 +185,44 @@ function App() {
             ))}
           </div>
 
-          {tab === 'start' && <StartLanding onChoose={() => setTab('careers')} />}
+          {tab === 'start' && (
+            <StartLanding
+              onChoose={(groups) => {
+                setCareerGroupFilter(groups);
+                setTab('careers');
+              }}
+            />
+          )}
 
           {tab === 'careers' && (
-            <section className="flex flex-col gap-4">
+            <section className="flex flex-col gap-5">
               <SectionHeader
                 title="Explore careers"
                 subtitle="Fifteen healthcare career paths — what each one actually involves, how long training takes, and who it tends to fit. Salary is deliberately left qualitative for now; see Epic K for the eventual cross-checked comparison."
               />
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {paths.map((path) => (
-                  <PathCard key={path.id} path={path} />
-                ))}
-              </div>
+
+              {careerGroupFilter.length > 0 && (
+                <button
+                  type="button"
+                  onClick={() => setCareerGroupFilter([])}
+                  className="self-start min-h-11 rounded-lg border border-stone-300 bg-white px-3 py-2 text-sm text-stone-600 hover:bg-stone-50"
+                >
+                  Show all careers
+                </button>
+              )}
+
+              {groupedPaths.map(({ group, paths: groupPaths }) => (
+                <div key={group} className="flex flex-col gap-3">
+                  <h3 className="font-display text-xl font-normal text-stone-800">
+                    {PATH_GROUP_LABELS[group]}
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {groupPaths.map((path) => (
+                      <PathCard key={path.id} path={path} />
+                    ))}
+                  </div>
+                </div>
+              ))}
             </section>
           )}
 

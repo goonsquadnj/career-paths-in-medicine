@@ -13,6 +13,27 @@ Model: designed in Opus; implemented in Sonnet (one foreground stream, phased)
 > Honesty guardrails from `vision.md` remain absolute: never invent facts, no
 > fake numeric scores, keep `source_confidence`/`data_status` discipline.
 
+## Known issues found during Phase 1 review (2026-07-11)
+
+- **Scrollbar artifact next to the tab bar** — investigated via screenshot at
+  narrow viewport width. Most likely explanation: Windows renders scrollbars
+  with visible tracks/arrow buttons (unlike Mac's overlay style), so (a) the
+  page's own vertical scrollbar naturally appears right at the top of the
+  viewport next to whatever's there first (the tab row), and (b) the tab bar's
+  `overflow-x-auto` shows its own horizontal scrollbar once tab labels
+  overflow (confirmed: "Schools & Programs" was visibly truncated at that
+  width). Functionally correct, just not visually polished. **Nice-to-have for
+  a later pass:** custom-style scrollbars (thin track) or hide the tab-row
+  scrollbar while keeping it scrollable, if it bothers Jeff on repeat viewing —
+  not blocking, not treated as a Phase 2 blocker.
+- **Certainty explainer appearing expanded at the very top of the page** —
+  Jeff's screenshot showed this, but it reflects the *pre-Phase-1* 5-tab
+  structure (Schools/Programs/Career Paths/My Wishlist), not the current
+  4-tab build — almost certainly a stale cache (Cloudflare deploy lag or
+  browser cache) rather than a regression, since Phase 1 already relocated
+  and collapsed this exact element. **Re-verify against a hard-refreshed
+  live/local build; only treat as a real bug if it reproduces there.**
+
 ## Locked decisions (from Jeff, 2026-07-11)
 
 1. **Path data:** add short structured fields *derived by summarizing the

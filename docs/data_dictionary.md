@@ -1205,35 +1205,23 @@ low
 
 # data/paths.json
 
-This file will store major healthcare career paths.
+Populated (2026-07-09) with 15 baseline healthcare career-path records: MD/DO
+physician, PA, RN, NP, CRNA, dentist, clinical psychologist, psychiatrist,
+physical therapist, pharmacist, public health, biomedical research, biotech/
+pharma, health tech/data/AI, healthcare administration.
 
-Examples:
-
-```text id="y20std"
-MD physician
-DO physician
-Physician assistant
-Registered nurse
-Nurse practitioner
-CRNA
-Dentist
-Clinical psychologist
-Physical therapist
-Pharmacist
-Public health
-Biomedical research
-Biotech / pharma
-Health tech / AI / data
-Healthcare administration
-```
-
-## Proposed fields
+## Fields
 
 ```json id="zwr8xe"
 {
-  "id": "md_physician",
-  "name": "MD Physician",
+  "id": "md_do_physician",
+  "name": "MD/DO Physician",
   "category": "clinical",
+  "group": "physician",
+  "training_length_short": "~11-15 yrs post-HS",
+  "admissions_difficulty": "very_high",
+  "roadmap": ["High school", "College (premed)", "Medical school", "Residency", "Optional fellowship", "Practice"],
+  "best_fit": "Students who want the broadest clinical scope of practice...",
   "training_length_years": null,
   "typical_degrees": [],
   "requires_medical_school": true,
@@ -1245,6 +1233,56 @@ Healthcare administration
   "sources": []
 }
 ```
+
+### `category`
+
+`"clinical"` or `"non_clinical"`.
+
+### `group` (added Phase 2, docs/ux_redesign_plan.md)
+
+Career grouping used by the Start landing routing and the Explore Careers
+grouped layout. Allowed values:
+
+```text
+physician
+nursing
+advanced_clinical
+mental_health
+research_public_health_tech
+```
+
+### `training_length_short` (added Phase 2)
+
+A short (~25 char) summary of `training_length_years`, e.g. `"~11-15 yrs
+post-HS"`. Derived from the existing prose — not a new fact.
+
+### `admissions_difficulty` (added Phase 2)
+
+Enum summarizing `admissions_difficulty_notes`:
+
+```text
+low
+moderate
+high
+very_high
+```
+
+### `roadmap` (added Phase 2)
+
+Array of 4-7 short step strings (e.g. `["High school", "College", "Medical
+school", "Residency", "Practice"]`) — a simplified visual timeline, not a
+detailed flowchart. Derived from `training_length_years`.
+
+### `best_fit` (added Phase 2)
+
+One sentence distilled from `best_for[0]`, for the compact card view.
+
+### `salary_range_notes`
+
+**Deliberately qualitative only.** No specific salary numbers or short salary
+labels anywhere in this file — see Epic K (salary triangulation) for the
+eventual cross-checked, sourced comparison. Do not add a short "salary
+outlook" field to compact cards; this is a locked decision (Jeff, 2026-07-11).
 
 ---
 

@@ -1,95 +1,114 @@
+import { useState } from 'react';
 import type { Path } from '../types/path';
-import { humanize } from '../lib/format';
 
-const CATEGORY_CLASSES: Record<string, string> = {
-  clinical: 'bg-rose-100 text-rose-800',
-  non_clinical: 'bg-cyan-100 text-cyan-800',
+// Compact comparison card per docs/ux_redesign_plan.md Phase 2 — replaces the
+// old wall-of-text card. Structured fields up front; deep prose (what it is,
+// admissions notes, lifestyle, salary, best-for/watch-outs) sits behind
+// "View details" (progressive disclosure, per docs/design_system.md).
+
+const DIFFICULTY_CLASSES: Record<string, string> = {
+  low: 'text-green-700',
+  moderate: 'text-amber-700',
+  high: 'text-orange-700',
+  very_high: 'text-red-700',
 };
 
-const CARE_LEVEL_CLASSES: Record<string, string> = {
-  high: 'text-red-700',
-  medium: 'text-amber-700',
-  low: 'text-green-700',
+const DIFFICULTY_LABELS: Record<string, string> = {
+  low: 'Low',
+  moderate: 'Moderate',
+  high: 'High',
+  very_high: 'Very high',
 };
 
 export function PathCard({ path }: { path: Path }) {
+  const [expanded, setExpanded] = useState(false);
+
   return (
-    <article className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm flex flex-col gap-2">
+    <article className="rounded-xl border border-stone-200 bg-white p-5 shadow-sm flex flex-col gap-3">
       <div>
-        <h3 className="text-lg font-semibold text-gray-900">{path.name}</h3>
+        <h3 className="text-lg font-medium text-stone-900">{path.name}</h3>
+        <p className="text-sm text-stone-600 mt-1">{path.best_fit}</p>
       </div>
 
-      <div className="flex flex-wrap gap-1.5">
-        <span
-          className={`rounded px-2 py-0.5 text-xs font-medium ${CATEGORY_CLASSES[path.category] ?? 'bg-gray-100 text-gray-800'}`}
-        >
-          {humanize(path.category)}
-        </span>
-        {path.requires_medical_school && (
-          <span className="rounded px-2 py-0.5 text-xs font-medium bg-violet-100 text-violet-800">
-            Requires medical school
-          </span>
-        )}
-      </div>
-
-      <p className="text-sm text-gray-700">{path.what_they_do}</p>
-
-      <hr className="border-gray-100" />
-
-      <div className="text-sm text-gray-700 grid grid-cols-1 gap-y-1">
+      <div className="grid grid-cols-2 gap-x-3 gap-y-2 text-sm">
         <div>
-          <span className="text-gray-500">Training length</span>
-          <div>{path.training_length_years}</div>
+          <span className="text-xs text-stone-500">Training length</span>
+          <div className="font-medium text-stone-800">{path.training_length_short}</div>
         </div>
         <div>
-          <span className="text-gray-500">Typical degrees</span>
-          <div>{path.typical_degrees.join(', ')}</div>
-        </div>
-        <div>
-          <span className="text-gray-500">Patient-care intensity</span>
-          <div className={`font-medium ${CARE_LEVEL_CLASSES[path.patient_care_level] ?? 'text-gray-600'}`}>
-            {humanize(path.patient_care_level)}
+          <span className="text-xs text-stone-500">Admissions difficulty</span>
+          <div
+            className={`font-medium ${DIFFICULTY_CLASSES[path.admissions_difficulty] ?? 'text-stone-700'}`}
+          >
+            {DIFFICULTY_LABELS[path.admissions_difficulty] ?? path.admissions_difficulty}
           </div>
         </div>
+        <div>
+          <span className="text-xs text-stone-500">Med school required?</span>
+          <div className="font-medium text-stone-800">
+            {path.requires_medical_school ? 'Yes' : 'No'}
+          </div>
+        </div>
+        <div>
+          <span className="text-xs text-stone-500">Patient-care intensity</span>
+          <div className="font-medium text-stone-800 capitalize">{path.patient_care_level}</div>
+        </div>
       </div>
 
-      {path.admissions_difficulty_notes && (
-        <div className="text-sm">
-          <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide">Admissions</div>
-          <p className="text-gray-700">{path.admissions_difficulty_notes}</p>
-        </div>
-      )}
+      <button
+        type="button"
+        onClick={() => setExpanded((v) => !v)}
+        aria-expanded={expanded}
+        className="self-start min-h-11 text-sm font-medium text-brand-700 hover:text-brand-800"
+      >
+        {expanded ? 'Hide details' : 'View details'}
+      </button>
 
-      {path.lifestyle_notes && (
-        <div className="text-sm">
-          <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide">Lifestyle</div>
-          <p className="text-gray-700">{path.lifestyle_notes}</p>
-        </div>
-      )}
+      {expanded && (
+        <div className="flex flex-col gap-3 border-t border-stone-100 pt-3 text-sm text-stone-700">
+          <p>{path.what_they_do}</p>
 
-      {path.salary_range_notes && (
-        <p className="text-sm text-gray-600 italic">{path.salary_range_notes}</p>
-      )}
+          <div>
+            <div className="text-xs font-semibold text-stone-500 uppercase tracking-wide">
+              Admissions
+            </div>
+            <p>{path.admissions_difficulty_notes}</p>
+          </div>
 
-      {path.best_for.length > 0 && (
-        <div>
-          <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide">Best for</div>
-          <ul className="list-disc list-inside text-sm text-gray-700">
-            {path.best_for.map((b) => (
-              <li key={b}>{b}</li>
-            ))}
-          </ul>
-        </div>
-      )}
+          <div>
+            <div className="text-xs font-semibold text-stone-500 uppercase tracking-wide">
+              Lifestyle
+            </div>
+            <p>{path.lifestyle_notes}</p>
+          </div>
 
-      {path.watch_outs.length > 0 && (
-        <div>
-          <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide">Watch outs</div>
-          <ul className="list-disc list-inside text-sm text-red-700">
-            {path.watch_outs.map((w) => (
-              <li key={w}>{w}</li>
-            ))}
-          </ul>
+          <p className="italic text-stone-500">{path.salary_range_notes}</p>
+
+          {path.best_for.length > 0 && (
+            <div>
+              <div className="text-xs font-semibold text-stone-500 uppercase tracking-wide">
+                Best for
+              </div>
+              <ul className="list-disc list-inside">
+                {path.best_for.map((b) => (
+                  <li key={b}>{b}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {path.watch_outs.length > 0 && (
+            <div>
+              <div className="text-xs font-semibold text-stone-500 uppercase tracking-wide">
+                Watch outs
+              </div>
+              <ul className="list-disc list-inside text-red-700">
+                {path.watch_outs.map((w) => (
+                  <li key={w}>{w}</li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
       )}
     </article>
