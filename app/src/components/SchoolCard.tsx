@@ -1,8 +1,10 @@
 import type { School } from '../types/school';
+import type { Program } from '../types/program';
 import { fmtCurrency, fmtDataStatus, fmtMoney, fmtPct, humanize } from '../lib/format';
 import { statusLabel, costFlagLabel } from '../lib/labels';
 import { bucketTier, TIER_DOT_CLASSES, TIER_LABELS } from '../lib/bucketColors';
 import { useWishlistStore, type WishlistTier } from '../store/wishlistStore';
+import { SchoolProgramBlock } from './SchoolProgramBlock';
 
 const CONFIDENCE_CLASSES: Record<string, string> = {
   high: 'text-green-700',
@@ -66,7 +68,17 @@ function WishlistTierPicker({ schoolId }: { schoolId: string }) {
   );
 }
 
-export function SchoolCard({ school, highlighted }: { school: School; highlighted?: boolean }) {
+interface SchoolCardProps {
+  school: School;
+  highlighted?: boolean;
+  // Matched direct-med program records for this school (see App.tsx's
+  // programsBySchoolId map). Embedded here per docs/ux_redesign_plan.md
+  // Phase 2.5 — programs are an attribute of their school, not a separate
+  // standalone list.
+  programs?: Program[];
+}
+
+export function SchoolCard({ school, highlighted, programs = [] }: SchoolCardProps) {
   const tier = bucketTier(school.school_bucket);
 
   return (
@@ -109,8 +121,15 @@ export function SchoolCard({ school, highlighted }: { school: School; highlighte
           {school.parent_roi_note && (
             <p className="text-sm text-brand-900">{school.parent_roi_note}</p>
           )}
+          {school.cost_notes && (
+            <p className="text-xs text-brand-700 italic">{school.cost_notes}</p>
+          )}
         </div>
       )}
+
+      {programs.map((program) => (
+        <SchoolProgramBlock key={program.id} program={program} />
+      ))}
 
       <hr className="border-gray-100" />
 
@@ -141,10 +160,17 @@ export function SchoolCard({ school, highlighted }: { school: School; highlighte
         </div>
       </div>
 
+      {school.scorecard_notes && (
+        <p className="text-xs text-gray-500 italic">{school.scorecard_notes}</p>
+      )}
+
       {school.gpa_risk && (
-        <p className={`text-xs font-medium ${GPA_CLASSES[school.gpa_risk] ?? 'text-gray-600'}`}>
-          GPA risk: {school.gpa_risk}
-        </p>
+        <div className="text-xs">
+          <span className={`font-medium ${GPA_CLASSES[school.gpa_risk] ?? 'text-gray-600'}`}>
+            Premed GPA pressure (our assessment): {school.gpa_risk}
+          </span>
+          {school.gpa_risk_notes && <p className="text-gray-500 mt-0.5">{school.gpa_risk_notes}</p>}
+        </div>
       )}
 
       <div className="border-t border-gray-100 pt-1.5 text-xs text-gray-400 flex flex-col gap-0.5">

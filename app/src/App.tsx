@@ -2,33 +2,38 @@ import { useEffect, useMemo, useState } from 'react';
 import { Map as MapIcon } from 'lucide-react';
 import { useData } from './lib/useData';
 import { SchoolCard } from './components/SchoolCard';
-import { ProgramCard } from './components/ProgramCard';
 import { PathCard } from './components/PathCard';
-import { FilterBar } from './components/FilterBar';
+import { FilterBar, type DirectMedFilter } from './components/FilterBar';
 import { CertaintyExplainer } from './components/CertaintyExplainer';
+import { DataMethodologyExplainer } from './components/DataMethodologyExplainer';
 import { SchoolMap } from './components/SchoolMap';
 import { StartLanding } from './components/StartLanding';
 import { SectionHeader } from './components/SectionHeader';
-import { CERTAINTY_ORDER } from './types/program';
-import type { FamilyCostFlag } from './types/school';
+import type { FamilyCostFlag, DistanceCategory } from './types/school';
+import type { Program } from './types/program';
 import { GROUP_ORDER, PATH_GROUP_LABELS, type PathGroup } from './types/path';
 import { useWishlistStore, type WishlistTier } from './store/wishlistStore';
 
 interface Filters {
-  bucket: string;
-  status: string;
-  costFlag: string;
-  directMed: string;
+  buckets: string[];
+  statuses: string[];
+  costFlags: string[];
+  directMed: DirectMedFilter;
+  // null = not narrowed by the user yet; falls back to the full data range.
+  minPrice: number | null;
+  maxPrice: number | null;
 }
 
 // 4-tab structure per docs/ux_redesign_plan.md: Start · Explore Careers ·
-// Schools & Programs (merged) · My Plan (renamed from Wishlist).
+// Schools · My Plan (renamed from Wishlist). "Schools & Programs" was
+// renamed to just "Schools" in Phase 2.5 — programs are now embedded inside
+// their school's own card, not a separate standalone section.
 type Tab = 'start' | 'careers' | 'schools' | 'plan';
 
 const TABS: { id: Tab; label: string }[] = [
   { id: 'start', label: 'Start' },
   { id: 'careers', label: 'Explore Careers' },
-  { id: 'schools', label: 'Schools & Programs' },
+  { id: 'schools', label: 'Schools' },
   { id: 'plan', label: 'My Plan' },
 ];
 
@@ -39,24 +44,47 @@ const WISHLIST_TIER_TITLES: Record<WishlistTier, string> = {
   safety: 'Safety',
 };
 
+// Default school sort per Phase 2.5 review feedback ("cards seem randomly
+// placed, no default sort") — closest to home first, matching the vision's
+// distance-from-home framing.
+const DISTANCE_ORDER: DistanceCategory[] = [
+  'local',
+  'regional_drive',
+  'far_drive_or_short_flight',
+  'far_from_home',
+];
+
+const EMPTY_FILTERS: Filters = {
+  buckets: [],
+  statuses: [],
+  costFlags: [],
+  directMed: 'any',
+  minPrice: null,
+  maxPrice: null,
+};
+
 // Simple nice-to-have filter persistence (docs/release_plan.md R2 item 4):
 // keep the last-used filter selections so reopening the app doesn't reset
 // them. Kept deliberately simple — plain localStorage, no store/migration.
-const FILTERS_STORAGE_KEY = 'lucy-planner:filters:v1';
+// Bumped to v2 for the Phase 2.5 filter-shape change (single values -> arrays
+// + price range); old v1 values are simply ignored/replaced.
+const FILTERS_STORAGE_KEY = 'lucy-planner:filters:v2';
 
 function loadStoredFilters(): Filters {
   try {
     const raw = localStorage.getItem(FILTERS_STORAGE_KEY);
-    if (!raw) return { bucket: '', status: '', costFlag: '', directMed: '' };
+    if (!raw) return EMPTY_FILTERS;
     const parsed = JSON.parse(raw);
     return {
-      bucket: parsed.bucket ?? '',
-      status: parsed.status ?? '',
-      costFlag: parsed.costFlag ?? '',
-      directMed: parsed.directMed ?? '',
+      buckets: Array.isArray(parsed.buckets) ? parsed.buckets : [],
+      statuses: Array.isArray(parsed.statuses) ? parsed.statuses : [],
+      costFlags: Array.isArray(parsed.costFlags) ? parsed.costFlags : [],
+      directMed: parsed.directMed === 'yes' || parsed.directMed === 'no' ? parsed.directMed : 'any',
+      minPrice: typeof parsed.minPrice === 'number' ? parsed.minPrice : null,
+      maxPrice: typeof parsed.maxPrice === 'number' ? parsed.maxPrice : null,
     };
   } catch {
-    return { bucket: '', status: '', costFlag: '', directMed: '' };
+    return EMPTY_FILTERS;
   }
 }
 
@@ -93,23 +121,63 @@ function App() {
     [schools],
   );
 
-  const filteredSchools = useMemo(() => {
-    return schools.filter((s) => {
-      if (filters.bucket && s.school_bucket !== filters.bucket) return false;
-      if (filters.status && s.v1_status !== filters.status) return false;
-      if (filters.costFlag && s.family_cost_flag !== filters.costFlag) return false;
-      if (filters.directMed === 'yes' && !s.has_direct_med_program) return false;
-      if (filters.directMed === 'no' && s.has_direct_med_program) return false;
-      return true;
-    });
-  }, [schools, filters]);
+  // Full data-driven bounds for the net-price range slider. Falls back to a
+  // sane default before schools have loaded.
+  const priceBounds = useMemo((): readonly [number, number] => {
+    const prices = schools
+      .map((s) => s.scorecard_avg_annual_cost)
+      .filter((p): p is number => p != null);
+    if (prices.length === 0) return [0, 100000] as const;
+    const min = Math.floor(Math.min(...prices) / 1000) * 1000;
+    const max = Math.ceil(Math.max(...prices) / 1000) * 1000;
+    return [min, max] as const;
+  }, [schools]);
 
-  const sortedPrograms = useMemo(() => {
-    return [...programs].sort((a, b) => {
-      const ai = CERTAINTY_ORDER.indexOf(a.certainty_category);
-      const bi = CERTAINTY_ORDER.indexOf(b.certainty_category);
-      return (ai === -1 ? 999 : ai) - (bi === -1 ? 999 : bi);
-    });
+  const effectiveMinPrice = filters.minPrice ?? priceBounds[0];
+  const effectiveMaxPrice = filters.maxPrice ?? priceBounds[1];
+
+  const filteredSchools = useMemo(() => {
+    const priceNarrowed = effectiveMinPrice > priceBounds[0] || effectiveMaxPrice < priceBounds[1];
+
+    return schools
+      .filter((s) => {
+        if (filters.buckets.length > 0 && !filters.buckets.includes(s.school_bucket)) return false;
+        if (filters.statuses.length > 0 && !filters.statuses.includes(s.v1_status)) return false;
+        if (
+          filters.costFlags.length > 0 &&
+          (!s.family_cost_flag || !filters.costFlags.includes(s.family_cost_flag))
+        )
+          return false;
+        if (filters.directMed === 'yes' && !s.has_direct_med_program) return false;
+        if (filters.directMed === 'no' && s.has_direct_med_program) return false;
+        // Only enforce the price band once the user has actually narrowed it —
+        // otherwise a school with an unverified null price would be silently
+        // excluded even at "full range" (never assume it's in range if unknown).
+        if (priceNarrowed) {
+          if (s.scorecard_avg_annual_cost == null) return false;
+          if (
+            s.scorecard_avg_annual_cost < effectiveMinPrice ||
+            s.scorecard_avg_annual_cost > effectiveMaxPrice
+          )
+            return false;
+        }
+        return true;
+      })
+      .sort((a, b) => {
+        const ai = DISTANCE_ORDER.indexOf(a.distance_from_home_category);
+        const bi = DISTANCE_ORDER.indexOf(b.distance_from_home_category);
+        if (ai !== bi) return ai - bi;
+        return a.name.localeCompare(b.name);
+      });
+  }, [schools, filters, priceBounds, effectiveMinPrice, effectiveMaxPrice]);
+
+  // Direct-med program records keyed by id, so each school can embed its own
+  // matched program(s) inline instead of a separate standalone list
+  // (docs/ux_redesign_plan.md Phase 2.5).
+  const programsById = useMemo(() => {
+    const map = new Map<string, Program>();
+    for (const p of programs) map.set(p.id, p);
+    return map;
   }, [programs]);
 
   const groupedPaths = useMemo(() => {
@@ -227,59 +295,55 @@ function App() {
           )}
 
           {tab === 'schools' && (
-            <section className="flex flex-col gap-8">
-              <div className="flex flex-col gap-4">
-                <SectionHeader
-                  title="Schools & programs"
-                  subtitle="Which schools might support the path you're exploring — cost, outcomes, and pre-health ecosystem, side by side."
-                />
-                <FilterBar
-                  buckets={buckets}
-                  statuses={statuses}
-                  costFlags={costFlags}
-                  bucket={filters.bucket}
-                  status={filters.status}
-                  costFlag={filters.costFlag}
-                  directMed={filters.directMed}
-                  onChange={(patch) => setFilters((f) => ({ ...f, ...patch }))}
-                  visibleCount={filteredSchools.length}
-                  totalCount={schools.length}
-                />
+            <section className="flex flex-col gap-4">
+              <SectionHeader
+                title="Schools"
+                subtitle="Which schools might support the path you're exploring — cost, outcomes, pre-health ecosystem, and any direct-med pathway, side by side. Sorted closest to home first."
+              />
 
-                <button
-                  type="button"
-                  onClick={() => setShowMap((v) => !v)}
-                  className="self-start flex items-center gap-2 min-h-11 rounded-lg border border-stone-300 bg-white px-3 py-2 text-sm font-medium text-stone-700 hover:bg-stone-50"
-                >
-                  <MapIcon className="h-4 w-4" strokeWidth={1.75} aria-hidden />
-                  {showMap ? 'Hide map' : 'Show map'}
-                </button>
-                {showMap && (
-                  <SchoolMap schools={filteredSchools} onSelectSchool={handleSelectSchool} />
-                )}
-
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {filteredSchools.map((school) => (
-                    <SchoolCard
-                      key={school.id}
-                      school={school}
-                      highlighted={school.id === highlightedSchoolId}
-                    />
-                  ))}
-                </div>
+              <div className="flex flex-col gap-2">
+                <DataMethodologyExplainer />
+                <CertaintyExplainer />
               </div>
 
-              <div className="flex flex-col gap-4 border-t border-stone-200 pt-8">
-                <SectionHeader
-                  title="Medical pathway programs"
-                  subtitle="BS/MD, BA/MD, and early-assurance programs — how much admissions certainty each one actually removes."
-                />
-                <CertaintyExplainer />
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {sortedPrograms.map((program) => (
-                    <ProgramCard key={program.id} program={program} />
-                  ))}
-                </div>
+              <FilterBar
+                buckets={buckets}
+                statuses={statuses}
+                costFlags={costFlags}
+                selectedBuckets={filters.buckets}
+                selectedStatuses={filters.statuses}
+                selectedCostFlags={filters.costFlags}
+                directMed={filters.directMed}
+                minPrice={effectiveMinPrice}
+                maxPrice={effectiveMaxPrice}
+                priceBounds={priceBounds}
+                onChange={(patch) => setFilters((f) => ({ ...f, ...patch }))}
+                onClear={() => setFilters(EMPTY_FILTERS)}
+                visibleCount={filteredSchools.length}
+                totalCount={schools.length}
+              />
+
+              <button
+                type="button"
+                onClick={() => setShowMap((v) => !v)}
+                className="self-start flex items-center gap-2 min-h-11 rounded-lg border border-stone-300 bg-white px-3 py-2 text-sm font-medium text-stone-700 hover:bg-stone-50"
+              >
+                <MapIcon className="h-4 w-4" strokeWidth={1.75} aria-hidden />
+                {showMap ? 'Hide map' : 'Show map'}
+              </button>
+              {showMap && <SchoolMap schools={filteredSchools} onSelectSchool={handleSelectSchool} />}
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {filteredSchools.map((school) => (
+                  <SchoolCard
+                    key={school.id}
+                    school={school}
+                    highlighted={school.id === highlightedSchoolId}
+                    programs={school.direct_med_program_ids
+                      .map((id) => programsById.get(id))
+                      .filter((p): p is Program => p != null)}
+                  />
+                ))}
               </div>
             </section>
           )}
@@ -293,7 +357,7 @@ function App() {
 
               {WISHLIST_TIER_ORDER.every((t) => wishlistedSchools[t].length === 0) && (
                 <p className="rounded-xl border border-stone-200 bg-stone-50 px-4 py-3 text-sm text-stone-600">
-                  Nothing here yet. Go to Schools & Programs and use the tier buttons on a school
+                  Nothing here yet. Go to Schools and use the tier buttons on a school
                   card to add one.
                 </p>
               )}
