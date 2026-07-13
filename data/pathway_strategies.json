@@ -1,0 +1,130 @@
+{
+  "endpoint": "md_do_physician",
+  "endpoint_label": "Physician (MD/DO)",
+  "intro": {
+    "title": "Getting there is more than one decision",
+    "body": "Becoming a physician usually isn't one choice — it's at least two, about four years apart: where you go for undergrad, and then where you go for medical school. It's tempting to pour everything into the most prestigious undergrad you can get into. But medical schools care most about your GPA, MCAT, and experiences — things you can earn at many schools — and the expensive, decisive part comes later. Here are a few common strategies and what each one actually trades off. There's no single right answer; the point is to pick one on purpose, not by default."
+  },
+  "med_school_cost_note": "Every physician path here ends in medical school, which costs roughly the same regardless of where you did undergrad — so the cost difference between these strategies is almost entirely the undergrad leg. The med-school figure shown is a national median (AAMC), not school-specific, and is the same across every path below.",
+  "strategies": [
+    {
+      "id": "value_play",
+      "name": "The Value Play",
+      "tagline": "Spend modestly on undergrad. Keep your money — and your options — for what actually decides medical school.",
+      "undergrad_leg": {
+        "label": "Affordable / in-state undergrad",
+        "bucket_tiers": ["value"]
+      },
+      "grad_leg": {
+        "kind": "med_school",
+        "label": "Apply broadly to medical school"
+      },
+      "logic": "Medical schools weigh GPA, MCAT, and clinical/research/service experience most heavily — and you can earn all of those at a solid, affordable undergrad. Undergrad prestige is a weak signal to admissions committees next to those things. So a lower-cost school where you can post a strong GPA is often the stronger medical-school play, not a compromise — and it leaves your family's money and borrowing capacity intact for medical school, which is the genuinely expensive, unavoidable part. Taken to the extreme, staying local or commuting can drive undergrad debt to near zero.",
+      "best_for": [
+        "A student confident about medicine who can thrive and keep a high GPA at a larger public or value-focused school",
+        "Families who want to preserve borrowing power for medical school itself",
+        "Anyone who wants to keep debt low without closing off the physician path"
+      ],
+      "watch_outs": [
+        "Large publics can make you go find research, advising, and clinical access yourself — the opportunity is there, but you have to take it",
+        "'Affordable' only pays off if the environment still lets you excel and stay motivated"
+      ],
+      "tradeoffs": {
+        "flexibility": "high",
+        "admissions_certainty": "typical",
+        "undergrad_cost": "derived"
+      },
+      "notes": "editorial_strategy_archetype"
+    },
+    {
+      "id": "prestige_route",
+      "name": "The Prestige Route",
+      "tagline": "The famous-undergrad path — often the most expensive way to add the least to your odds of becoming a doctor.",
+      "undergrad_leg": {
+        "label": "Elite / prestige undergrad",
+        "bucket_tiers": ["elite"]
+      },
+      "grad_leg": {
+        "kind": "med_school",
+        "label": "Apply to medical school"
+      },
+      "logic": "An elite undergrad brings real things — research, peers, brand, network. But on the physician path specifically, it buys less than people assume: medical-school admissions lean hard on GPA and MCAT, and a prestigious name doesn't offset a lower GPA. Some of these environments are grade-deflating and intensely competitive, which can actually lower the very GPA medical schools weigh most (this app flags that as premed GPA pressure). And you'd be spending the most money before the expensive part — medical school — even begins. For a full-pay family, the extra cost over a value undergrad can run into six figures, for a marginal-at-best effect on the odds of becoming a physician.",
+      "best_for": [
+        "A student who would genuinely thrive — and hold a high GPA — in an intense, elite environment",
+        "Families for whom cost is genuinely not the binding constraint",
+        "Someone who values the undergrad experience and network for their own sake, eyes open that it isn't buying medical-school odds"
+      ],
+      "watch_outs": [
+        "Grade deflation and competition can hurt your premed GPA — the opposite of what you're paying for",
+        "You're spending the most money before the costly part (medical school) arrives",
+        "Easy to conflate 'best school I got into' with 'best move toward being a doctor' — they're not always the same"
+      ],
+      "tradeoffs": {
+        "flexibility": "medium",
+        "admissions_certainty": "typical",
+        "undergrad_cost": "derived"
+      },
+      "notes": "editorial_strategy_archetype"
+    },
+    {
+      "id": "the_hedge",
+      "name": "The Hedge",
+      "tagline": "Invest in a strong undergrad precisely because you're not sure — and want every door open.",
+      "undergrad_leg": {
+        "label": "Strong / prestige undergrad",
+        "bucket_tiers": ["elite", "mid"]
+      },
+      "grad_leg": {
+        "kind": "keep_options_open",
+        "label": "Keep options open — medicine, or not"
+      },
+      "logic": "This is the honest reason to pay for a strong undergrad: not to boost medical-school odds, but because you're genuinely unsure medicine is the destination, and a strong, well-networked school keeps the widest set of doors open — medicine, but also research, biotech, public health, PA, or a pivot you haven't imagined yet. Here you're buying optionality, and optionality has real value when the endpoint is uncertain. The tradeoff: you're paying the most, and you haven't de-risked medicine specifically. If medicine is truly the goal, the Value Play gets you there for far less.",
+      "best_for": [
+        "A student genuinely undecided who wants room to explore",
+        "Someone drawn to medicine-adjacent fields (research, biotech, health policy) as much as clinical medicine",
+        "Families who can afford to pay for optionality and actually value it"
+      ],
+      "watch_outs": [
+        "You're paying the most and de-risking medicine the least",
+        "'Keeping options open' can quietly become 'never committing' — optionality only pays off if you use it",
+        "The same grade-deflation / premed-GPA-pressure caveat applies at these schools"
+      ],
+      "tradeoffs": {
+        "flexibility": "high",
+        "admissions_certainty": "lower",
+        "undergrad_cost": "derived"
+      },
+      "notes": "editorial_strategy_archetype"
+    },
+    {
+      "id": "the_early_bet",
+      "name": "The Early Bet",
+      "tagline": "Commit to medicine now, as a high-school senior, and collapse two decisions into one.",
+      "undergrad_leg": {
+        "label": "BS/MD program (undergrad + med school linked)",
+        "program_linked": true
+      },
+      "grad_leg": {
+        "kind": "direct_med",
+        "label": "Linked medical school"
+      },
+      "logic": "Direct-med (BS/MD) programs let you lock in a path toward a specific medical school as a high-school senior, before you've even started college. The appeal is real: it can sharply cut the uncertainty of applying to medical school later, and sometimes saves a year or application costs. But it's a genuinely different shape of decision — one big early bet instead of two. You're committing to medicine (and often a specific medical school) before the college years that change many people's minds; most programs still have continuation requirements (GPA, sometimes MCAT), so it's rarely a free pass; and it narrows your ability to pivot. Read each program's fine print — 'guaranteed' ranges from a true conditional seat down to merely a guaranteed interview.",
+      "best_for": [
+        "A student genuinely certain about medicine as a high-school senior",
+        "Someone who values reduced uncertainty more than flexibility",
+        "A student who fits a specific program's requirements and would be happy at both its undergrad and its medical school"
+      ],
+      "watch_outs": [
+        "You're deciding before college — the years most likely to change your mind",
+        "'Guaranteed' means very different things program to program (see the certainty explainer)",
+        "Continuation requirements can still carry real premed pressure, and pivoting away usually means losing the seat"
+      ],
+      "tradeoffs": {
+        "flexibility": "low",
+        "admissions_certainty": "higher",
+        "undergrad_cost": "derived"
+      },
+      "notes": "editorial_strategy_archetype"
+    }
+  ]
+}

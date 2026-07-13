@@ -107,8 +107,17 @@ with an honest tradeoff profile. Working set (final copy authored at build time)
    school or a pivot. Lowest financial risk; fewer resources/ecosystem. *→
    value-tier, cost-sorted.*
 
-(May trim to 4 at build time if two feel redundant — Value Play vs.
-Debt-Minimizer are close; keep both only if they teach distinctly.)
+**TRIMMED TO 4 (2026-07-13, Opus copy-authoring pass):** Debt-Minimizer was
+folded into The Value Play (its logical extreme — "staying local/commuting
+drives undergrad debt to near zero"). Writing them out confirmed they'd read
+as the same card twice. Final four (authored copy lives in
+`data/pathway_strategies.json`): **Value Play** & **Prestige Route** (same
+med-school destination, opposite undergrad spend — the core lesson), **The
+Hedge** (when paying for prestige undergrad *is* justified — optionality when
+unsure), **The Early Bet** (BS/MD — the different-shape option, certainty for
+flexibility). Copy authored; intro framing + the shared med-school-cost note
+are in the same file. Build (components + wiring + assumptions.json med-school
+figure) is the remaining Sonnet work.
 
 ## Data model
 
