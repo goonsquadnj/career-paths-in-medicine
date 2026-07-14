@@ -12,6 +12,7 @@ import { SectionHeader } from './components/SectionHeader';
 import { CareerCompareTable } from './components/CareerCompareTable';
 import { NotesList } from './components/NotesList';
 import { PathwayStrategyCard } from './components/PathwayStrategyCard';
+import { StrategyFlowCanvas } from './components/StrategyFlowCanvas';
 import type { FamilyCostFlag, DistanceCategory } from './types/school';
 import type { Program } from './types/program';
 import type { PathwayStrategy } from './types/pathwayStrategy';
@@ -253,6 +254,12 @@ function App() {
     return strategy ? strategyFilterPatch(strategy, schools) : null;
   }, [previewStrategyId, pathwayStrategies, schools]);
 
+  // Prototype (docs/paths_journeys_plan.md): comparing the card grid against
+  // a Strategy -> Undergraduate -> Graduate/Professional -> Career flow
+  // diagram for the Strategies tab. Toggle is throwaway once we pick one.
+  const [strategiesView, setStrategiesView] = useState<'cards' | 'canvas'>('canvas');
+  const [selectedStrategyId, setSelectedStrategyId] = useState<string | null>(null);
+
   return (
     <div className="mx-auto max-w-6xl px-4 py-8 flex flex-col gap-8">
       {error && (
@@ -367,20 +374,66 @@ function App() {
                 {pathwayStrategies.med_school_cost_note}
               </p>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {pathwayStrategies.strategies.map((strategy) => (
-                  <PathwayStrategyCard
-                    key={strategy.id}
-                    strategy={strategy}
-                    schools={schools}
-                    medicalSchoolCostRange={{
-                      low: assumptions.medical_school_4yr_cost_estimate.public_low,
-                      high: assumptions.medical_school_4yr_cost_estimate.private_high,
-                    }}
-                    onSeeSchools={handleSeeSchoolsForStrategy}
-                  />
-                ))}
+              {/* Prototype toggle -- throwaway, remove once cards vs. canvas is decided */}
+              <div className="flex gap-1.5 self-start rounded-lg border border-stone-200 bg-stone-50 p-1">
+                <button
+                  type="button"
+                  onClick={() => setStrategiesView('cards')}
+                  className={`min-h-9 rounded-md px-3 text-xs font-medium ${
+                    strategiesView === 'cards' ? 'bg-white shadow-sm text-stone-900' : 'text-stone-500'
+                  }`}
+                >
+                  Cards
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setStrategiesView('canvas')}
+                  className={`min-h-9 rounded-md px-3 text-xs font-medium ${
+                    strategiesView === 'canvas' ? 'bg-white shadow-sm text-stone-900' : 'text-stone-500'
+                  }`}
+                >
+                  Flow diagram (prototype)
+                </button>
               </div>
+
+              {strategiesView === 'cards' ? (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {pathwayStrategies.strategies.map((strategy) => (
+                    <PathwayStrategyCard
+                      key={strategy.id}
+                      strategy={strategy}
+                      schools={schools}
+                      medicalSchoolCostRange={{
+                        low: assumptions.medical_school_4yr_cost_estimate.public_low,
+                        high: assumptions.medical_school_4yr_cost_estimate.private_high,
+                      }}
+                      onSeeSchools={handleSeeSchoolsForStrategy}
+                    />
+                  ))}
+                </div>
+              ) : (
+                <StrategyFlowCanvas
+                  strategies={pathwayStrategies.strategies}
+                  selectedId={selectedStrategyId ?? pathwayStrategies.strategies[0].id}
+                  onSelectStrategy={setSelectedStrategyId}
+                  schools={schools}
+                  medicalSchoolCostRange={{
+                    low: assumptions.medical_school_4yr_cost_estimate.public_low,
+                    high: assumptions.medical_school_4yr_cost_estimate.private_high,
+                  }}
+                  endpointLabel={pathwayStrategies.endpoint_label}
+                  altCareers={[
+                    {
+                      id: 'registered_nurse',
+                      label: paths.find((p) => p.id === 'registered_nurse')?.name ?? 'Registered Nurse (RN)',
+                    },
+                    {
+                      id: 'physician_assistant',
+                      label: paths.find((p) => p.id === 'physician_assistant')?.name ?? 'Physician Assistant (PA)',
+                    },
+                  ]}
+                />
+              )}
             </section>
           )}
 
